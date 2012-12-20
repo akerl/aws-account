@@ -1,0 +1,31 @@
+$ORIGIN akerl.org.
+$TTL 1h
+
+@ IN SOA ns1.linode.com. admin.lesaker.org. (
+  2012121902 ; serial number
+  1d ; Refresh
+  1h ; Retry
+  2w ; Expire
+  1h ; Min TTL
+)
+
+            NS    ns1.linode.com.
+            NS    ns2.linode.com.
+            NS    ns3.linode.com.
+            NS    ns4.linode.com.
+            NS    ns5.linode.com.
+
+            MX    1   aspmx.l.google.com.
+            MX    5   alt1.aspmx.l.google.com.
+            MX    5   alt2.aspmx.l.google.com.
+            MX    10  aspmx2.googlemail.com.
+            MX    10  aspmx3.googlemail.com.
+
+@           TXT   "v=spf1 a include:_spf.google.com ~all"
+@           SPF   "v=spf1 a include:_spf.google.com ~all"
+
+@           A     173.255.193.119
+www         A     173.255.193.119
+
+@           AAAA  2600:3c00:e000:0011::1
+www         AAAA  2600:3c00:e000:0011::1

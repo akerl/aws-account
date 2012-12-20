@@ -1,0 +1,12 @@
+outgoing-interface: 173.255.193.119
+notify: 69.93.127.10 NOKEY
+provide-xfr: 69.93.127.10 NOKEY
+notify: 65.19.178.10 NOKEY
+provide-xfr: 65.19.178.10 NOKEY
+notify: 75.127.96.10 NOKEY
+provide-xfr: 75.127.96.10 NOKEY
+notify: 207.192.70.10 NOKEY
+provide-xfr: 207.192.70.10 NOKEY
+notify: 109.74.194.10 NOKEY
+provide-xfr: 109.74.194.10 NOKEY
+
