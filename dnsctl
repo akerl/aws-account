@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import glob
+import fileinput
+import datetime
+
+def followSymlink(path):
+  if os.path.islink(path):
+    return followSymlink(os.readlink(path))
+  return path
+
+def getPath():
+  firstLoc = os.path.abspath(__file__)
+  realLoc = followSymlink(firstLoc)
+  return os.path.dirname(realLoc)
+
+def getSerial(current):
+  if doReset or int(current[0:8]) < date:
+    return '{}00'.format(date)
+  else:
+    return '{}'.format(int(current)+1)
+
+def bumpSerials():
+  if 'reset' in myArgs:
+    print('Reseting counters')
+    doReset = True
+  else:
+    doReset = False
+
+  date = int(datetime.date.today().strftime('%Y%m%d'))
+
+  for zone in glob.glob('*.zone'):
+    print('Reading {0}'.format(zone.rsplit('/',1)[-1]))
+    edited = False
+    for line in fileinput.input(zone, inplace=True):
+      if edited is False and '; serial number' in line:
+        curSerial = line.split(None, 1)[0]
+        newSerial = getSerial(curSerial)
+        print('{0} ; serial number'.format(newSerial))
+        edited = True
+      else:
+        print(line.rstrip())
+    print('Bumped {0} to {1}'.format(curSerial,newSerial))
+
+def updateNSD():
+  print('Updating NSD')
+  os.system('nsdc rebuild')
+  os.system('nsdc reload')
+  os.system('nsdc notify')
+
+def pushRepo():
+  print('Pushing to git')
+  os.system("git commit -am 'Autocommit: {0}'".format(datetime.date.today()))
+  os.system("git push origin master")
+
+myDir = getPath()
+os.chdir(myDir)
+
+myArgs = sys.argv[1:]
+if 'bump' in myArgs:
+  bumpSerials()
+if 'update' in myArgs:
+  updateNSD()
+if 'push' in myArgs:
+  pushRepo()
+
