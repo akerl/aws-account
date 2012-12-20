@@ -17,20 +17,12 @@ def getPath():
   return os.path.dirname(realLoc)
 
 def getSerial(current):
-  if doReset or int(current[0:8]) < date:
+  if 'reset' in myArgs or int(current[0:8]) < date:
     return '{}00'.format(date)
   else:
     return '{}'.format(int(current)+1)
 
 def bumpSerials():
-  if 'reset' in myArgs:
-    print('Reseting counters')
-    doReset = True
-  else:
-    doReset = False
-
-  date = int(datetime.date.today().strftime('%Y%m%d'))
-
   for zone in glob.glob('*.zone'):
     print('Reading {0}'.format(zone.rsplit('/',1)[-1]))
     edited = False
@@ -38,7 +30,7 @@ def bumpSerials():
       if edited is False and '; serial number' in line:
         curSerial = line.split(None, 1)[0]
         newSerial = getSerial(curSerial)
-        print('{0} ; serial number'.format(newSerial))
+        print('  {0} ; serial number'.format(newSerial))
         edited = True
       else:
         print(line.rstrip())
@@ -55,11 +47,12 @@ def pushRepo():
   os.system("git commit -am 'Autocommit: {0}'".format(datetime.date.today()))
   os.system("git push origin master")
 
+date = int(datetime.date.today().strftime('%Y%m%d'))
 myDir = getPath()
 os.chdir(myDir)
 
 myArgs = sys.argv[1:]
-if 'bump' in myArgs:
+if 'bump' in myArgs or 'reset' in myArgs:
   bumpSerials()
 if 'update' in myArgs:
   updateNSD()
