@@ -19,21 +19,21 @@ def get_path():
     return os.path.dirname(real_location)
 
 
-def get_serial(current, date, reset=False):
+def get_serial(current, reset=False):
+    date = int(datetime.date.today().strftime('%Y%m%d'))
     if reset or int(current[0:8]) < date:
         return '{}00'.format(date)
     else:
         return '{}'.format(int(current)+1)
 
 
-def bump_serials():
+def bump_serials(reset=False):
     for zone in glob.glob('*.zone'):
-        print('Reading {0}'.format(zone.rsplit('/', 1)[-1]))
         edited = False
         for line in fileinput.input(zone, inplace=True):
             if edited is False and '; serial number' in line:
                 current_serial = line.split(None, 1)[0]
-                new_serial = get_serial(current_serial)
+                new_serial = get_serial(current_serial, reset=reset)
                 print('  {0} ; serial number'.format(new_serial))
                 edited = True
             else:
@@ -57,11 +57,11 @@ def push_repo():
     os.system("git commit -am 'Autocommit: {0}'".format(datetime.date.today()))
     os.system("git push origin master")
 
-date = int(datetime.date.today().strftime('%Y%m%d'))
 os.chdir(get_path())
-
 my_args = sys.argv[1:]
-if 'bump' in my_args or 'reset' in my_args:
+if 'reset' in my_args:
+    bump_serials(reset=True)
+elif 'bump' in my_args:
     bump_serials()
 if 'update' in my_args:
     update_NSD()

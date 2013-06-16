@@ -2,7 +2,7 @@ $ORIGIN lesaker.org.
 $TTL 1h
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2013030100 ; serial number
+  2013061600 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
@@ -31,3 +31,4 @@ www         A     173.255.193.119
 www         AAAA  2600:3c00:e000:0011::1
 
 mail        CNAME ghs.google.com.
+
