@@ -6,56 +6,65 @@ import glob
 import fileinput
 import datetime
 
-def followSymlink(path):
-  if os.path.islink(path):
-    return followSymlink(os.readlink(path))
-  return path
 
-def getPath():
-  firstLoc = os.path.abspath(__file__)
-  realLoc = followSymlink(firstLoc)
-  return os.path.dirname(realLoc)
+def follow_symlink(path):
+    if os.path.islink(path):
+        return follow_symlink(os.readlink(path))
+    return path
 
-def getSerial(current):
-  if 'reset' in myArgs or int(current[0:8]) < date:
-    return '{}00'.format(date)
-  else:
-    return '{}'.format(int(current)+1)
 
-def bumpSerials():
-  for zone in glob.glob('*.zone'):
-    print('Reading {0}'.format(zone.rsplit('/',1)[-1]))
-    edited = False
-    for line in fileinput.input(zone, inplace=True):
-      if edited is False and '; serial number' in line:
-        curSerial = line.split(None, 1)[0]
-        newSerial = getSerial(curSerial)
-        print('  {0} ; serial number'.format(newSerial))
-        edited = True
-      else:
-        print(line.rstrip())
-    print('Bumped {0} to {1}'.format(curSerial,newSerial))
+def get_path():
+    first_location = os.path.abspath(__file__)
+    real_location = follow_symlink(first_location)
+    return os.path.dirname(real_location)
 
-def updateNSD():
-  print('Updating NSD')
-  os.system('nsdc rebuild')
-  os.system('nsdc reload')
-  os.system('nsdc notify')
 
-def pushRepo():
-  print('Pushing to git')
-  os.system("git commit -am 'Autocommit: {0}'".format(datetime.date.today()))
-  os.system("git push origin master")
+def get_serial(current, date, reset=False):
+    if reset or int(current[0:8]) < date:
+        return '{}00'.format(date)
+    else:
+        return '{}'.format(int(current)+1)
+
+
+def bump_serials():
+    for zone in glob.glob('*.zone'):
+        print('Reading {0}'.format(zone.rsplit('/', 1)[-1]))
+        edited = False
+        for line in fileinput.input(zone, inplace=True):
+            if edited is False and '; serial number' in line:
+                current_serial = line.split(None, 1)[0]
+                new_serial = get_serial(current_serial)
+                print('  {0} ; serial number'.format(new_serial))
+                edited = True
+            else:
+                print(line.rstrip())
+        print('Bumped {0} to {1} for {2}'.format(
+            current_serial,
+            new_serial,
+            zone
+        ))
+
+
+def update_NSD():
+    print('Updating NSD')
+    os.system('nsdc rebuild')
+    os.system('nsdc reload')
+    os.system('nsdc notify')
+
+
+def push_repo():
+    print('Pushing to git')
+    os.system("git commit -am 'Autocommit: {0}'".format(datetime.date.today()))
+    os.system("git push origin master")
 
 date = int(datetime.date.today().strftime('%Y%m%d'))
-myDir = getPath()
-os.chdir(myDir)
+os.chdir(get_path())
 
-myArgs = sys.argv[1:]
-if 'bump' in myArgs or 'reset' in myArgs:
-  bumpSerials()
-if 'update' in myArgs:
-  updateNSD()
-if 'push' in myArgs:
-  pushRepo()
+my_args = sys.argv[1:]
+if 'bump' in my_args or 'reset' in my_args:
+    bump_serials()
+if 'update' in my_args:
+    update_NSD()
+if 'push' in my_args:
+    push_repo()
 
