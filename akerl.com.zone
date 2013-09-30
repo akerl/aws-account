@@ -1,4 +1,4 @@
-$ORIGIN kellywatts.com.
+$ORIGIN akerl.com.
 $TTL 1h
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
@@ -24,7 +24,9 @@ $TTL 1h
 @           TXT   "v=spf1 a include:_spf.google.com ~all"
 @           SPF   "v=spf1 a include:_spf.google.com ~all"
 
-@           A     66.6.44.4
-www         CNAME domains.tumblr.com.
-mail        CNAME ghs.google.com.
+@           A     173.255.193.119
+www         A     173.255.193.119
+
+@           AAAA  2600:3c00:e000:0011::1
+www         AAAA  2600:3c00:e000:0011::1
 
