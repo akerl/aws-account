@@ -2,7 +2,7 @@ $ORIGIN a.1.2.0.8.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa.
 $TTL 1h
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2013093000 ; serial number
+  2013100300 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
