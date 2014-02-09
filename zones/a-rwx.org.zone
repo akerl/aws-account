@@ -2,7 +2,7 @@ $ORIGIN a-rwx.org.
 $TTL 1h
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2014012500 ; serial number
+  2014020900 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
@@ -45,4 +45,7 @@ www         AAAA  2600:3c00:e000:0011::1
 miro        AAAA  2600:3c03:e001:0800::1
 grego       AAAA  2600:3c02:e000:0008::1
 olhado      AAAA  2600:3c00:e000:0011::1
+
+services.olhado TXT "akerl/dns 53|53"
+services.olhado TXT "akerl/blog 127.0.0.1:8000|80"
 
