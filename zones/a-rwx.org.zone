@@ -1,12 +1,12 @@
 $ORIGIN a-rwx.org.
-$TTL 1h
+$TTL 5m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2014020900 ; serial number
+  2014020901 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
-  1h ; Min TTL
+  5m ; Min TTL
 )
 
             NS    ns1.linode.com.
