@@ -2,7 +2,7 @@ $ORIGIN lesaker.org.
 $TTL 1h
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2014021500 ; serial number
+  2014021900 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
