@@ -46,3 +46,7 @@ miro        AAAA  2600:3c03:e001:0800::1
 grego       AAAA  2600:3c02:e000:0008::1
 olhado      AAAA  2600:3c00:e000:0011::1
 
+wired.ender     AAAA 2001:470:8:21a:2a37:37ff:fe03:1c2d
+wireless.ender  AAAA 2001:470:8:21a:ba8d:12ff:fe12:2388
+ender           CNAME wireless.ender
+
