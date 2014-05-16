@@ -28,3 +28,4 @@ $TTL 1h
 www         CNAME domains.tumblr.com.
 mail        CNAME ghs.google.com.
 
+@           TXT "google-site-verification=d-qVwLWLezrZ2hanNIW8WiIiGEMmTzyg0haZRWZ9DUw"
