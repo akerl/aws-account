@@ -1,5 +1,5 @@
 $ORIGIN akerl.org.
-$TTL 1h
+$TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
   2014062100 ; serial number
@@ -26,12 +26,8 @@ $TTL 1h
 
 @           A       173.255.193.119
 www         A       173.255.193.119
-
 @           AAAA    2600:3c00:e000:0011::1
 www         AAAA    2600:3c00:e000:0011::1
-
-github      A       173.255.193.119
-github      AAAA    2600:3c00:e000:0011::1
 
 blog        A       173.255.193.119
 blog        AAAA    2600:3c00:e000:0011::1

@@ -1,5 +1,5 @@
 $ORIGIN kellywatts.com.
-$TTL 1h
+$TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
   2014062100 ; serial number
@@ -28,4 +28,3 @@ $TTL 1h
 www         CNAME domains.tumblr.com.
 mail        CNAME ghs.google.com.
 
-@           TXT "google-site-verification=d-qVwLWLezrZ2hanNIW8WiIiGEMmTzyg0haZRWZ9DUw"

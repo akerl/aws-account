@@ -1,5 +1,5 @@
 $ORIGIN id-ecdsa.pub.
-$TTL 1h
+$TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
   2014062100 ; serial number
@@ -26,7 +26,6 @@ $TTL 1h
 
 @           A     69.164.217.166
 www         A     69.164.217.166
-
 @           AAAA  2600:3c03:e001:0800::9001
 www         AAAA  2600:3c03:e001:0800::9001
 
