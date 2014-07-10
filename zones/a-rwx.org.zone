@@ -69,4 +69,8 @@ wired.human     AAAA 2001:470:8:21a:225:22ff:fe69:28be
 wireless.human  AAAA 2001:470:8:21a:6a7f:74ff:feef:3c16
 human           CNAME wired.human
 
+plikt           AAAA 2001:470:8:21a:223:54ff:fe3c:2dbd
+
+wii             AAAA 2001:470:8:21a:224:49ff:fe03:fe1
+xbox            AAAA 2001:470:8:21a:7eed:8dff:fe87:8c7f
 
