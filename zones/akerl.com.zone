@@ -2,7 +2,7 @@ $ORIGIN akerl.com.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2014062100 ; serial number
+  2014070900 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
