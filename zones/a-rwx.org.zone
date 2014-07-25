@@ -44,21 +44,6 @@ olhado      SPF   "v=spf1 a ~all"
 olhado      A     173.255.193.119
 olhado      AAAA  2600:3c00:e000:0011::1
 
-quara       TXT   "v=spf1 a ~all"
-quara       SPF   "v=spf1 a ~all"
-quara       A     192.155.86.203
-quara       AAAA  2600:3c01:e000:001e::1
-
-ela         TXT   "v=spf1 a ~all"
-ela         SPF   "v=spf1 a ~all"
-ela         A     109.74.200.150
-ela         AAAA  2a01:7e00:e000:00b0::1
-
-quim        TXT   "v=spf1 a ~all"
-quim        SPF   "v=spf1 a ~all"
-quim        A     106.185.28.157
-quim        AAAA  2400:8900:e000:0070::1
-
 ansible         AAAA 2001:470:8:21a::1
 
 wired.ender     AAAA 2001:470:8:21a:2a37:37ff:fe03:1c2d
