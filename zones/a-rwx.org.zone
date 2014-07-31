@@ -31,18 +31,28 @@ www         AAAA  2600:3c00:e000:0011::1
 
 miro        TXT   "v=spf1 a ~all"
 miro        SPF   "v=spf1 a ~all"
-miro        A     69.164.217.166
-miro        AAAA  2600:3c03:e001:0800::1
+miro        A     97.107.129.127
+miro        AAAA  2600:3c03:e001:9001::1
 
 grego       TXT   "v=spf1 a ~all"
 grego       SPF   "v=spf1 a ~all"
-grego       A     50.116.33.15
-grego       AAAA  2600:3c02:e000:0008::1
+grego       A     173.230.129.127
+grego       AAAA  2600:3c02:e001:9001::1
 
 olhado      TXT   "v=spf1 a ~all"
 olhado      SPF   "v=spf1 a ~all"
-olhado      A     173.255.193.119
-olhado      AAAA  2600:3c00:e000:0011::1
+olhado      A     70.85.129.127
+olhado      AAAA  2600:3c00:e001:9001::1
+
+ela         TXT   "v=spf1 a ~all"
+ela         SPF   "v=spf1 a ~all"
+ela         A     178.79.129.127
+ela         AAAA  2a01:7e00:e001:9001::1
+
+quara       TXT   "v=spf1 a ~all"
+quara       SPF   "v=spf1 a ~all"
+quara       A     192.81.129.127
+quara       AAAA  2600:3c01:e001:9001::1
 
 ansible         AAAA 2001:470:8:21a::1
 

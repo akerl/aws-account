@@ -24,11 +24,11 @@ $TTL 15m
 @           TXT   "v=spf1 a include:_spf.google.com ~all"
 @           SPF   "v=spf1 a include:_spf.google.com ~all"
 
-@           A     173.255.193.119
-www         A     173.255.193.119
-@           AAAA  2600:3c00:e000:0011::1
-www         AAAA  2600:3c00:e000:0011::1
+@           A     70.85.129.127
+www         A     70.85.129.127
+@           AAAA  2600:3c00:e001:9001::1
+www         AAAA  2600:3c00:e001:9001::1
 
-akerl       A     69.164.217.166
-akerl       AAAA  2600:3c03:e001:0800::9001
+akerl       A     97.107.129.127
+akerl       AAAA  2600:3c03:e001:9001::9001
 
