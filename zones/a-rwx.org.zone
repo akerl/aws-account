@@ -1,5 +1,5 @@
 $ORIGIN a-rwx.org.
-$TTL 0
+$TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
   2014080800 ; serial number
