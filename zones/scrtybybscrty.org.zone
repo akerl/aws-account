@@ -36,3 +36,5 @@ passwords   A     192.81.129.127
 passwords   AAAA  2600:3c01:e001:9001::1
 
 amylum      CNAME amylum.herokuapp.com.
+builds      CNAME amylum.herokuapp.com.
+
