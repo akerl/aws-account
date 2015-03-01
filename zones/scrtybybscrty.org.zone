@@ -2,7 +2,7 @@ $ORIGIN scrtybybscrty.org.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2015021901 ; serial number
+  2015030100 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
@@ -35,6 +35,6 @@ akerl       AAAA  2600:3c03:e001:9001::9001
 passwords   A     192.81.129.127
 passwords   AAAA  2600:3c01:e001:9001::1
 
-amylum      CNAME amylum-server.herokuapp.com.
+repo        CNAME amylum-server.herokuapp.com.
 build       CNAME amylum-builder.herokuapp.com.
 
