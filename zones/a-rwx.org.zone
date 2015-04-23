@@ -2,7 +2,7 @@ $ORIGIN a-rwx.org.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2015030101 ; serial number
+  2015042300 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
@@ -68,4 +68,12 @@ plikt           AAAA 2001:470:8:21a:223:54ff:fe3c:2dbd
 
 wii             AAAA 2001:470:8:21a:224:49ff:fe03:fe1
 xbox            AAAA 2001:470:8:21a:7eed:8dff:fe87:8c7f
+
+
+cartman A 139.162.27.7
+cartman AAAA 2400:8901::f03c:91ff:fe18:7b45
+kyle A 139.162.12.7
+kyle AAAA 2400:8901::f03c:91ff:fe18:7be7
+kenny A 139.162.4.9
+kenny AAAA 2400:8901::f03c:91ff:fe18:7bb9
 
