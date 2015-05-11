@@ -2,7 +2,7 @@ $ORIGIN scrtybybscrty.org.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2015042300 ; serial number
+  2015051100 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
