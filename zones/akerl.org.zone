@@ -33,5 +33,5 @@ blog        A       70.85.129.127
 blog        AAAA    2600:3c00:e001:9001::1
 
 committed   A       70.85.129.127
-committed   A       2600:3c00:e001:9001::1
+committed   AAAA    2600:3c00:e001:9001::1
 
