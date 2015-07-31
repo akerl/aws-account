@@ -2,7 +2,7 @@ $ORIGIN lesaker.com.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2015051800 ; serial number
+  2015073000 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
