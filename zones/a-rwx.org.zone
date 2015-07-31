@@ -54,6 +54,12 @@ quara       SPF   "v=spf1 a ~all"
 quara       A     192.81.129.127
 quara       AAAA  2600:3c01:e001:9001::1
 
+quim        TXT   "v=spf1 a ~all"
+quim        SPF   "v=spf1 a ~all"
+quim        A     139.162.159.5
+quim        AAAA  2a01:7e01:e001:9::1
+
+
 ansible         AAAA 2001:470:8:21a::1
 
 wired.ender     AAAA 2001:470:8:21a:2a37:37ff:fe03:1c2d
@@ -68,8 +74,4 @@ plikt           AAAA 2001:470:8:21a:223:54ff:fe3c:2dbd
 
 wii             AAAA 2001:470:8:21a:224:49ff:fe03:fe1
 xbox            AAAA 2001:470:8:21a:7eed:8dff:fe87:8c7f
-
-
-cartman A 173.255.214.95
-cartman AAAA 2600:3c01::f03c:91ff:fe37:f2e8
 
