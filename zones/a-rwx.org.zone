@@ -60,6 +60,7 @@ quim        A     139.162.159.5
 quim        AAAA  2a01:7e01:e001:9::1
 
 
+ansible         A 10.0.0.1
 ansible         AAAA 2001:470:8:21a::1
 
 wired.ender     AAAA 2001:470:8:21a:2a37:37ff:fe03:1c2d
