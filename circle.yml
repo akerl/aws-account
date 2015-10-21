@@ -1,0 +1,7 @@
+dependencies:
+  pre:
+    - sudo apt-get update
+    - sudo apt-get install bind9
+test:
+  override:
+    - rake
