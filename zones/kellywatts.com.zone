@@ -2,7 +2,7 @@ $ORIGIN kellywatts.com.
 $TTL 15m
 
 @ IN SOA ns1.linode.com. admin.lesaker.org. (
-  2015082300 ; serial number
+  2016012400 ; serial number
   1d ; Refresh
   1h ; Retry
   2w ; Expire
