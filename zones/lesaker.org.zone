@@ -29,5 +29,6 @@ www         A     70.85.129.127
 @           AAAA  2600:3c00:e001:9001::1
 www         AAAA  2600:3c00:e001:9001::1
 
-mail        CNAME ghs.google.com.
+mail        CNAME ghs.googlehosted.com.
+cal         CNAME ghs.googlehosted.com.
 
