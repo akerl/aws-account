@@ -9,13 +9,13 @@ dependencies:
   - sudo unzip -d /usr/local/bin /tmp/terraform.zip
   override:
   - /usr/local/bin/terraform remote config -backend=S3 -backend-config="bucket=${STATE_BUCKET}" -backend-config="key=state/terraform.tfstate"
-  - /usr/local/bin/terraform get terraform
+  - /usr/local/bin/terraform get zones
 test:
   override:
-  - /usr/local/bin/terraform plan -out=terraform.plan terraform
+  - /usr/local/bin/terraform plan -out=terraform.plan zones
 deployment:
   release:
     branch: master
     commands:
     - /usr/local/bin/terraform apply terraform.plan
-    - /usr/local/bin/terraform remote push
+    - /usr/local/bin/terraform remote zones
