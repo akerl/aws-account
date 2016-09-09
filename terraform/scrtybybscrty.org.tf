@@ -1,4 +1,5 @@
 module "scrtybybscrty_org" {
+    source = "./domain"
     domain_name = "scrtybybscrty.org"
     delegation_set_id = "${aws_route53_delegation_set.main.id}"
     root_ipv4 = "70.85.129.127"
