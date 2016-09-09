@@ -1,7 +1,7 @@
 machine:
   environment:
     TERRAFORM_VERSION: 0.7.3
-    STATE_BUCKET=circleci-akerl-dns
+    STATE_BUCKET: circleci-akerl-dns
 dependencies:
   pre:
   - curl -sLo /tmp/terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
