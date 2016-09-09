@@ -74,7 +74,7 @@ resource "aws_route53_record" "a" {
     type = "A"
     ttl = "86400"
     records = ["${var.root_ipv4}"]
-    count="${replace(replace(var.root_ipv4,\"/.+/\",\"1\"),\"/^$/\",\"0\")}"
+    count="${replace(replace(var.root_ipv4,"/.+/","1"),"/^$/","0")}"
 }
 
 resource "aws_route53_record" "aaaa" {
@@ -83,7 +83,7 @@ resource "aws_route53_record" "aaaa" {
     type = "AAAA"
     ttl = "86400"
     records = ["${var.root_ipv6}"]
-    count="${replace(replace(var.root_ipv6,\"/.+/\",\"1\"),\"/^$/\",\"0\")}"
+    count="${replace(replace(var.root_ipv6,"/.+/","1"),"/^$/","0")}"
 }
 
 resource "aws_route53_record" "www_a" {
@@ -92,7 +92,7 @@ resource "aws_route53_record" "www_a" {
     type = "A"
     ttl = "86400"
     records = ["${var.root_ipv4}"]
-    count="${replace(replace(var.root_ipv4,\"/.+/\",\"1\"),\"/^$/\",\"0\")}"
+    count="${replace(replace(var.root_ipv4,"/.+/","1"),"/^$/","0")}"
 }
 
 resource "aws_route53_record" "www_aaaa" {
@@ -101,5 +101,5 @@ resource "aws_route53_record" "www_aaaa" {
     type = "AAAA"
     ttl = "86400"
     records = ["${var.root_ipv6}"]
-    count="${replace(replace(var.root_ipv6,\"/.+/\",\"1\"),\"/^$/\",\"0\")}"
+    count="${replace(replace(var.root_ipv6,"/.+/","1"),"/^$/","0")}"
 }
