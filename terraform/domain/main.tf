@@ -33,7 +33,7 @@ resource "aws_route53_record" "soa" {
     name = "${var.domain_name}"
     type = "SOA"
     ttl = "86400"
-    records = ["${aws_route53_zone.domain.name_servers.0} ${var.admin_email} 1 7200 900 1209600 3600"]
+    records = ["${aws_route53_zone.domain.name_servers.0}. ${var.admin_email}. 1 7200 900 1209600 3600"]
 }
 
 resource "aws_route53_record" "mx" {
