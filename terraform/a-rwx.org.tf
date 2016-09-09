@@ -17,7 +17,7 @@ resource "aws_route53_record" "a_miro_a_rwx_org" {
 resource "aws_route53_record" "aaaa_miro_a_rwx_org" {
     zone_id = "${module.a_rwx_org.zone_id}"
     name = "miro.a_rwx.org"
-    type = "A"
+    type = "AAAA"
     ttl = "86400"
     records = ["2600:3c03:e001:9001::1"]
 }
@@ -33,7 +33,7 @@ resource "aws_route53_record" "a_olhado_a_rwx_org" {
 resource "aws_route53_record" "aaaa_olhado_a_rwx_org" {
     zone_id = "${module.a_rwx_org.zone_id}"
     name = "olhado.a_rwx.org"
-    type = "A"
+    type = "AAAA"
     ttl = "86400"
     records = ["2600:3c00:e001:9001::1"]
 }
