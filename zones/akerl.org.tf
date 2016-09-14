@@ -19,6 +19,7 @@ resource "aws_route53_record" "a_blog_akerl_org" {
     zone_id = "${module.akerl_org.zone_id}"
     name = "blog.akerl.org"
     type = "CNAME"
+    ttl = "86400"
     records = ["akerl.org."]
 }
 
