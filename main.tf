@@ -5,3 +5,10 @@ provider "aws" {
 provider "awscreds" {
     region = "us-east-1"
 }
+
+module "account" {
+    source = "./account"
+    prefix = "akerl"
+    admins = ["akerl", "flula"]
+}
+
