@@ -56,7 +56,6 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
     ]
 
     enabled = true
-    default_root_object = "index.html"
 
     logging_config {
         include_cookies = false
