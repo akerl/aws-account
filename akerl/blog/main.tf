@@ -2,6 +2,11 @@ variable "logging-bucket" {
     type = "string"
 }
 
+variable "file-bucket" {
+    type = "string"
+    default = "akerl-blog"
+}
+
 resource "aws_iam_user" "circleci" {
     name = "akerl-blog-circleci"
 }
@@ -37,7 +42,8 @@ resource "awscreds_iam_access_key" "circleci-key" {
 }
 
 resource "aws_s3_bucket" "file-bucket" {
-    bucket = "akerl-blog"
+    bucket = "${var.file-bucket}"
+    policy = "${data.aws_iam_policy_document.bucket-read-access.json}"
     versioning {
         enabled = "true"
     }
@@ -48,6 +54,17 @@ resource "aws_s3_bucket" "file-bucket" {
     website {
         index_document = "index.html"
         error_document = "404/index.html"
+    }
+}
+
+data "aws_iam_policy_document" "bucket-read-access" {
+    statement {
+        actions = ["s3:GetObject"]
+        resources = ["arn:aws:s3:::${var.file-bucket}/*"]
+        principals {
+            type = "AWS"
+            identifiers = ["*"]
+        }
     }
 }
 
