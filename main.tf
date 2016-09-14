@@ -9,6 +9,6 @@ provider "awscreds" {
 module "account" {
     source = "./account"
     prefix = "akerl"
-    admins = ["akerl", "flula"]
+    admins = ["akerl"]
 }
 
