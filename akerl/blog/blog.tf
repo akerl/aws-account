@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "file-bucket" {
     }
     logging {
         target_bucket = "${var.logging-bucket}"
-        target_prefix = "akerl-blog/s3/"
+        target_prefix = "akerl-blog/"
     }
     website {
         index_document = "index.html"

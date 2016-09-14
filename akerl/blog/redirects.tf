@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "redirect-bucket" {
     }
     logging {
         target_bucket = "${var.logging-bucket}"
-        target_prefix = "akerl-blog-redirect/s3/"
+        target_prefix = "akerl-blog-redirect/"
     }
     website {
         redirect_all_requests_to = "https://blog.akerl.org"
