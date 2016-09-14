@@ -15,6 +15,17 @@ resource "aws_route53_record" "a_akerl_org" {
     }
 }
 
+resource "aws_route53_record" "a_www_akerl_org" {
+    zone_id = "${module.akerl_org.zone_id}"
+    name = "www.akerl.org"
+    type = "A"
+    alias {
+        name = "d3c22u04feroyw.cloudfront.net"
+        zone_id = "Z2FDTNDATAQYW2"
+        evaluate_target_health = false
+    }
+}
+
 resource "aws_route53_record" "a_blog_akerl_org" {
     zone_id = "${module.akerl_org.zone_id}"
     name = "blog.akerl.org"
