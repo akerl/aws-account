@@ -1,7 +1,7 @@
 machine:
   environment:
     TERRAFORM_VERSION: 0.7.3
-    STATE_BUCKET: circleci-akerl-dns
+    STATE_BUCKET: akerl-dns
     AWS_DEFAULT_REGION: us-east-1
 dependencies:
   pre:
