@@ -5,7 +5,7 @@ resource "aws_cloudwatch_metric_alarm" "billing-alarm" {
     metric_name = "EstimatedCharges"
     namespace = "AWS/Billing"
     period = "3600"
-    statistic = "SamplesMaximum"
+    statistic = "Maximum"
     threshold = "10"
     dimensions {
         Currency = "USD"
