@@ -5,7 +5,7 @@ module "scrtybybscrty_org" {
 }
 
 resource "aws_route53_record" "a_scrtybybscrty_org" {
-    zone_id = "${module.akerl_org.zone_id}"
+    zone_id = "${module.scrtybybscrty_org.zone_id}"
     name = "scrtybybscrty.org"
     type = "A"
     alias {
@@ -16,7 +16,7 @@ resource "aws_route53_record" "a_scrtybybscrty_org" {
 }
 
 resource "aws_route53_record" "a_www_scrtybybscrty_org" {
-    zone_id = "${module.akerl_org.zone_id}"
+    zone_id = "${module.scrtybybscrty_org.zone_id}"
     name = "www.scrtybybscrty.org"
     type = "A"
     alias {
