@@ -40,12 +40,19 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
         "lesaker.org",
         "www.lesaker.org",
         "scrtybybscrty.org",
+        "www.scrtybybscrty.org",
         "lesaker.com",
-        "akerl.org",
-        "akerl.com",
-        "www.akerl.org",
         "www.lesaker.com",
+        "akerl.org",
+        "www.akerl.org",
+        "akerl.com",
         "www.akerl.com",
+        "happilyeveraker.com",
+        "www.happilyeveraker.com",
+        "a-rwx.org",
+        "www.a-rwx.org",
+        "id-ed25519.pub",
+        "www.id-ed25519.pub",
     ]
 
     enabled = true
