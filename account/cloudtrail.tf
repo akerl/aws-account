@@ -8,7 +8,7 @@ resource "aws_cloudtrail" "main-trail" {
 }
 
 resource "aws_s3_bucket" "main-trail" {
-    bucket = "akerl-cloudtrail"
+    bucket = "${var.prefix}-cloudtrail"
     policy = <<POLICY
 {
     "Version": "2012-10-17",
