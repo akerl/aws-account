@@ -6,6 +6,28 @@ module "lesaker_org" {
     root_ipv6 = "2600:3c00:e001:9001::1"
 }
 
+resource "aws_route53_record" "a_lesaker_org" {
+    zone_id = "${module.lesaker_org.zone_id}"
+    name = "lesaker.org"
+    type = "A"
+    alias {
+        name = "d3c22u04feroyw.cloudfront.net"
+        zone_id = "Z2FDTNDATAQYW2"
+        evaluate_target_health = false
+    }
+}
+
+resource "aws_route53_record" "a_www_lesaker_org" {
+    zone_id = "${module.lesaker_org.zone_id}"
+    name = "www.lesaker.org"
+    type = "A"
+    alias {
+        name = "d3c22u04feroyw.cloudfront.net"
+        zone_id = "Z2FDTNDATAQYW2"
+        evaluate_target_health = false
+    }
+}
+
 resource "aws_route53_record" "cname_mail_lesaker_org" {
     zone_id = "${module.lesaker_org.zone_id}"
     name = "mail.lesaker.org"
