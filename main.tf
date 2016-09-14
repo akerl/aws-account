@@ -12,3 +12,6 @@ module "account" {
     admins = ["akerl"]
 }
 
+module "akerl-dns" {
+    source = "./akerl/dns"
+}
