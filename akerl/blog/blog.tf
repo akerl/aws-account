@@ -78,6 +78,6 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
     viewer_certificate {
         ssl_support_method = "sni-only"
         minimum_protocol_version = "TLSv1"
-        acm_certificate_arn = "arn:aws:acm:us-east-1:764218738161:certificate/4c6b3548-844f-4619-9a0d-7731906e6cd2"
+        acm_certificate_arn = "arn:aws:acm:us-east-1:764218738161:certificate/90048130-4680-45e3-aa7a-2ccfbcb0c2ff"
     }
 }
