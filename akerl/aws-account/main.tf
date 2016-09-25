@@ -11,7 +11,11 @@ data "aws_iam_policy_document" "terraform-planner" {
       "cloudwatch:Describe*",
       "s3:ListAllMyBuckets",
       "s3:GetBucket*",
+      "s3:*",                 # remove this
+      "cloudtrail:Describe*",
+      "cloudfront:Get*",
     ]
+
     resources = [
       "*",
     ]
