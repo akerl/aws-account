@@ -9,7 +9,7 @@ provider "awscreds" {
 module "account" {
   source = "./account"
   prefix = "akerl"
-  admins = ["akerl"]
+  admins = ["akerll"]
 }
 
 module "akerl-dns" {
