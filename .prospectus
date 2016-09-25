@@ -1,0 +1,15 @@
+item do
+  name 'aws-account::terraform'
+
+  expected do
+    github_release
+    repo 'hashicorp/terraform'
+    regex /v([\d.]+)/
+  end
+
+  actual do
+    grep
+    file 'circle.yml'
+    regex /^\s+TERRAFORM_VERSION: ([\d.]+)$/
+  end
+end
