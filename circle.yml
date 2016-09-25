@@ -1,0 +1,12 @@
+machine:
+  environment:
+    TERRAFORM_VERSION: 0.7.4
+    AWS_DEFAULT_REGION: us-east-1
+dependencies:
+  pre:
+  - curl -sLo /tmp/terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+  - sudo unzip -d /usr/local/bin /tmp/terraform.zip
+  - /usr/local/bin/terraform get
+test:
+  override:
+  - test $(/usr/local/bin/terraform fmt -write=false | tee /dev/stderr | wc -c) -eq 0
