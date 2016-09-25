@@ -9,7 +9,7 @@ provider "awscreds" {
 module "account" {
   source = "./account"
   prefix = "akerl"
-  admins = ["akerll"]
+  admins = ["akerl"]
 }
 
 module "akerl-dns" {
@@ -19,4 +19,8 @@ module "akerl-dns" {
 module "akerl-blog" {
   source         = "./akerl/blog"
   logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "akerl-aws-account" {
+  source = "./akerl/aws-account"
 }
