@@ -1,7 +1,7 @@
 variable "prefix" {
-    type = "string"
+  type = "string"
 }
 
 variable "admins" {
-    type = "list"
+  type = "list"
 }
