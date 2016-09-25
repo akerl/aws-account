@@ -12,7 +12,7 @@ dependencies:
   - /usr/local/bin/terraform get zones
 test:
   override:
-  - /usr/local/bin/terraform fmt -write=false | grep -v .
+  - /usr/local/bin/terraform fmt -write=false | tee /dev/stderr | grep -v .
   - /usr/local/bin/terraform plan -out=terraform.plan zones
 deployment:
   release:
