@@ -1,6 +1,8 @@
 aws-account
 ===========
 
+[![Build Status](https://img.shields.io/circleci/project/akerl/aws-account.svg)](https://circleci.com/gh/akerl/aws-account)
+
 This is the terraform I use to configure my main AWS account
 
 ## Manual Steps
