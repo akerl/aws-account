@@ -8,6 +8,9 @@ data "aws_iam_policy_document" "terraform-planner" {
       "iam:Get*",
       "iam:List*",
       "sns:Get*",
+      "cloudwatch:Describe*",
+      "s3:ListAllMyBuckets",
+      "s3:GetBucket*",
     ]
     resources = [
       "*",
