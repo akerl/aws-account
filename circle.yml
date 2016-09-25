@@ -9,6 +9,7 @@ dependencies:
   - sudo unzip -d /usr/local/bin /tmp/terraform.zip
   override:
   - go get -u github.com/akerl/terraform-provider-awscreds
+  - echo -e "providers {\nawscreds = \"/Users/akerl/.go/bin/terraform-provider-awscreds\"\n}" > ~/.terraformrc
   - /usr/local/bin/terraform get
 test:
   override:
