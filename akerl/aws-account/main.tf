@@ -20,6 +20,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "s3:ListAllMyBuckets",
       "sns:Get*",
     ]
+
     resources = [
       "*",
     ]

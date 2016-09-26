@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"
+  region   = "us-east-1"
   insecure = "true"
 }
 
 provider "awscreds" {
-  region = "us-east-1"
+  region   = "us-east-1"
   insecure = "true"
 }
 
@@ -15,7 +15,7 @@ module "account" {
 }
 
 module "akerl-dns" {
-  source = "./akerl/dns"
+  source         = "./akerl/dns"
   logging-bucket = "${module.account.logging-bucket}"
 }
 
