@@ -5,17 +5,21 @@ resource "aws_iam_user" "circleci" {
 data "aws_iam_policy_document" "terraform-planner" {
   statement {
     actions = [
+      "cloudfront:Get*",
+      "cloudtrail:Describe*",
+      "cloudtrail:List*",
+      "cloudtrail:Get*",
+      "cloudwatch:Describe*",
       "iam:Get*",
       "iam:List*",
-      "sns:Get*",
-      "cloudwatch:Describe*",
-      "s3:ListAllMyBuckets",
+      "s3:GetAccelerateConfiguration",
       "s3:GetBucket*",
-      "s3:*",                 # remove this
-      "cloudtrail:Describe*",
-      "cloudfront:Get*",
+      "s3:ListBucket",
+      "s3:GetLifecycleConfiguration",
+      "s3:GetReplicationConfiguration",
+      "s3:ListAllMyBuckets",
+      "sns:Get*",
     ]
-
     resources = [
       "*",
     ]

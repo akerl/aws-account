@@ -1,3 +1,7 @@
+variable "logging-bucket" {
+  type = "string"
+}
+
 resource "aws_iam_user" "circleci" {
   name = "akerl-dns-circleci"
 }
@@ -54,5 +58,10 @@ resource "aws_s3_bucket" "state-bucket" {
 
   versioning {
     enabled = "true"
+  }
+
+  logging {
+    target_bucket = "${var.logging-bucket}"
+    target_prefix = "akerl-dns/"
   }
 }
