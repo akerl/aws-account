@@ -15,3 +15,4 @@ test:
   override:
   - test $(/usr/local/bin/terraform fmt -write=false | tee /dev/stderr | wc -c) -eq 0
   - terraform plan -detailed-exitcode
+  - echo $AWS_ACCESS_KEY_ID
