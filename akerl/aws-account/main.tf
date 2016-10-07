@@ -6,6 +6,7 @@ data "aws_iam_policy_document" "terraform-planner" {
   statement {
     actions = [
       "cloudfront:Get*",
+      "cloudfront:List*",
       "cloudtrail:Describe*",
       "cloudtrail:List*",
       "cloudtrail:Get*",
