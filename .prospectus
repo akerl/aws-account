@@ -4,7 +4,7 @@ item do
   expected do
     github_release
     repo 'hashicorp/terraform'
-    regex /v([\d.]+)/
+    regex /v?([\d.]+)/
   end
 
   actual do
