@@ -6,7 +6,7 @@ resource "aws_cloudwatch_metric_alarm" "billing-alarm" {
   namespace           = "AWS/Billing"
   period              = "3600"
   statistic           = "Maximum"
-  threshold           = "15"
+  threshold           = "20"
 
   dimensions {
     Currency = "USD"
