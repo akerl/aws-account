@@ -1,6 +1,6 @@
 machine:
   environment:
-    TERRAFORM_VERSION: 0.7.8
+    TERRAFORM_VERSION: 0.7.9
     STATE_BUCKET: akerl-dns
     AWS_DEFAULT_REGION: us-east-1
 dependencies:
