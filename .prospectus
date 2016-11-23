@@ -13,3 +13,20 @@ item do
     regex /^\s+TERRAFORM_VERSION: ([\d.]+)$/
   end
 end
+
+item do
+  name 'aws-account::golang'
+
+  expected do
+    github_tag
+    repo 'golang/go'
+    regex /^go([\d.]+)$/
+    filter /^go\d/
+  end
+
+  actual do
+    grep
+    file 'circle.yml'
+    regex /^\s+GO_VERSION: ([\d.]+)$/
+  end
+end

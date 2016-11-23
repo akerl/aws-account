@@ -1,10 +1,14 @@
 machine:
   environment:
+    GO_VERSION: 1.7.3
     GOPATH: /tmp/gopath
     TERRAFORM_VERSION: 0.7.12
     AWS_DEFAULT_REGION: us-east-1
 dependencies:
   pre:
+  - curl -sLo /tmp/golang.tar.gz "https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz"
+  - sudo rm -rf /usr/local/go
+  - sudo tar -C /usr/local -xf /tmp/golang.tar.gz
   - curl -sLo /tmp/terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
   - sudo unzip -d /usr/local/bin /tmp/terraform.zip
   override:
