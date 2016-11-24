@@ -1,7 +1,7 @@
 machine:
   environment:
     GO_VERSION: 1.7.3
-    TERRAFORM_VERSION: 0.7.12
+    TERRAFORM_VERSION: 0.7.13
     STATE_BUCKET: akerl-dns
     AWS_DEFAULT_REGION: us-east-1
 dependencies:
