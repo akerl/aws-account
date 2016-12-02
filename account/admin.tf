@@ -1,9 +1,27 @@
+data "aws_caller_identity" "account_info" { }
+
+data "aws_iam_policy_document" "admin-trust" {
+  statement {
+    actions = ["sts:AssumeRole"]
+#    condition {
+#      test = "Bool"
+#      variable = "aws:MultiFactorAuthPresent"
+#      value = "true"
+#    }
+    principals {
+      type = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.account_info.account_id}:root"]
+    }
+  }
+}
+
 resource "aws_iam_role" "admin" {
   name = "admin"
+  assume_role_policy = "${data.aws_iam_policy_document.admin-trust.json}"
 }
 
 resource "aws_iam_role_policy_attachment" "admin-access" {
-  group      = "${aws_iam_role.admins.name}"
+  role       = "${aws_iam_role.admin.name}"
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
