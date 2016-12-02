@@ -1,3 +1,12 @@
+resource "aws_iam_role" "admin" {
+  name = "admin"
+}
+
+resource "aws_iam_role_policy_attachment" "admin-access" {
+  group      = "${aws_iam_role.admins.name}"
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
 resource "aws_iam_group" "admins" {
   name = "admins"
 }
