@@ -17,3 +17,9 @@ Some parts of the process are still manual, unfortunately
 
 * Under ACM, request a cert for all the CNAMEs on your blog and then set the ARN in akerl/blog/main.tf (manual because terraform doesn't support certificate generates, which require out-of-band confirmation via email)
 
+### Enable IAM access to billing
+
+My Account -> IAM User and Role Access to Billing Information -> enable
+
+Must be done via root account
+
