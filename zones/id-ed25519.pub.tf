@@ -33,4 +33,5 @@ resource "aws_route53_record" "ns_tunnel_id-ed25519_pub" {
   name    = "tunnel.id-ed25519.pub"
   type    = "NS"
   records = ["54.209.255.25"]
+  ttl     = "5"
 }
