@@ -43,3 +43,11 @@ resource "aws_route53_record" "ns_asdf_id-ed25519_pub" {
   records = ["54.209.255.25"]
   ttl     = "5"
 }
+
+resource "aws_route53_record" "a_dnstun_id-ed25519_pub" {
+  zone_id = "${module.id-ed25519_pub.zone_id}"
+  name    = "dnstun.id-ed25519.pub"
+  type    = "A"
+  records = ["54.209.255.25"]
+  ttl     = "5"
+}
