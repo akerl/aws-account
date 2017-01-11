@@ -36,7 +36,7 @@ resource "aws_route53_record" "ns_tunnel_id-ed25519_pub" {
   ttl     = "5"
 }
 
-resource "aws_route53_record" "ns_tunnel_id-ed25519_pub" {
+resource "aws_route53_record" "ns_asdf_id-ed25519_pub" {
   zone_id = "${module.id-ed25519_pub.zone_id}"
   name    = "asdf.id-ed25519.pub"
   type    = "NS"
