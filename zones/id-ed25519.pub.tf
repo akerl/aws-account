@@ -27,3 +27,10 @@ resource "aws_route53_record" "a_www_id-ed25519_pub" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "ns_tunnel_id-ed25519_pub" {
+  zone_id = "${module.id-ed25519_pub.zone_id}"
+  name = "tunnel.id-ed25519.pub"
+  type = "NS"
+  records = ["54.209.255.25"]
+}
