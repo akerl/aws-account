@@ -20,11 +20,11 @@ resource "aws_s3_bucket" "redirect-bucket" {
 
   logging {
     target_bucket = "${var.logging-bucket}"
-    target_prefix = "akerl-blog-redirect/"
+    target_prefix = "akerl-wedding-redirect/"
   }
 
   website {
-    redirect_all_requests_to = "https://blog.akerl.org"
+    redirect_all_requests_to = "https://www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
   }
 }
 
@@ -42,20 +42,8 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
   }
 
   aliases = [
-    "lesaker.org",
-    "www.lesaker.org",
-    "scrtybybscrty.org",
-    "www.scrtybybscrty.org",
-    "lesaker.com",
-    "www.lesaker.com",
-    "akerl.org",
-    "www.akerl.org",
-    "akerl.com",
-    "www.akerl.com",
-    "a-rwx.org",
-    "www.a-rwx.org",
-    "id-ed25519.pub",
-    "www.id-ed25519.pub",
+    "happilyeveraker.com",
+    "www.happilyeveraker.com"
   ]
 
   enabled = true
@@ -63,7 +51,7 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
   logging_config {
     include_cookies = false
     bucket          = "${var.logging-bucket}.s3.amazonaws.com"
-    prefix          = "akerl-blog-redirect-cdn"
+    prefix          = "akerl-wedding-redirect-cdn"
   }
 
   default_cache_behavior {
