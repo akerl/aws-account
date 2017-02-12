@@ -43,7 +43,7 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 
   aliases = [
     "happilyeveraker.com",
-    "www.happilyeveraker.com"
+    "www.happilyeveraker.com",
   ]
 
   enabled = true
