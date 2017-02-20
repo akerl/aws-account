@@ -12,7 +12,10 @@ dependencies:
   - curl -sLo /tmp/terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
   - sudo unzip -d /usr/local/bin /tmp/terraform.zip
   override:
-  - go get -u github.com/akerl/terraform-provider-awscreds
+  # Switch this back once https://github.com/golang/go/issues/17522 is fixed
+  - rm -rf $GOPATH
+  - go get github.com/akerl/terraform-provider-awscreds
+  # - go get github.com/akerl/terraform-provider-awscreds
   - echo -e "providers {\nawscreds = \"$GOPATH/bin/terraform-provider-awscreds\"\n}" > ~/.terraformrc
   - /usr/local/bin/terraform get
 test:
