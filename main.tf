@@ -13,7 +13,7 @@ module "account" {
 }
 
 module "akerl-dns" {
-  source         = "./akerl/dns"
+  source = "./akerl/dns"
 }
 
 module "akerl-blog" {
