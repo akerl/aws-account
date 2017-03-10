@@ -14,7 +14,6 @@ module "account" {
 
 module "akerl-dns" {
   source         = "./akerl/dns"
-  logging-bucket = "${module.account.logging-bucket}"
 }
 
 module "akerl-blog" {
