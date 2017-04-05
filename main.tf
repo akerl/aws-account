@@ -6,6 +6,11 @@ provider "awscreds" {
   region = "us-east-1"
 }
 
+provider "google" {
+  project     = "akerl-tf-core"
+  region      = "us-east1"
+}
+
 module "account" {
   source = "./account"
   prefix = "akerl"
@@ -28,4 +33,8 @@ module "akerl-wedding" {
 
 module "akerl-aws-account" {
   source = "./akerl/aws-account"
+}
+
+module "akerl-irc" {
+  source = "./akerl/irc"
 }
