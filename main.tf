@@ -7,8 +7,8 @@ provider "awscreds" {
 }
 
 provider "google" {
-  project     = "akerl-tf-core"
-  region      = "us-east1"
+  project = "akerl-tf-core"
+  region  = "us-east1"
 }
 
 module "account" {

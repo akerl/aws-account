@@ -21,13 +21,13 @@ resource "google_compute_instance" "irc" {
 }
 
 resource "google_compute_disk" "irc" {
-  name  = "irc-data"
-  type  = "pd-standard"
-  zone  = "us-central1-a"
+  name = "irc-data"
+  type = "pd-standard"
+  zone = "us-central1-a"
   size = 5
 }
 
 resource "google_compute_address" "irc" {
-  name = "irc"
+  name   = "irc"
   region = "us-central1"
 }
