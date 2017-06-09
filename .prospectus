@@ -1,32 +1,42 @@
-item do
-  name 'aws-account::terraform'
-
-  expected do
-    github_release
-    repo 'hashicorp/terraform'
-    regex /v?([\d.]+)/
-  end
-
-  actual do
-    grep
-    file 'circle.yml'
-    regex /^\s+TERRAFORM_VERSION: ([\d.]+)$/
-  end
-end
+Prospectus.extra_dep('file', 'prospectus_circleci')
 
 item do
-  name 'aws-account::golang'
+  noop
 
-  expected do
-    github_tag
-    repo 'golang/go'
-    regex /^go([\d.]+)$/
-    filter /^go[\d.]+$/
-  end
+  extend ProspectusCircleci::Build.new('akerl/aws-account')
 
-  actual do
-    grep
-    file 'circle.yml'
-    regex /^\s+GO_VERSION: ([\d.]+)$/
+  deps do
+    item do
+      name 'terraform'
+
+      expected do
+        github_release
+        repo 'hashicorp/terraform'
+        regex /v?([\d.]+)/
+      end
+
+      actual do
+        grep
+        file 'circle.yml'
+        regex /^\s+TERRAFORM_VERSION: ([\d.]+)$/
+      end
+    end
+
+    item do
+      name 'golang'
+
+      expected do
+        github_tag
+        repo 'golang/go'
+        regex /^go([\d.]+)$/
+        filter /^go[\d.]+$/
+      end
+
+      actual do
+        grep
+        file 'circle.yml'
+        regex /^\s+GO_VERSION: ([\d.]+)$/
+      end
+    end
   end
 end
