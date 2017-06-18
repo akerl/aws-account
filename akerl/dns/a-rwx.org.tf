@@ -28,18 +28,35 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
-resource "aws_route53_record" "a_olhado_a-rwx_org" {
+resource "aws_route53_record" "a_osquery-c6_a-rwx_org" {
   zone_id = "${module.a-rwx_org.zone_id}"
-  name    = "olhado.a-rwx.org"
+  name    = "osquery-c6.a-rwx.org"
   type    = "A"
   ttl     = "86400"
-  records = ["70.85.129.127"]
+  records = ["45.79.181.133"]
 }
 
-resource "aws_route53_record" "aaaa_olhado_a-rwx_org" {
+resource "aws_route53_record" "a_osquery-c7_a-rwx_org" {
   zone_id = "${module.a-rwx_org.zone_id}"
-  name    = "olhado.a-rwx.org"
-  type    = "AAAA"
+  name    = "osquery-c7.a-rwx.org"
+  type    = "A"
   ttl     = "86400"
-  records = ["2600:3c00:e001:9001::1"]
+  records = ["104.200.28.22"]
 }
+
+resource "aws_route53_record" "a_osquery-ubuntu_a-rwx_org" {
+  zone_id = "${module.a-rwx_org.zone_id}"
+  name    = "osquery-ubuntu.a-rwx.org"
+  type    = "A"
+  ttl     = "86400"
+  records = ["104.200.28.27"]
+}
+
+resource "aws_route53_record" "a_osquery-arch_a-rwx_org" {
+  zone_id = "${module.a-rwx_org.zone_id}"
+  name    = "osquery-arch.a-rwx.org"
+  type    = "A"
+  ttl     = "86400"
+  records = ["104.200.28.35"]
+}
+
