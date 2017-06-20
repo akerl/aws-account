@@ -59,4 +59,3 @@ resource "aws_route53_record" "a_osquery-arch_a-rwx_org" {
   ttl     = "86400"
   records = ["104.200.28.35"]
 }
-
