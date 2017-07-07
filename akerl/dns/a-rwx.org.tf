@@ -155,4 +155,3 @@ resource "aws_route53_record" "a_infra_internal_a-rwx_org" {
   ttl     = "86400"
   records = ["10.0.0.100"]
 }
-

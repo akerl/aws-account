@@ -29,4 +29,3 @@ module "akerl-wedding" {
 module "akerl-aws-account" {
   source = "./akerl/aws-account"
 }
-
