@@ -15,7 +15,6 @@ dependencies:
   # Switch this back once https://github.com/golang/go/issues/17522 is fixed
   - rm -rf $GOPATH
   - go get github.com/akerl/terraform-provider-awscreds
-  # - go get github.com/akerl/terraform-provider-awscreds
   - echo -e "providers {\nawscreds = \"$GOPATH/bin/terraform-provider-awscreds\"\n}" > ~/.terraformrc
   - /usr/local/bin/terraform init -upgrade -input=false
 test:
