@@ -17,8 +17,8 @@ dependencies:
   - go get github.com/akerl/terraform-provider-awscreds
   # - go get github.com/akerl/terraform-provider-awscreds
   - echo -e "providers {\nawscreds = \"$GOPATH/bin/terraform-provider-awscreds\"\n}" > ~/.terraformrc
-  - /usr/local/bin/terraform get
+  - /usr/local/bin/terraform init -upgrade -input=false
 test:
   override:
   - test $(/usr/local/bin/terraform fmt -write=false | tee /dev/stderr | wc -c) -eq 0
-  - terraform plan -detailed-exitcode
+  - terraform plan -detailed-exitcode -input=false
