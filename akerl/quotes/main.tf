@@ -6,4 +6,3 @@ variable "data-bucket" {
   type    = "string"
   default = "akerl-quotes"
 }
-
