@@ -21,8 +21,8 @@ module "akerl-blog" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
-module "akerl-quotes" {
-  source         = "./akerl/quotes"
+module "akerl-madlibrarian" {
+  source         = "./akerl/madlibrarian"
   logging-bucket = "${module.account.logging-bucket}"
 }
 
