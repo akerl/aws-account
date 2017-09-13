@@ -4,5 +4,5 @@ variable "logging-bucket" {
 
 variable "data-bucket" {
   type    = "string"
-  default = "akerl-quotes"
+  default = "akerl-madlibrarian"
 }

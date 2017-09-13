@@ -7,6 +7,6 @@ resource "aws_s3_bucket" "data-bucket" {
 
   logging {
     target_bucket = "${var.logging-bucket}"
-    target_prefix = "akerl-blog/"
+    target_prefix = "akerl-madlibrarian/"
   }
 }

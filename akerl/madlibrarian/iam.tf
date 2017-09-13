@@ -1,5 +1,5 @@
 resource "aws_iam_user" "circleci" {
-  name = "akerl-quotes-circleci"
+  name = "akerl-madlibrarian-circleci"
 }
 
 data "aws_iam_policy_document" "quoteupdater" {
