@@ -13,6 +13,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "cloudtrail:List*",
       "cloudtrail:Get*",
       "cloudwatch:Describe*",
+      "ec2:Describe*",
       "iam:Get*",
       "iam:List*",
       "lambda:Get*",
