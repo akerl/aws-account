@@ -5,6 +5,8 @@ resource "aws_iam_user" "circleci" {
 data "aws_iam_policy_document" "terraform-planner" {
   statement {
     actions = [
+      "acm:List*",
+      "apigateway:Get*",
       "cloudfront:Get*",
       "cloudfront:List*",
       "cloudtrail:Describe*",
@@ -13,6 +15,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "cloudwatch:Describe*",
       "iam:Get*",
       "iam:List*",
+      "lambda:Get*",
       "route53:Get*",
       "route53:List*",
       "s3:GetAccelerateConfiguration",
