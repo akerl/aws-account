@@ -8,6 +8,6 @@ variable "data-bucket" {
 }
 
 variable "domain" {
-  type = "string"
+  type    = "string"
   default = "coolquotes.xyz"
 }

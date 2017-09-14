@@ -111,11 +111,11 @@ resource "aws_api_gateway_stage" "stage" {
 resource "aws_api_gateway_domain_name" "domain" {
   domain_name = "${var.domain}"
 
-  certificate_arn        = "${data.aws_acm_certificate.cert.arn}"
+  certificate_arn = "${data.aws_acm_certificate.cert.arn}"
 }
 
 data "aws_acm_certificate" "cert" {
-  domain   = "${var.domain}"
+  domain = "${var.domain}"
 }
 
 resource "aws_api_gateway_base_path_mapping" "mapping" {

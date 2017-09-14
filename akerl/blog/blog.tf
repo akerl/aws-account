@@ -91,5 +91,5 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
 }
 
 data "aws_acm_certificate" "cert" {
-  domain   = "blog.akerl.org"
+  domain = "blog.akerl.org"
 }
