@@ -97,6 +97,6 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
   viewer_certificate {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
-    acm_certificate_arn      = "arn:aws:acm:us-east-1:764218738161:certificate/90048130-4680-45e3-aa7a-2ccfbcb0c2ff"
+    acm_certificate_arn      = "${data.aws_acm_certificate.cert.arn}"
   }
 }

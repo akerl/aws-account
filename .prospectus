@@ -7,6 +7,20 @@ item do
 
   deps do
     item do
+      name 'madlibrarian'
+
+      expected do
+        github_release
+        repo 'akerl/madlibrarian-lambda'
+      end
+
+      actual do
+        static
+        set File.read('akerl/madlibrarian/version').chomp
+      end
+    end
+
+    item do
       name 'terraform'
 
       expected do
