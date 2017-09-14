@@ -9,6 +9,7 @@ data "aws_iam_policy_document" "lambda_assume" {
 
       identifiers = [
         "lambda.amazonaws.com",
+        "apigateway.amazonaws.com",
       ]
     }
   }

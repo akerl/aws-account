@@ -108,6 +108,18 @@ resource "aws_api_gateway_stage" "stage" {
   }
 }
 
-output "url" {
-  value = "${aws_api_gateway_stage.stage.invoke_url}"
+resource "aws_api_gateway_domain_name" "domain" {
+  domain_name = "${var.domain}"
+
+  certificate_arn        = "${data.aws_acm_certificate.cert.arn}"
+}
+
+data "aws_acm_certificate" "cert" {
+  domain   = "${var.domain}"
+}
+
+resource "aws_api_gateway_base_path_mapping" "mapping" {
+  api_id      = "${aws_api_gateway_rest_api.api.id}"
+  stage_name  = "${aws_api_gateway_stage.stage.stage_name}"
+  domain_name = "${aws_api_gateway_domain_name.domain.domain_name}"
 }
