@@ -67,7 +67,7 @@ resource "aws_api_gateway_method" "method" {
 resource "aws_api_gateway_method_settings" "settings" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   stage_name  = "${aws_api_gateway_stage.stage.stage_name}"
-  method_path = "${aws_api_gateway_resource.endpoint.path_part}/${aws_api_gateway_method.method.http_method}"
+  method_path = "*/*"
 
   settings {
     metrics_enabled = true
