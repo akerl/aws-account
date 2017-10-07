@@ -1,18 +1,6 @@
-data "aws_iam_policy_document" "file-bucket-read-access" {
-  statement {
-    actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.file-bucket}/*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-  }
-}
-
 resource "aws_s3_bucket" "file-bucket" {
   bucket = "${var.file-bucket}"
-  policy = "${data.aws_iam_policy_document.file-bucket-read-access.json}"
+  policy = "${data.aws_iam_policy_document.site-bucket-read-access.json}"
 
   versioning {
     enabled = "true"
@@ -20,7 +8,7 @@ resource "aws_s3_bucket" "file-bucket" {
 
   logging {
     target_bucket = "${var.logging-bucket}"
-    target_prefix = "akerl-blog/"
+    target_prefix = "${var.file-bucket}/"
   }
 
   website {
@@ -29,22 +17,20 @@ resource "aws_s3_bucket" "file-bucket" {
   }
 }
 
-resource "aws_cloudfront_distribution" "blog_distribution" {
+resource "aws_cloudfront_distribution" "site_distribution" {
   origin {
     domain_name = "${aws_s3_bucket.file-bucket.website_endpoint}"
-    origin_id   = "blog-bucket"
+    origin_id   = "site-bucket"
 
     custom_origin_config {
       http_port              = "80"
       https_port             = "443"
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
-  aliases = [
-    "blog.akerl.org",
-  ]
+  aliases = ["${var.root-domain}"]
 
   enabled             = true
   default_root_object = "index.html"
@@ -52,13 +38,13 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
   logging_config {
     include_cookies = false
     bucket          = "${var.logging-bucket}.s3.amazonaws.com"
-    prefix          = "akerl-blog-cdn/"
+    prefix          = "${var.file-bucket}-cdn/"
   }
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "blog-bucket"
+    target_origin_id = "site-bucket"
 
     forwarded_values {
       query_string = false
@@ -72,6 +58,27 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
     min_ttl                = 0
     default_ttl            = 300
     max_ttl                = 300
+    compress               = true
+  }
+
+  cache_behavior {
+    path_pattern     = "${var.no-cache-path}"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "site-bucket"
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
     compress               = true
   }
 
@@ -91,5 +98,5 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
 }
 
 data "aws_acm_certificate" "cert" {
-  domain = "blog.akerl.org"
+  domain = "${var.root-domain}"
 }

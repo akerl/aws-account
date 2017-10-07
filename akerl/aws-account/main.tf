@@ -1,5 +1,5 @@
 resource "aws_iam_user" "circleci" {
-  name = "akerl-aws-account-circleci"
+  name = "circleci-akerl-aws-account"
 }
 
 data "aws_iam_policy_document" "terraform-planner" {

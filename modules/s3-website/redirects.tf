@@ -1,15 +1,3 @@
-data "aws_iam_policy_document" "redirect-bucket-read-access" {
-  statement {
-    actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.redirect-bucket}/*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-  }
-}
-
 resource "aws_s3_bucket" "redirect-bucket" {
   bucket = "${var.redirect-bucket}"
   policy = "${data.aws_iam_policy_document.redirect-bucket-read-access.json}"
@@ -20,11 +8,11 @@ resource "aws_s3_bucket" "redirect-bucket" {
 
   logging {
     target_bucket = "${var.logging-bucket}"
-    target_prefix = "akerl-blog-redirect/"
+    target_prefix = "${var.redirect-bucket}/"
   }
 
   website {
-    redirect_all_requests_to = "https://blog.akerl.org"
+    redirect_all_requests_to = "https://${var.root-domain}"
   }
 }
 
@@ -36,34 +24,19 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
     custom_origin_config {
       http_port              = "80"
       https_port             = "443"
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
-  aliases = [
-    "lesaker.org",
-    "www.lesaker.org",
-    "scrtybybscrty.org",
-    "www.scrtybybscrty.org",
-    "lesaker.com",
-    "www.lesaker.com",
-    "akerl.org",
-    "www.akerl.org",
-    "akerl.com",
-    "www.akerl.com",
-    "a-rwx.org",
-    "www.a-rwx.org",
-    "id-ed25519.pub",
-    "www.id-ed25519.pub",
-  ]
+  aliases = ["${var.redirect-domains}"]
 
   enabled = true
 
   logging_config {
     include_cookies = false
     bucket          = "${var.logging-bucket}.s3.amazonaws.com"
-    prefix          = "akerl-blog-redirect-cdn"
+    prefix          = "${var.redirect-bucket}-cdn"
   }
 
   default_cache_behavior {

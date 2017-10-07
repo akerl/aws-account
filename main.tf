@@ -34,3 +34,8 @@ module "akerl-wedding" {
 module "akerl-aws-account" {
   source = "./akerl/aws-account"
 }
+
+module "amylum-repo" {
+  source         = "./amylum/repo"
+  logging-bucket = "${module.account.logging-bucket}"
+}
