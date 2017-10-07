@@ -23,11 +23,6 @@ variable "redirect-domains" {
   default = []
 }
 
-variable "no-cache-path" {
-  type    = "string"
-  default = "_________"
-}
-
 output "site-dns-name" {
   value = "${aws_cloudfront_distribution.site_distribution.domain_name}"
 }

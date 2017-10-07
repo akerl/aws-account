@@ -56,29 +56,8 @@ resource "aws_cloudfront_distribution" "site_distribution" {
 
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
-    default_ttl            = 300
-    max_ttl                = 300
-    compress               = true
-  }
-
-  cache_behavior {
-    path_pattern     = "${var.no-cache-path}"
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "site-bucket"
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 0
     default_ttl            = 0
-    max_ttl                = 0
+    max_ttl                = 300
     compress               = true
   }
 
