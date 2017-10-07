@@ -43,5 +43,5 @@ resource "aws_iam_user_policy" "terraform-planner" {
 
 resource "awscreds_iam_access_key" "circleci-key" {
   user = "${aws_iam_user.circleci.name}"
-  file = "creds/akerl-aws-account-circleci"
+  file = "creds/${aws_iam_user.circleci.name}"
 }
