@@ -10,3 +10,7 @@ module "s3-website" {
 variable "logging-bucket" {
   type = "string"
 }
+
+output "site-dns-name" {
+  value = "${module.s3-website.site-dns-name}"
+}

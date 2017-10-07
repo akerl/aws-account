@@ -13,7 +13,13 @@ module "account" {
 }
 
 module "akerl-dns" {
-  source = "./akerl/dns"
+  source                 = "./akerl/dns"
+  cloudfront-zone-id     = "${module.akerl-blog.cloudfront-zone-id}"
+  blog-dns-name          = "${module.akerl-blog.site-dns-name}"
+  blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
+  repo-dns-name          = "${module.amylum-repo.site-dns-name}"
+  wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
+  madlibrarian-dns-name  = "${module.akerl-madlibrarian.madlibrarian-dns-name}"
 }
 
 module "akerl-blog" {

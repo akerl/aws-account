@@ -10,8 +10,8 @@ resource "aws_route53_record" "a_happilyeveraker_com" {
   type    = "A"
 
   alias {
-    name                   = "d3bzinit6iv173.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.wedding-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
@@ -22,8 +22,8 @@ resource "aws_route53_record" "a_www_happilyeveraker_com" {
   type    = "A"
 
   alias {
-    name                   = "d3bzinit6iv173.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.wedding-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }

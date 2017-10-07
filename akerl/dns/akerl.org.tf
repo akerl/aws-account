@@ -10,8 +10,8 @@ resource "aws_route53_record" "a_akerl_org" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
@@ -22,8 +22,8 @@ resource "aws_route53_record" "a_www_akerl_org" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
@@ -34,24 +34,8 @@ resource "aws_route53_record" "a_blog_akerl_org" {
   type    = "A"
 
   alias {
-    name                   = "dvw7pswcn4cfg.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "a_committed_akerl_org" {
-  zone_id = "${module.akerl_org.zone_id}"
-  name    = "committed.akerl.org"
-  type    = "A"
-  ttl     = "86400"
-  records = ["70.85.129.127"]
-}
-
-resource "aws_route53_record" "aaaa_committed_akerl_org" {
-  zone_id = "${module.akerl_org.zone_id}"
-  name    = "committed.akerl.org"
-  type    = "AAAA"
-  ttl     = "86400"
-  records = ["2600:3c00:e001:9001::1"]
 }

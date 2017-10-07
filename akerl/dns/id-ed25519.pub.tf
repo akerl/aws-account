@@ -10,8 +10,8 @@ resource "aws_route53_record" "a_id-ed25519_pub" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
@@ -22,32 +22,8 @@ resource "aws_route53_record" "a_www_id-ed25519_pub" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "ns_tunnel_id-ed25519_pub" {
-  zone_id = "${module.id-ed25519_pub.zone_id}"
-  name    = "tunnel.id-ed25519.pub"
-  type    = "NS"
-  records = ["54.209.255.25"]
-  ttl     = "5"
-}
-
-resource "aws_route53_record" "ns_asdf_id-ed25519_pub" {
-  zone_id = "${module.id-ed25519_pub.zone_id}"
-  name    = "asdf.id-ed25519.pub"
-  type    = "NS"
-  records = ["54.209.255.25"]
-  ttl     = "5"
-}
-
-resource "aws_route53_record" "a_dnstun_id-ed25519_pub" {
-  zone_id = "${module.id-ed25519_pub.zone_id}"
-  name    = "dnstun.id-ed25519.pub"
-  type    = "A"
-  records = ["54.209.255.25"]
-  ttl     = "5"
 }

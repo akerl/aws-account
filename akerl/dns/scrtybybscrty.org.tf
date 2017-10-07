@@ -10,8 +10,8 @@ resource "aws_route53_record" "a_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
@@ -22,16 +22,20 @@ resource "aws_route53_record" "a_www_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "d3c22u04feroyw.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = "${var.blog-redirect-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
 }
 
-resource "aws_route53_record" "cname_repo_scrtybybscrty_org" {
+resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
   zone_id = "${module.scrtybybscrty_org.zone_id}"
   name    = "repo.scrtybybscrty.org"
-  type    = "CNAME"
-  ttl     = "86400"
-  records = ["d2zau5gkfcknai.cloudfront.net."]
+  type    = "A"
+
+  alias {
+    name                   = "${var.repo-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
 }

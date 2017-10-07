@@ -27,3 +27,15 @@ module "s3-website" {
 variable "logging-bucket" {
   type = "string"
 }
+
+output "cloudfront-zone-id" {
+  value = "${module.s3-website.cloudfront-zone-id}"
+}
+
+output "site-dns-name" {
+  value = "${module.s3-website.site-dns-name}"
+}
+
+output "redirect-dns-name" {
+  value = "${module.s3-website.redirect-dns-name}"
+}
