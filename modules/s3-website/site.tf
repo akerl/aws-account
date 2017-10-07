@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "file-bucket" {
 
   website {
     index_document = "index.html"
-    error_document = "404/index.html"
+    error_document = "${var.error-document}"
   }
 }
 

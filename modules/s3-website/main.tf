@@ -23,6 +23,11 @@ variable "redirect-domains" {
   default = []
 }
 
+variable "error-document" {
+  type    = "string"
+  default = "404.html"
+}
+
 output "site-dns-name" {
   value = "${aws_cloudfront_distribution.site_distribution.domain_name}"
 }
