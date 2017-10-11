@@ -21,6 +21,20 @@ item do
     end
 
     item do
+      name 'hookshot'
+
+      expected do
+        github_release
+        repo 'akerl/hookshot'
+      end
+
+      actual do
+        static
+        set File.read('akerl/hookshot/version').chomp
+      end
+    end
+
+    item do
       name 'terraform'
 
       expected do
