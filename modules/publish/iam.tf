@@ -1,8 +1,8 @@
 resource "aws_iam_user" "circleci" {
-  name = "circleci-akerl-hookshot"
+  name = "circleci-${var.publish-bucket}"
 }
 
-data "aws_iam_policy_document" "lambda_publish" {
+data "aws_iam_policy_document" "publish" {
   statement {
     actions = [
       "s3:PutObject",
@@ -16,16 +16,16 @@ data "aws_iam_policy_document" "lambda_publish" {
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.data-bucket.id}/*",
-      "arn:aws:s3:::${aws_s3_bucket.data-bucket.id}",
+      "arn:aws:s3:::${aws_s3_bucket.publish-bucket.id}/*",
+      "arn:aws:s3:::${aws_s3_bucket.publish-bucket.id}",
     ]
   }
 }
 
-resource "aws_iam_user_policy" "lambda_publish" {
-  name   = "lambda_publish"
+resource "aws_iam_user_policy" "s3_publish" {
+  name   = "s3_publish"
   user   = "${aws_iam_user.circleci.name}"
-  policy = "${data.aws_iam_policy_document.lambda_publish.json}"
+  policy = "${data.aws_iam_policy_document.publish.json}"
 }
 
 resource "awscreds_iam_access_key" "circleci-key" {

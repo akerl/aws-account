@@ -3,7 +3,6 @@ module "s3-website" {
   logging-bucket  = "${var.logging-bucket}"
   file-bucket     = "akerl-blog"
   redirect-bucket = "akerl-blog-redirect"
-  write-user      = "circleci-akerl-blog"
   root-domain     = "blog.akerl.org"
   error-document  = "404/index.html"
 

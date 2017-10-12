@@ -8,7 +8,6 @@ provider "awscreds" {
 
 module "account" {
   source = "./account"
-  prefix = "akerl"
   admins = ["akerl"]
 }
 
@@ -32,11 +31,6 @@ module "akerl-madlibrarian" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
-module "akerl-hookshot" {
-  source         = "./akerl/hookshot"
-  logging-bucket = "${module.account.logging-bucket}"
-}
-
 module "akerl-wedding" {
   source         = "./akerl/wedding"
   logging-bucket = "${module.account.logging-bucket}"
@@ -48,5 +42,10 @@ module "akerl-aws-account" {
 
 module "amylum-repo" {
   source         = "./amylum/repo"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "dock0-arch" {
+  source         = "./dock0/arch"
   logging-bucket = "${module.account.logging-bucket}"
 }

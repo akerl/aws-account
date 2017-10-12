@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "logging" {
-  bucket = "${var.prefix}-s3-logs"
+  bucket = "akerl-s3-logs"
   acl    = "log-delivery-write"
 
   versioning {

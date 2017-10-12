@@ -30,7 +30,7 @@ item do
 
       actual do
         static
-        set File.read('akerl/hookshot/version').chomp
+        set File.read('modules/hookshot/version').chomp
       end
     end
 

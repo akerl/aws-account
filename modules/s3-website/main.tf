@@ -10,10 +10,6 @@ variable "redirect-bucket" {
   type = "string"
 }
 
-variable "write-user" {
-  type = "string"
-}
-
 variable "root-domain" {
   type = "string"
 }

@@ -1,5 +1,5 @@
 module "lesaker_org" {
-  source            = "./domain"
+  source            = "../../modules/domain"
   domain_name       = "lesaker.org"
   delegation_set_id = "${aws_route53_delegation_set.main.id}"
 }
