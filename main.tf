@@ -26,6 +26,11 @@ module "akerl-blog" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
+module "akerl-hookshot" {
+  source         = "./akerl/hookshot"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
 module "akerl-madlibrarian" {
   source         = "./akerl/madlibrarian"
   logging-bucket = "${module.account.logging-bucket}"

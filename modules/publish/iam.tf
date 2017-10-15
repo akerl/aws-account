@@ -16,8 +16,8 @@ data "aws_iam_policy_document" "publish" {
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.publish-bucket.id}/*",
-      "arn:aws:s3:::${aws_s3_bucket.publish-bucket.id}",
+      "arn:aws:s3:::${var.publish-bucket}/*",
+      "arn:aws:s3:::${var.publish-bucket}",
     ]
   }
 }
