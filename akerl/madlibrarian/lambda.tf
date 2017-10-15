@@ -23,8 +23,8 @@ data "aws_iam_policy_document" "lambda_perms" {
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.data-bucket.id}/*",
-      "arn:aws:s3:::${aws_s3_bucket.data-bucket.id}",
+      "arn:aws:s3:::${var.data-bucket}/*",
+      "arn:aws:s3:::${var.data-bucket}",
     ]
   }
 
