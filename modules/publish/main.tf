@@ -7,6 +7,6 @@ variable "publish-bucket" {
 }
 
 variable "make-bucket" {
-  type = "string"
+  type    = "string"
   default = "1"
 }

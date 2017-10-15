@@ -7,7 +7,7 @@ variable "data-bucket" {
 }
 
 variable "lambda-bucket" {
-  type = "string"
+  type    = "string"
   default = "akerl-hookshot"
 }
 

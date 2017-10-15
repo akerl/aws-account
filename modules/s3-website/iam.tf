@@ -23,8 +23,8 @@ data "aws_iam_policy_document" "site-bucket-read-access" {
 }
 
 module "publish-user" {
-  source = "../../modules/publish"
+  source         = "../../modules/publish"
   logging-bucket = "${var.logging-bucket}"
   publish-bucket = "${var.file-bucket}"
-  make-bucket = "0"
+  make-bucket    = "0"
 }

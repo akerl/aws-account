@@ -1,5 +1,5 @@
 module "publish-user" {
-  source = "../../modules/publish"
+  source         = "../../modules/publish"
   logging-bucket = "${var.logging-bucket}"
   publish-bucket = "${var.data-bucket}"
 }
@@ -9,6 +9,6 @@ variable "logging-bucket" {
 }
 
 variable "data-bucket" {
-  type = "string"
+  type    = "string"
   default = "akerl-hookshot"
 }
