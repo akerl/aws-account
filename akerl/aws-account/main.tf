@@ -15,6 +15,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "cloudwatch:Describe*",
       "ec2:Describe*",
       "events:Describe*",
+      "events:List*",
       "iam:Get*",
       "iam:List*",
       "lambda:Get*",
