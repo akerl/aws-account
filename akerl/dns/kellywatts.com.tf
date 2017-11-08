@@ -2,6 +2,7 @@ module "kellywatts_com" {
   source            = "../../modules/domain"
   domain_name       = "kellywatts.com"
   delegation_set_id = "${aws_route53_delegation_set.main.id}"
+  caa_list          = []
 }
 
 resource "aws_route53_record" "a_kellywatts_com" {
