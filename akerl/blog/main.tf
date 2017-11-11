@@ -19,8 +19,6 @@ module "s3-website" {
     "www.akerl.com",
     "a-rwx.org",
     "www.a-rwx.org",
-    "id-ed25519.pub",
-    "www.id-ed25519.pub",
   ]
 }
 

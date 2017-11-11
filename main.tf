@@ -16,6 +16,7 @@ module "akerl-dns" {
   cloudfront-zone-id     = "${module.akerl-blog.cloudfront-zone-id}"
   blog-dns-name          = "${module.akerl-blog.site-dns-name}"
   blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
+  keys-dns-name          = "${module.akerl-keys.site-dns-name}"
   repo-dns-name          = "${module.amylum-repo.site-dns-name}"
   wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
   madlibrarian-dns-name  = "${module.akerl-madlibrarian.madlibrarian-dns-name}"
@@ -23,6 +24,11 @@ module "akerl-dns" {
 
 module "akerl-blog" {
   source         = "./akerl/blog"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "akerl-keys" {
+  source         = "./akerl/keys"
   logging-bucket = "${module.account.logging-bucket}"
 }
 
