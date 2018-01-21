@@ -24,6 +24,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "route53:List*",
       "s3:GetAccelerateConfiguration",
       "s3:GetBucket*",
+      "s3:GetEncryptionConfiguration",
       "s3:ListBucket",
       "s3:GetLifecycleConfiguration",
       "s3:GetReplicationConfiguration",
