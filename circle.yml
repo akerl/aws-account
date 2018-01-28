@@ -1,6 +1,6 @@
 machine:
  environment:
-    GO_VERSION: 1.9.2
+    GO_VERSION: 1.9.3
     GOPATH: /tmp/gopath
     TERRAFORM_VERSION: 0.11.2
     AWS_DEFAULT_REGION: us-east-1
