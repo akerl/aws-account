@@ -4,11 +4,11 @@ data "aws_iam_policy_document" "admin_trust" {
   statement {
     actions = ["sts:AssumeRole"]
 
-    #    condition {
-    #      test = "Bool"
-    #      variable = "aws:MultiFactorAuthPresent"
-    #      value = "true"
-    #    }
+    condition {
+      test = "Bool"
+      variable = "aws:MultiFactorAuthPresent"
+      values = ["true"]
+    }
     principals {
       type        = "AWS"
       identifiers = ["arn:aws:iam::${data.aws_caller_identity.account_info.account_id}:root"]
