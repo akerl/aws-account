@@ -5,6 +5,7 @@ resource "aws_iam_user" "circleci" {
 data "aws_iam_policy_document" "terraform-planner" {
   statement {
     actions = [
+      "acm:Describe*",
       "acm:List*",
       "apigateway:Get*",
       "cloudfront:Get*",
