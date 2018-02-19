@@ -63,7 +63,7 @@ item do
       actual do
         grep
         file 'circle.yml'
-        regex /^\s+GO_VERSION: ([\d.]+)$/
+        regex /^\s+GO_VERSION: "?([\d.]+)"?$/
       end
     end
   end
