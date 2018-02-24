@@ -95,6 +95,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 
   variables {
     bucket = "${var.data-bucket}"
+    slack_token = "skip"
   }
 }
 
@@ -105,6 +106,7 @@ resource "aws_api_gateway_stage" "stage" {
 
   variables {
     bucket = "${var.data-bucket}"
+    slack_token = "skip"
   }
 }
 

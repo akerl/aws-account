@@ -57,8 +57,8 @@ resource "aws_lambda_function" "madlibrarian_lambda" {
   s3_key        = "lambdas/payload-${chomp(file("${path.module}/version"))}.zip"
   function_name = "madlibrarian_lambda"
   role          = "${aws_iam_role.madlibrarian_lambda.arn}"
-  handler       = "handler.Handle"
-  runtime       = "python2.7"
+  handler       = "main"
+  runtime       = "go1.x"
   timeout       = 10
 }
 
