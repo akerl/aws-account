@@ -56,8 +56,8 @@ resource "aws_lambda_function" "lambda" {
   s3_key        = "lambdas/payload-${chomp(file("${path.module}/version"))}.zip"
   function_name = "${var.data-bucket}"
   role          = "${aws_iam_role.lambda.arn}"
-  handler       = "handler.Handle"
-  runtime       = "python2.7"
+  handler       = "main"
+  runtime       = "go1.x"
   timeout       = 50
 
   environment {
