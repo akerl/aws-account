@@ -51,19 +51,33 @@ item do
     end
 
     item do
-      name 'golang'
+      name 'aws-provider'
 
       expected do
         github_tag
-        repo 'golang/go'
-        regex /^go([\d.]+)$/
-        filter /^go[\d.]+$/
+        repo 'terraform-providers/terraform-provider-aws'
+        regex /v?([\d.]+)/
       end
 
       actual do
         grep
         file 'circle.yml'
-        regex /^\s+GO_VERSION: "?([\d.]+)"?$/
+        regex /^\s+AWS_VERSION: ([\d.]+)$/
+      end
+    end
+
+    item do
+      name 'awscreds-provider'
+
+      expected do
+        github_release
+        repo 'akerl/terraform-provider-awscreds'
+      end
+
+      actual do
+        grep
+        file 'circle.yml'
+        regex /^\s+AWSCREDS_VERSION: "?([\d.]+)"?$/
       end
     end
   end

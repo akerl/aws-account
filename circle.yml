@@ -1,24 +1,23 @@
 machine:
  environment:
-    GO_VERSION: "1.10"
-    GOPATH: /tmp/gopath
     TERRAFORM_VERSION: 0.11.3
+    AWS_VERSION: 1.10.0
+    AWSCREDS_VERSION: 0.0.5
     AWS_DEFAULT_REGION: us-east-1
 dependencies:
   pre:
-  - curl -sLo /tmp/golang.tar.gz "https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz"
-  - sudo rm -rf /usr/local/go
-  - sudo tar -C /usr/local -xf /tmp/golang.tar.gz
-  - curl -sLo /tmp/terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
-  - sudo unzip -d /usr/local/bin /tmp/terraform.zip
+  - mkdir -p ~/tfplugins ~/tfbin
+  - curl -sLo terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+  - curl -sLo aws.zip "https://releases.hashicorp.com/terraform-provider-aws/${AWS_VERSION}/terraform-provider-aws_${AWS_VERSION}_linux_amd64.zip"
+  - curl -sLo awscreds "https://github.com/akerl/terraform-provider-awscreds/releases/download/${AWSCREDS_VERSION}/terraform-provider-awscreds_linux"
+  - chmod a+x awscreds
+
+  - unzip -d ~/tfbin terraform.zip
+  - unzip -d ~/tfplugins aws.zip
+  - mv awscreds ~/tfplugins
   override:
-  # Switch this back once https://github.com/golang/go/issues/17522 is fixed
-  - rm -rf $GOPATH
-  - go get github.com/akerl/terraform-provider-awscreds
-  - mkdir -p ~/.terraform.d/plugins
-  - ln -s $GOPATH/bin/terraform-provider-awscreds ~/.terraform.d/plugins/terraform-provider-awscreds
-  - /usr/local/bin/terraform init -upgrade -input=false
+  - ~/tfbin/terraform init -upgrade -input=false -get-plugins=false -plugin-dir=~/tfplugins
 test:
   override:
-  - test $(/usr/local/bin/terraform fmt -write=false | tee /dev/stderr | wc -c) -eq 0
-  - terraform plan -detailed-exitcode -input=false
+  - ~/tfbin/terraform fmt -write=false -diff=true -check
+  - ~/tfbin/terraform plan -detailed-exitcode -input=false
