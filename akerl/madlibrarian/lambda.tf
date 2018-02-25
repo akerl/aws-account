@@ -72,6 +72,4 @@ resource "aws_lambda_permission" "allow_api_gateway" {
 
 data "aws_caller_identity" "current" {}
 
-data "aws_region" "current" {
-  current = true
-}
+data "aws_region" "current" {}
