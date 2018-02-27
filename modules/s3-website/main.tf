@@ -19,6 +19,11 @@ variable "redirect-domains" {
   default = []
 }
 
+variable "tls-level" {
+  type = "string"
+  default = "TLSv1.2_2018"
+}
+
 variable "error-document" {
   type    = "string"
   default = "404.html"

@@ -69,7 +69,7 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 
   viewer_certificate {
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1"
-    acm_certificate_arn      = "${data.aws_acm_certificate.cert.arn}"
+    minimum_protocol_version = "${var.tls-level}"
+    acm_certificate_arn      = "${module.certificate.arn}"
   }
 }

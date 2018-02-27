@@ -1,3 +1,11 @@
+variable "domains" {
+  type = "list"
+  default = [
+    "happilyeveraker.com",
+    "www.happilyeveraker.com",
+  ]
+}
+
 data "aws_iam_policy_document" "redirect-bucket-read-access" {
   statement {
     actions   = ["s3:GetObject"]
@@ -41,10 +49,7 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
     }
   }
 
-  aliases = [
-    "happilyeveraker.com",
-    "www.happilyeveraker.com",
-  ]
+  aliases = "${var.domains}"
 
   enabled = true
 
@@ -84,11 +89,12 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 
   viewer_certificate {
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1"
-    acm_certificate_arn      = "${data.aws_acm_certificate.cert.arn}"
+    minimum_protocol_version = "TLSv1.2_2018"
+    acm_certificate_arn      = "${module.certificate.arn}"
   }
 }
 
-data "aws_acm_certificate" "cert" {
-  domain = "blog.akerl.org"
+module "certificate" {
+  source = "../../modules/certificate"
+  domains = "${var.domains}"
 }
