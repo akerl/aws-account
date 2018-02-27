@@ -14,7 +14,7 @@ resource "aws_acm_certificate" "certificate" {
 
 data "aws_route53_zone" "zone" {
   count = "${length(var.domains)}"
-  name = "${replace(var.domains[count.index], "/^(?:.*\\.)?(\\w+\\.\\w+)$/", "$1")}"
+  name = "${replace(var.domains[count.index], "/^(?:.*\\.)?([^.]+\\.[^.]+)$/", "$1")}"
   private_zone = false
 }
 
