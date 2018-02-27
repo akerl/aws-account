@@ -1,5 +1,6 @@
 variable "domains" {
   type = "list"
+
   default = [
     "happilyeveraker.com",
     "www.happilyeveraker.com",
@@ -95,6 +96,6 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 }
 
 module "certificate" {
-  source = "../../modules/certificate"
+  source  = "../../modules/certificate"
   domains = "${var.domains}"
 }

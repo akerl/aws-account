@@ -7,14 +7,14 @@ output "arn" {
 }
 
 resource "aws_acm_certificate" "certificate" {
-  domain_name = "${var.domains[0]}"
+  domain_name               = "${var.domains[0]}"
   subject_alternative_names = "${slice(var.domains, 1, length(var.domains))}"
-  validation_method = "DNS"
+  validation_method         = "DNS"
 }
 
 data "aws_route53_zone" "zone" {
-  count = "${length(var.domains)}"
-  name = "${replace(var.domains[count.index], "/^(?:.*\\.)?([^.]+\\.[^.]+)$/", "$1")}"
+  count        = "${length(var.domains)}"
+  name         = "${replace(var.domains[count.index], "/^(?:.*\\.)?([^.]+\\.[^.]+)$/", "$1")}"
   private_zone = false
 }
 

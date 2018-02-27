@@ -77,6 +77,6 @@ resource "aws_cloudfront_distribution" "site_distribution" {
 }
 
 module "certificate" {
-  source = "../../modules/certificate"
+  source  = "../../modules/certificate"
   domains = "${concat(list(var.root-domain), var.redirect-domains)}"
 }

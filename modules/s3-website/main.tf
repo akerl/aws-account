@@ -20,7 +20,7 @@ variable "redirect-domains" {
 }
 
 variable "tls-level" {
-  type = "string"
+  type    = "string"
   default = "TLSv1.2_2018"
 }
 

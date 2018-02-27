@@ -1,9 +1,9 @@
 module "madlibrarian" {
-  source = "../../modules/madlibrarian"
-  logging-bucket  = "${var.logging-bucket}"
-  data-bucket = "akerl-hf-library"
-  lambda-bucket = "${var.lambda-bucket}"
-  domain = "hf.coolquotes.xyz"
+  source         = "../../modules/madlibrarian"
+  logging-bucket = "${var.logging-bucket}"
+  data-bucket    = "akerl-hf-library"
+  lambda-bucket  = "${var.lambda-bucket}"
+  domain         = "hf.coolquotes.xyz"
 }
 
 variable "logging-bucket" {

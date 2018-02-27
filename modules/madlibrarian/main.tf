@@ -3,7 +3,7 @@ variable "logging-bucket" {
 }
 
 variable "data-bucket" {
-  type    = "string"
+  type = "string"
 }
 
 variable "lambda-bucket" {
@@ -11,11 +11,11 @@ variable "lambda-bucket" {
 }
 
 variable "domain" {
-  type    = "string"
+  type = "string"
 }
 
 variable "slack-token" {
-  type = "string"
+  type    = "string"
   default = "skip"
 }
 
@@ -24,7 +24,6 @@ output "dns-name" {
 }
 
 module "certificate" {
-  source = "../../modules/certificate"
+  source  = "../../modules/certificate"
   domains = ["${var.domain}"]
 }
-
