@@ -3,7 +3,7 @@ module "madlibrarian" {
   logging-bucket  = "${var.logging-bucket}"
   data-bucket = "akerl-hf-library"
   lambda-bucket = "${var.lambda-bucket}"
-  domain = "hftest.coolquotes.xyz"
+  domain = "hf.coolquotes.xyz"
 }
 
 variable "logging-bucket" {

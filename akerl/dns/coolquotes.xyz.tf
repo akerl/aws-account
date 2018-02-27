@@ -4,7 +4,7 @@ module "coolquotes_xyz" {
   delegation_set_id = "${aws_route53_delegation_set.main.id}"
 }
 
-resource "aws_route53_record" "a_coolquotes_xyz" {
+resource "aws_route53_record" "a_hf_coolquotes_xyz" {
   zone_id = "${module.coolquotes_xyz.zone_id}"
 
   name = "hf.coolquotes.xyz"

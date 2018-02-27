@@ -8,7 +8,7 @@ output "arn" {
 
 resource "aws_acm_certificate" "certificate" {
   domain_name = "${var.domains[0]}"
-  subject_alternative_names = "${var.domains}"
+  subject_alternative_names = "${slice(var.domains, 1, length(var.domains))}"
   validation_method = "DNS"
 }
 
@@ -32,4 +32,3 @@ resource "aws_acm_certificate_validation" "certificate" {
   certificate_arn         = "${aws_acm_certificate.certificate.arn}"
   validation_record_fqdns = ["${aws_route53_record.validation.*.fqdn}"]
 }
-
