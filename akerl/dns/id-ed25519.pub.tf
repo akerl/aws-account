@@ -10,7 +10,7 @@ resource "aws_route53_record" "a_id-ed25519_pub" {
   type    = "A"
 
   alias {
-    name                   = "${var.keys-dns-name}"
+    name                   = "${var.akerl-keys-dns-name}"
     zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }

@@ -2,27 +2,27 @@ variable "cloudfront-zone-id" {
   type = "string"
 }
 
-variable "blog-dns-name" {
+variable "akerl-blog-dns-name" {
   type = "string"
 }
 
-variable "blog-redirect-dns-name" {
+variable "akerl-blog-redirect-dns-name" {
   type = "string"
 }
 
-variable "repo-dns-name" {
+variable "amylum-repo-dns-name" {
   type = "string"
 }
 
-variable "wedding-dns-name" {
+variable "akerl-wedding-dns-name" {
   type = "string"
 }
 
-variable "madlibrarian-dns-name" {
+variable "akerl-hf-library-dns-name" {
   type = "string"
 }
 
-variable "keys-dns-name" {
+variable "akerl-keys-dns-name" {
   type = "string"
 }
 

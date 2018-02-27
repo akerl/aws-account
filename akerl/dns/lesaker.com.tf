@@ -10,7 +10,7 @@ resource "aws_route53_record" "a_lesaker_com" {
   type    = "A"
 
   alias {
-    name                   = "${var.blog-redirect-dns-name}"
+    name                   = "${var.akerl-blog-redirect-dns-name}"
     zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
@@ -22,7 +22,7 @@ resource "aws_route53_record" "a_www_lesaker_com" {
   type    = "A"
 
   alias {
-    name                   = "${var.blog-redirect-dns-name}"
+    name                   = "${var.akerl-blog-redirect-dns-name}"
     zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }

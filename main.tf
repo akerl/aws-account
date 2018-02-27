@@ -14,12 +14,12 @@ module "account" {
 module "akerl-dns" {
   source                 = "./akerl/dns"
   cloudfront-zone-id     = "${module.akerl-blog.cloudfront-zone-id}"
-  blog-dns-name          = "${module.akerl-blog.site-dns-name}"
-  blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
-  keys-dns-name          = "${module.akerl-keys.site-dns-name}"
-  repo-dns-name          = "${module.amylum-repo.site-dns-name}"
-  wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
-  madlibrarian-dns-name  = "${module.akerl-madlibrarian.madlibrarian-dns-name}"
+  akerl-blog-dns-name          = "${module.akerl-blog.site-dns-name}"
+  akerl-blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
+  akerl-keys-dns-name          = "${module.akerl-keys.site-dns-name}"
+  amylum-repo-dns-name          = "${module.amylum-repo.site-dns-name}"
+  akerl-wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
+  akerl-hf-library-dns-name  = "${module.akerl-hf-library.dns-name}"
 }
 
 module "akerl-blog" {
@@ -40,6 +40,12 @@ module "akerl-hookshot" {
 module "akerl-madlibrarian" {
   source         = "./akerl/madlibrarian"
   logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "akerl-hf-library" {
+  source         = "./akerl/hf-library"
+  logging-bucket = "${module.account.logging-bucket}"
+  lambda-bucket = "${module.akerl-madlibrarian.lambda-bucket}"
 }
 
 module "akerl-wedding" {

@@ -1,3 +1,9 @@
+module "publish-user" {
+  source         = "../../modules/publish"
+  logging-bucket = "${var.logging-bucket}"
+  publish-bucket = "${var.data-bucket}"
+}
+
 variable "logging-bucket" {
   type = "string"
 }
@@ -7,11 +13,6 @@ variable "data-bucket" {
   default = "akerl-madlibrarian"
 }
 
-variable "domain" {
-  type    = "string"
-  default = "coolquotes.xyz"
-}
-
-output "madlibrarian-dns-name" {
-  value = "${aws_api_gateway_domain_name.domain.cloudfront_domain_name}"
+output "lambda-bucket" {
+  value = "${var.data-bucket}"
 }

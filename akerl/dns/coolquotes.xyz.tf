@@ -7,11 +7,11 @@ module "coolquotes_xyz" {
 resource "aws_route53_record" "a_coolquotes_xyz" {
   zone_id = "${module.coolquotes_xyz.zone_id}"
 
-  name = "coolquotes.xyz"
+  name = "hf.coolquotes.xyz"
   type = "A"
 
   alias {
-    name                   = "${var.madlibrarian-dns-name}"
+    name                   = "${var.akerl-hf-library-dns-name}"
     zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }

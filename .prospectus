@@ -16,7 +16,7 @@ item do
 
       actual do
         static
-        set File.read('akerl/madlibrarian/version').chomp
+        set File.read('modules/madlibrarian/version').chomp
       end
     end
 
