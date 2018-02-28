@@ -27,3 +27,11 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "test_a-rwx_org" {
+  zone_id = "${module.a-rwx_org.zone_id}"
+  name    = "text.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["50.116.51.105"]
+}
