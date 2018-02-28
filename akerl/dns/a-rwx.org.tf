@@ -28,10 +28,22 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
-resource "aws_route53_record" "test_a-rwx_org" {
+resource "aws_route53_record" "text_a-rwx_org" {
   zone_id = "${module.a-rwx_org.zone_id}"
   name    = "text.a-rwx.org"
   type    = "A"
   ttl     = "60"
   records = ["50.116.51.105"]
+}
+
+resource "aws_route53_record" "caa_text_a-rwx_org" {
+  zone_id = "${module.a-rwx_org.zone_id}"
+  name    = "text.a-rwx.org"
+  type    = "CAA"
+  ttl     = "60"
+
+  records = [
+    "0 issue \"letsencrypt.org\"",
+    "0 issuewild \";\"",
+  ]
 }
