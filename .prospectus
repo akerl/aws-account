@@ -35,6 +35,20 @@ item do
     end
 
     item do
+      name 'github-auth-lambda'
+
+      expected do
+        github_release
+        repo 'akerl/github-auth-lambda'
+      end
+
+      actual do
+        static
+        set File.read('modules/github-auth/version').chomp
+      end
+    end
+
+    item do
       name 'terraform'
 
       expected do
