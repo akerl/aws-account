@@ -3,7 +3,7 @@ module "github-auth" {
   logging-bucket = "${var.logging-bucket}"
   data-bucket    = "akerl-quote-auth"
   lambda-bucket  = "${var.lambda-bucket}"
-  domain = "auth.coolquotes.xyz"
+  domain         = "auth.coolquotes.xyz"
 }
 
 variable "logging-bucket" {

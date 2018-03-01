@@ -39,7 +39,7 @@ resource "aws_api_gateway_deployment" "deployment" {
   stage_name  = "prod"
 
   variables {
-    bucket      = "${var.data-bucket}"
+    bucket = "${var.data-bucket}"
   }
 }
 
