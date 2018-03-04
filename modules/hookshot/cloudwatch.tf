@@ -7,7 +7,7 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
 }
 
 resource "aws_cloudwatch_event_rule" "cron" {
-  name                = "${var.data-bucket}_cron"
+  name                = "hookshot_${var.data-bucket}_cron"
   description         = "Launch lambda"
   schedule_expression = "rate(${var.rate})"
 }
