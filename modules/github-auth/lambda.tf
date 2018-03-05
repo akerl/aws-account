@@ -17,6 +17,13 @@ resource "aws_lambda_function" "github-auth-lambda" {
   handler       = "main"
   runtime       = "go1.x"
   timeout       = 10
+
+  environment {
+    variables = {
+      S3_BUCKET = "${var.data-bucket}"
+      S3_KEY    = "config.yaml"
+    }
+  }
 }
 
 resource "aws_lambda_permission" "allow_api_gateway" {
