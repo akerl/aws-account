@@ -38,6 +38,11 @@ module "akerl-hookshot" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
+module "akerl-sns-to-slack" {
+  source         = "./akerl/sns-to-slack"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
 module "akerl-madlibrarian" {
   source         = "./akerl/madlibrarian"
   logging-bucket = "${module.account.logging-bucket}"
