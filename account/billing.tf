@@ -1,21 +1,25 @@
 resource "aws_cloudwatch_metric_alarm" "billing-alarm" {
   alarm_name          = "billing-alarm"
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = "2"
+  evaluation_periods  = "1"
   metric_name         = "EstimatedCharges"
   namespace           = "AWS/Billing"
-  period              = "21600"
+  period              = "3600"       # "21600"
   statistic           = "Maximum"
-  threshold           = "20"
+  threshold           = "5"                    # "20"
 
   dimensions {
     Currency = "USD"
   }
 
   alarm_description = "Check for billing spikes"
-  alarm_actions     = ["${aws_sns_topic.billing-notif.arn}"]
+  alarm_actions     = ["${module.sns-to-slack.sns-topic-arn}"]
+  insufficient_data_actions = ["${module.sns-to-slack.sns-topic-arn}"]
 }
 
-resource "aws_sns_topic" "billing-notif" {
-  name = "billing-notif"
+module "sns-to-slack" {
+  source = "../modules/sns-to-slack"
+  topic = "billing-alarm"
+  config-bucket = "akerl-billing-alarm"
+  logging-bucket = "${aws_s3_bucket.logging.id}"
 }
