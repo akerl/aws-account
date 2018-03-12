@@ -11,7 +11,7 @@ variable "config-bucket" {
 }
 
 variable "lambda-bucket" {
-  type = "string"
+  type    = "string"
   default = "akerl-sns-to-slack"
 }
 

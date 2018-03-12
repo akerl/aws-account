@@ -18,7 +18,7 @@ resource "aws_lambda_function" "lambda" {
   runtime       = "go1.x"
   timeout       = 10
 
-    environment {
+  environment {
     variables = {
       S3_BUCKET = "${var.config-bucket}"
       S3_KEY    = "config.yaml"
