@@ -4,9 +4,9 @@ resource "aws_cloudwatch_metric_alarm" "billing-alarm" {
   evaluation_periods  = "1"
   metric_name         = "EstimatedCharges"
   namespace           = "AWS/Billing"
-  period              = "3600"                 # "21600"
+  period              = "21600"
   statistic           = "Maximum"
-  threshold           = "5"                    # "20"
+  threshold           = "20"
 
   dimensions {
     Currency = "USD"
