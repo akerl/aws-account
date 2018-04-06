@@ -1,6 +1,6 @@
 machine:
  environment:
-    TERRAFORM_VERSION: 0.11.5
+    TERRAFORM_VERSION: 0.11.6
     AWS_VERSION: 1.13.0
     AWSCREDS_VERSION: 0.0.5
     AWS_DEFAULT_REGION: us-east-1
