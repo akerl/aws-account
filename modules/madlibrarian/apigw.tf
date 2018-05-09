@@ -46,7 +46,6 @@ resource "aws_api_gateway_deployment" "deployment" {
 
   variables {
     bucket      = "${var.data-bucket}"
-    slack_token = "${var.slack-token}"
   }
 }
 
