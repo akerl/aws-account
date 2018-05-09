@@ -15,3 +15,7 @@ My Account -> IAM User and Role Access to Billing Information -> enable
 
 Must be done via root account
 
+### Disable Security Token Service Regions other than us-east-1
+
+IAM -> Account Settings -> "Security Token Service Regions" -> Disable all regions except us-east-1
+
