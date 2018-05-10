@@ -4,6 +4,12 @@ module "publish-user" {
   publish-bucket = "${var.data-bucket}"
 }
 
+module "config-user" {
+  source         = "../../modules/publish"
+  logging-bucket = "${var.logging-bucket}"
+  publish-bucket = "${var.config-bucket}"
+}
+
 data "aws_iam_policy_document" "lambda_assume" {
   statement {
     actions = [
@@ -31,6 +37,8 @@ data "aws_iam_policy_document" "lambda_perms" {
     resources = [
       "arn:aws:s3:::${var.data-bucket}/*",
       "arn:aws:s3:::${var.data-bucket}",
+      "arn:aws:s3:::${var.config-bucket}/*",
+      "arn:aws:s3:::${var.config-bucket}",
     ]
   }
 

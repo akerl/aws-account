@@ -1,6 +1,7 @@
 module "madlibrarian" {
   source         = "../../modules/madlibrarian"
   logging-bucket = "${var.logging-bucket}"
+  config-bucket  = "akerl-hf-library-config"
   data-bucket    = "akerl-hf-library"
   lambda-bucket  = "${var.lambda-bucket}"
   domain         = "hf.coolquotes.xyz"

@@ -2,6 +2,10 @@ variable "logging-bucket" {
   type = "string"
 }
 
+variable "config-bucket" {
+  type = "string"
+}
+
 variable "data-bucket" {
   type = "string"
 }

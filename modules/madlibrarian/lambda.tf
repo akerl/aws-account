@@ -20,7 +20,7 @@ resource "aws_lambda_function" "madlibrarian_lambda" {
 
   environment {
     variables = {
-      S3_BUCKET = "${var.data-bucket}"
+      S3_BUCKET = "${var.config-bucket}"
       S3_KEY    = "config.yaml"
     }
   }
