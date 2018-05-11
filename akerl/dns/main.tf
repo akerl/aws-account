@@ -18,6 +18,10 @@ variable "akerl-wedding-dns-name" {
   type = "string"
 }
 
+variable "akerl-dcs-library-dns-name" {
+  type = "string"
+}
+
 variable "akerl-hf-library-dns-name" {
   type = "string"
 }

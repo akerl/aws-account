@@ -29,3 +29,16 @@ resource "aws_route53_record" "a_hf_coolquotes_xyz" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
+  zone_id = "${module.coolquotes_xyz.zone_id}"
+
+  name = "dcs.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = "${var.akerl-dcs-library-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
+}
