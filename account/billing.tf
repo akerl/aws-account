@@ -5,4 +5,7 @@ resource "aws_budgets_budget" "cost" {
   limit_unit        = "USD"
   time_unit         = "MONTHLY"
   time_period_start = "2017-01-01_00:00"
+  cost_types {
+    include_other_subscription = false
+  }
 }
