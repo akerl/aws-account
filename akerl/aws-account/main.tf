@@ -8,6 +8,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "acm:Describe*",
       "acm:List*",
       "apigateway:Get*",
+      "budgets:View*",
       "cloudfront:Get*",
       "cloudfront:List*",
       "cloudtrail:Describe*",
