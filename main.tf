@@ -8,7 +8,11 @@ provider "awscreds" {
 
 module "account" {
   source = "./account"
-  admins = ["akerl"]
+
+  admins = [
+    "akerl-bean",
+    "akerl-mazer",
+  ]
 }
 
 module "akerl-dns" {
