@@ -1,20 +1,9 @@
 machine:
  environment:
     TERRAFORM_VERSION: 0.11.7
-    AWS_VERSION: 1.24.0
-    AWSCREDS_VERSION: 0.0.5
-    AWS_DEFAULT_REGION: us-east-1
 dependencies:
-  pre:
-  - mkdir -p ~/tfplugins ~/tfbin
-  - curl -sLo terraform.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
-  - curl -sLo aws.zip "https://releases.hashicorp.com/terraform-provider-aws/${AWS_VERSION}/terraform-provider-aws_${AWS_VERSION}_linux_amd64.zip"
-  - curl -sLo ~/tfplugins/terraform-provider-awscreds "https://github.com/akerl/terraform-provider-awscreds/releases/download/${AWSCREDS_VERSION}/terraform-provider-awscreds_linux"
-  - chmod a+x ~/tfplugins/terraform-provider-awscreds
-  - unzip -d ~/tfbin terraform.zip
-  - unzip -d ~/tfplugins aws.zip
   override:
-  - ~/tfbin/terraform init -upgrade -input=false -get-plugins=false -plugin-dir ~/tfplugins
+  - ~/tfbin/terraform init -upgrade -input=false
 test:
   override:
   - ~/tfbin/terraform fmt -write=false -diff=true -check

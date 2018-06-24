@@ -1,9 +1,11 @@
 provider "aws" {
-  region = "us-east-1"
+  version = "1.24.0"
+  region  = "us-east-1"
 }
 
 provider "awscreds" {
-  region = "us-east-1"
+  version = "0.5.0"
+  region  = "us-east-1"
 }
 
 module "account" {
