@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 provider "awscreds" {
-  version = "0.5.0"
+  version = "0.0.5"
   region  = "us-east-1"
 }
 
