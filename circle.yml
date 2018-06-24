@@ -1,7 +1,10 @@
 machine:
- environment:
+  environment:
     TERRAFORM_VERSION: 0.11.7
+    TFBIN_DIR: ~/tfbin
 dependencies:
+  pre:
+  - ./scripts/download_terraform.sh
   override:
   - ~/tfbin/terraform init -upgrade -input=false
 test:
