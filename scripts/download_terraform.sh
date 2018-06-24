@@ -2,6 +2,8 @@
 
 set -exuo pipefail
 
+TERRAFORM_VERSION="$1"
+
 ARCH="linux_amd64"
 
 URL_BASE="https://releases.hashicorp.com/terraform"
