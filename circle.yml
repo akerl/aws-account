@@ -1,7 +1,7 @@
 machine:
   environment:
     TERRAFORM_VERSION: 0.11.7
-    TFBIN_DIR: ~/tfbin
+    TFBIN_DIR: $HOME/tfbin
 dependencies:
   pre:
   - ./scripts/download_terraform.sh
