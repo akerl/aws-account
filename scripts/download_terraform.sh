@@ -24,7 +24,9 @@ rm -rf ~/.gnupg
 gpg --import scripts/hashicorp.asc
 gpg --verify "${SIG_PATH}" "${SHA_PATH}"
 grep "${ZIP_FILE}" "${SHA_PATH}" > "${SHA_PATH}.version"
+pushd "$TMP_DIR"
 shasum -a 256 -c "${SHA_PATH}.version"
+popd
 
 mkdir -p "${TFBIN_DIR}"
 unzip -d "${TFBIN_DIR}" "${ZIP_PATH}"
