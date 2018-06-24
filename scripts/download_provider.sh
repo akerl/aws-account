@@ -3,8 +3,9 @@
 set -exuo pipefail
 
 PROVIDER_NAME="$1"
-PROVIDER_VERSION="$2"
-PROVIDER_CHECKSUM="$3"
+PROVIDER_CHECKSUM="$2"
+
+PROVIDER_VERSION="$(grep -A1 "provider \"${PROVIDER_NAME}\"" main.tf | awk '/version/ {print $3}' | sed 's/"//g')"
 
 OS="linux"
 ARCH="${OS}_amd64"

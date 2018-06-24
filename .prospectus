@@ -74,9 +74,9 @@ item do
       end
 
       actual do
-        grep
-        file 'circle.yml'
-        regex /^\s+AWS_VERSION: ([\d.]+)$/
+        static
+        aws_provider = `terraform providers`.lines.grep(/provider.aws [\d.]+\n$/)
+        set aws_provider.first.split.last
       end
     end
 
@@ -89,9 +89,9 @@ item do
       end
 
       actual do
-        grep
-        file 'circle.yml'
-        regex /^\s+AWSCREDS_VERSION: "?([\d.]+)"?$/
+        static
+        awscreds_provider = `terraform providers`.lines.grep(/provider.awscreds [\d.]+\n$/)
+        set awscreds_provider.first.split.last
       end
     end
   end

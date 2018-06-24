@@ -1,12 +1,12 @@
 machine:
   environment:
     TFBIN_DIR: $HOME/tfbin
-    AWSCREDS_VERSION: 0.0.5
+    TERRAFORM_VERSION: 0.11.7
     AWSCREDS_CHECKSUM: 546f677ffb3824e808b2aebe0aa8c93374aba95577e6efe03e7152f05d86608b
 dependencies:
   pre:
-  - ./scripts/download_terraform.sh 0.11.7
-  - ./scripts/download_provider.sh awscreds $AWSCREDS_VERSION $AWSCREDS_CHECKSUM
+  - ./scripts/download_terraform.sh $TERRAFORM_VERSION
+  - ./scripts/download_provider.sh awscreds $AWSCREDS_CHECKSUM
   override:
   - ~/tfbin/terraform init -upgrade -input=false
 test:
