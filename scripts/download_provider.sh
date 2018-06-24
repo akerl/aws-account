@@ -18,7 +18,7 @@ mkdir -p "${PLUGIN_DIR}"
 
 curl -sLo "${PLUGIN_PATH}" "${PROVIDER_URL}"
 
-ACTUAL_CHECKSUM="$(shasum -a 256 "${PLUGIN_PATH}")"
+ACTUAL_CHECKSUM="$(shasum -a 256 "${PLUGIN_PATH}" | cut -d' ' -f1)"
 
 [[ "${ACTUAL_CHECKSUM}" != "${PROVIDER_CHECKSUM}" ]] && \
     echo 'Checksum mismatch' && \
