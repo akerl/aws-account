@@ -10,7 +10,7 @@ OS="linux"
 ARCH="${OS}_amd64"
 
 PLUGIN_DIR="${HOME}/.terraform.d/plugins/${ARCH}"
-PLUGIN_PATH="${PLUGIN_DIR}/terraform-provider-${PROVIDER_NAME}"
+PLUGIN_PATH="${PLUGIN_DIR}/terraform-provider-${PROVIDER_NAME}_v${PROVIDER_VERSION}"
 
 PROVIDER_URL="https://github.com/akerl/terraform-provider-${PROVIDER_NAME}/releases/download/${PROVIDER_VERSION}/terraform-provider-${PROVIDER_NAME}_${OS}"
 
