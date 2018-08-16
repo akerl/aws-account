@@ -1,8 +1,8 @@
 machine:
   environment:
     TFBIN_DIR: $HOME/tfbin
-    TERRAFORM_VERSION: 0.11.7
-    AWSCREDS_CHECKSUM: 546f677ffb3824e808b2aebe0aa8c93374aba95577e6efe03e7152f05d86608b
+    TERRAFORM_VERSION: 0.11.8
+    AWSCREDS_CHECKSUM: 84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7
 dependencies:
   pre:
   - ./scripts/download_terraform.sh $TERRAFORM_VERSION
