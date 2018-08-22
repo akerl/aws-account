@@ -45,6 +45,11 @@ module "akerl-hookshot" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
+module "akerl-go-hello-linodians" {
+  source         = "./akerl/go-hello-linodians"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
 module "akerl-sns-to-slack" {
   source         = "./akerl/sns-to-slack"
   logging-bucket = "${module.account.logging-bucket}"

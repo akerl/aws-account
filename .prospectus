@@ -35,6 +35,20 @@ item do
     end
 
     item do
+      name 'hookshot'
+
+      expected do
+        github_release
+        repo 'akerl/go-hello-linodians'
+      end
+
+      actual do
+        static
+        set File.read('akerl/go-hello-linodians/version').chomp
+      end
+    end
+
+    item do
       name 'github-auth-lambda'
 
       expected do
