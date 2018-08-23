@@ -35,7 +35,7 @@ item do
     end
 
     item do
-      name 'hookshot'
+      name 'go-hello-linodians'
 
       expected do
         github_release

@@ -21,7 +21,7 @@ resource "aws_lambda_function" "lambda" {
   environment {
     variables = {
       S3_BUCKET = "${var.data-bucket}"
-      S3_KEY    = "config.yml"
+      S3_KEY    = "config.yaml"
     }
   }
 }
