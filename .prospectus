@@ -1,9 +1,9 @@
-Prospectus.extra_dep('file', 'prospectus_circleci')
+Prospectus.extra_dep('file', 'prospectus_travis')
 
 item do
   noop
 
-  extend ProspectusCircleci::Build.new('akerl/aws-account')
+  extend ProspectusTravis::Build.new('akerl/aws-account')
 
   deps do
     item do
