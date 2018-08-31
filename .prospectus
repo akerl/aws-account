@@ -73,8 +73,8 @@ item do
 
       actual do
         grep
-        file 'circle.yml'
-        regex /^\s+TERRAFORM_VERSION: ([\d.]+)$/
+        file '.travis.yml'
+        regex /^\s+- TERRAFORM_VERSION=([\d.]+)$/
       end
     end
 
