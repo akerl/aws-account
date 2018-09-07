@@ -1,5 +1,5 @@
-resource "aws_iam_user" "circleci" {
-  name = "circleci-akerl-aws-account"
+resource "aws_iam_user" "build" {
+  name = "build-akerl-aws-account"
 }
 
 data "aws_iam_policy_document" "terraform-planner" {
@@ -42,11 +42,11 @@ data "aws_iam_policy_document" "terraform-planner" {
 
 resource "aws_iam_user_policy" "terraform-planner" {
   name   = "terraform-planner"
-  user   = "${aws_iam_user.circleci.name}"
+  user   = "${aws_iam_user.build.name}"
   policy = "${data.aws_iam_policy_document.terraform-planner.json}"
 }
 
-resource "awscreds_iam_access_key" "circleci-key" {
-  user = "${aws_iam_user.circleci.name}"
-  file = "creds/${aws_iam_user.circleci.name}"
+resource "awscreds_iam_access_key" "build-key" {
+  user = "${aws_iam_user.build.name}"
+  file = "creds/${aws_iam_user.build.name}"
 }

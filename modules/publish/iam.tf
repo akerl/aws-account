@@ -1,5 +1,5 @@
-resource "aws_iam_user" "circleci" {
-  name = "circleci-${var.publish-bucket}"
+resource "aws_iam_user" "build" {
+  name = "build-${var.publish-bucket}"
 }
 
 data "aws_iam_policy_document" "publish" {
@@ -24,11 +24,11 @@ data "aws_iam_policy_document" "publish" {
 
 resource "aws_iam_user_policy" "s3_publish" {
   name   = "s3_publish"
-  user   = "${aws_iam_user.circleci.name}"
+  user   = "${aws_iam_user.build.name}"
   policy = "${data.aws_iam_policy_document.publish.json}"
 }
 
-resource "awscreds_iam_access_key" "circleci-key" {
-  user = "${aws_iam_user.circleci.name}"
-  file = "creds/${aws_iam_user.circleci.name}"
+resource "awscreds_iam_access_key" "build-key" {
+  user = "${aws_iam_user.build.name}"
+  file = "creds/${aws_iam_user.build.name}"
 }
