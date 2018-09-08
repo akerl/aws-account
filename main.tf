@@ -26,6 +26,7 @@ module "akerl-dns" {
   amylum-repo-dns-name         = "${module.amylum-repo.site-dns-name}"
   akerl-wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
   akerl-hf-library-dns-name    = "${module.akerl-hf-library.dns-name}"
+  akerl-books-library-dns-name = "${module.akerl-books-library.dns-name}"
   akerl-dcs-library-dns-name   = "${module.akerl-dcs-library.dns-name}"
   akerl-quote-auth-dns-name    = "${module.akerl-quote-auth.dns-name}"
 }
@@ -73,6 +74,12 @@ module "akerl-quote-auth" {
 
 module "akerl-hf-library" {
   source         = "./akerl/hf-library"
+  logging-bucket = "${module.account.logging-bucket}"
+  lambda-bucket  = "${module.akerl-madlibrarian.lambda-bucket}"
+}
+
+module "akerl-books-library" {
+  source         = "./akerl/books"
   logging-bucket = "${module.account.logging-bucket}"
   lambda-bucket  = "${module.akerl-madlibrarian.lambda-bucket}"
 }
