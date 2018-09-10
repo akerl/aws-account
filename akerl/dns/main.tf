@@ -26,6 +26,10 @@ variable "akerl-hf-library-dns-name" {
   type = "string"
 }
 
+variable "akerl-books-library-dns-name" {
+  type = "string"
+}
+
 variable "akerl-quote-auth-dns-name" {
   type = "string"
 }
