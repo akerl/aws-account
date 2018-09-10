@@ -30,6 +30,19 @@ resource "aws_route53_record" "a_hf_coolquotes_xyz" {
   }
 }
 
+resource "aws_route53_record" "a_books_coolquotes_xyz" {
+  zone_id = "${module.coolquotes_xyz.zone_id}"
+
+  name = "books.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = "${var.akerl-books-library-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
   zone_id = "${module.coolquotes_xyz.zone_id}"
 
