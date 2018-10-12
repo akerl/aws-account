@@ -39,3 +39,15 @@ resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_scratch_scrtybybscrty_org" {
+  zone_id = "${module.scrtybybscrty_org.zone_id}"
+  name    = "scratch.scrtybybscrty.org"
+  type    = "A"
+
+  alias {
+    name                   = "${var.akerl-scratch-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
+}

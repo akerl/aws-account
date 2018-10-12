@@ -23,6 +23,7 @@ module "akerl-dns" {
   akerl-blog-dns-name          = "${module.akerl-blog.site-dns-name}"
   akerl-blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
   akerl-keys-dns-name          = "${module.akerl-keys.site-dns-name}"
+  akerl-scratch-dns-name       = "${module.akerl-scratch.site-dns-name}"
   amylum-repo-dns-name         = "${module.amylum-repo.site-dns-name}"
   akerl-wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
   akerl-hf-library-dns-name    = "${module.akerl-hf-library.dns-name}"
@@ -38,6 +39,11 @@ module "akerl-blog" {
 
 module "akerl-keys" {
   source         = "./akerl/keys"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "akerl-scratch" {
+  source         = "./akerl/scratch"
   logging-bucket = "${module.account.logging-bucket}"
 }
 
