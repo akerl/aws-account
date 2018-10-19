@@ -4,6 +4,7 @@ provider "aws" {
 }
 
 provider "awscreds" {
+  // provider.awscreds akerl/terraform-provider-awscreds
   version = "0.0.5"
   region  = "us-east-1"
 }

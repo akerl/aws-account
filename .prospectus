@@ -1,64 +1,31 @@
 Prospectus.extra_dep('file', 'prospectus_travis')
+Prospectus.extra_dep('file', 'prospectus_terraform')
 
 item do
   noop
 
   extend ProspectusTravis::Build.new('akerl/aws-account')
+  extend ProspectusTerraform::Providers.new
 
   deps do
-    item do
-      name 'madlibrarian'
+    [
+      ['modules/madlibrarian', 'akerl/madlibrarian-lambda'],
+      ['modules/hookshot', 'akerl/hookshot'],
+      ['akerl/go-hello-linodians', 'akerl/go-hello-linodians'],
+      ['modules/github-auth', 'akerl/github-auth-lambda']
+    ].each do |mpath, mrepo|
+      item do
+        name mpath
 
-      expected do
-        github_release
-        repo 'akerl/madlibrarian-lambda'
-      end
+        expected do
+          github_release
+          repo mrepo
+        end
 
-      actual do
-        static
-        set File.read('modules/madlibrarian/version').chomp
-      end
-    end
-
-    item do
-      name 'hookshot'
-
-      expected do
-        github_release
-        repo 'akerl/hookshot'
-      end
-
-      actual do
-        static
-        set File.read('modules/hookshot/version').chomp
-      end
-    end
-
-    item do
-      name 'go-hello-linodians'
-
-      expected do
-        github_release
-        repo 'akerl/go-hello-linodians'
-      end
-
-      actual do
-        static
-        set File.read('akerl/go-hello-linodians/version').chomp
-      end
-    end
-
-    item do
-      name 'github-auth-lambda'
-
-      expected do
-        github_release
-        repo 'akerl/github-auth-lambda'
-      end
-
-      actual do
-        static
-        set File.read('modules/github-auth/version').chomp
+        actual do
+          static
+          set File.read("#{mpath}/version").chomp
+        end
       end
     end
 
@@ -76,37 +43,6 @@ item do
         grep
         file '.travis.yml'
         regex /^\s+- TERRAFORM_VERSION=([\d.]+)$/
-      end
-    end
-
-    item do
-      name 'aws-provider'
-
-      expected do
-        github_tag
-        repo 'terraform-providers/terraform-provider-aws'
-        regex /v?([\d.]+)/
-      end
-
-      actual do
-        static
-        aws_provider = `terraform providers`.lines.grep(/provider.aws [\d.]+\n$/)
-        set aws_provider.first.split.last
-      end
-    end
-
-    item do
-      name 'awscreds-provider'
-
-      expected do
-        github_release
-        repo 'akerl/terraform-provider-awscreds'
-      end
-
-      actual do
-        static
-        awscreds_provider = `terraform providers`.lines.grep(/provider.awscreds [\d.]+\n$/)
-        set awscreds_provider.first.split.last
       end
     end
   end
