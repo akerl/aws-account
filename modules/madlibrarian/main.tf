@@ -23,6 +23,6 @@ output "dns-name" {
 }
 
 module "certificate" {
-  source  = "../../modules/certificate"
-  domains = ["${var.domain}"]
+  source    = "github.com/akerl/terraform-aws-acm-certificate"
+  hostnames = ["${var.domain}"]
 }

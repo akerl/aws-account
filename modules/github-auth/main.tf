@@ -23,6 +23,6 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 module "certificate" {
-  source  = "../../modules/certificate"
-  domains = ["${var.domain}"]
+  source    = "github.com/akerl/terraform-aws-acm-certificate"
+  hostnames = ["${var.domain}"]
 }
