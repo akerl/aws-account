@@ -20,6 +20,7 @@ module "account" {
 
 module "akerl-dns" {
   source                       = "./akerl/dns"
+  admin_email                  = "admin@lesaker.org"
   cloudfront-zone-id           = "${module.akerl-blog.cloudfront-zone-id}"
   akerl-blog-dns-name          = "${module.akerl-blog.site-dns-name}"
   akerl-blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"

@@ -1,3 +1,7 @@
+variable "admin_email" {
+  type = "string"
+}
+
 variable "cloudfront-zone-id" {
   type = "string"
 }
