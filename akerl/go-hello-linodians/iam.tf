@@ -1,11 +1,11 @@
 module "publish-user" {
-  source         = "../../modules/publish"
+  source         = "github.com/akerl/terraform-aws-s3-publish"
   logging-bucket = "${var.logging-bucket}"
   publish-bucket = "${var.lambda-bucket}"
 }
 
 module "config-user" {
-  source         = "../../modules/publish"
+  source         = "github.com/akerl/terraform-aws-s3-publish"
   logging-bucket = "${var.logging-bucket}"
   publish-bucket = "${var.data-bucket}"
 }
