@@ -1,5 +1,5 @@
 module "s3-website" {
-  source          = "../../modules/s3-website"
+  source          = "github.com/akerl/terraform-aws-s3-website"
   logging-bucket  = "${var.logging-bucket}"
   file-bucket     = "akerl-blog"
   redirect-bucket = "akerl-blog-redirect"
