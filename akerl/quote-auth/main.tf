@@ -1,7 +1,7 @@
 module "github-auth" {
-  source         = "../../modules/github-auth"
+  source         = "github.com/akerl/terraform-aws-lambda-githubauth"
   logging-bucket = "${var.logging-bucket}"
-  data-bucket    = "akerl-quote-auth"
+  config-bucket  = "akerl-quote-auth"
   lambda-bucket  = "${var.lambda-bucket}"
   domain         = "auth.coolquotes.xyz"
 }
