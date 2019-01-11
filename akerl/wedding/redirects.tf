@@ -96,6 +96,6 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 }
 
 module "certificate" {
-  source    = "github.com/akerl/terraform-aws-acm-certificate"
+  source    = "github.com/armorfret/terraform-aws-acm-certificate"
   hostnames = "${var.domains}"
 }

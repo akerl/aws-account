@@ -1,5 +1,5 @@
 module "github-auth" {
-  source         = "github.com/akerl/terraform-aws-lambda-githubauth"
+  source         = "github.com/armorfret/terraform-aws-lambda-githubauth"
   logging-bucket = "${var.logging-bucket}"
   config-bucket  = "akerl-quote-auth"
   lambda-bucket  = "${var.lambda-bucket}"

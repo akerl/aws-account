@@ -1,5 +1,5 @@
 module "publish-user" {
-  source         = "github.com/akerl/terraform-aws-s3-publish"
+  source         = "github.com/armorfret/terraform-aws-s3-publish"
   logging-bucket = "${var.logging-bucket}"
   publish-bucket = "${var.data-bucket}"
 }

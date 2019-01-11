@@ -1,5 +1,5 @@
 module "madlibrarian" {
-  source         = "github.com/akerl/terraform-aws-lambda-madlibrarian"
+  source         = "github.com/armorfret/terraform-aws-lambda-madlibrarian"
   logging-bucket = "${var.logging-bucket}"
   config-bucket  = "akerl-book-library-config"
   data-bucket    = "akerl-book-library"

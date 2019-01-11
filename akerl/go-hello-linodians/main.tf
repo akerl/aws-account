@@ -16,3 +16,16 @@ variable "rate" {
   type    = "string"
   default = "1 hour"
 }
+
+module "publish-user" {
+  source         = "github.com/akerl/terraform-aws-s3-publish"
+  logging-bucket = "${var.logging-bucket}"
+  publish-bucket = "${var.lambda-bucket}"
+}
+
+module "hellolinodians" {
+  source         = "github.com/armorfret/terraform-aws-lambda-hellolinodians"
+  logging-bucket = "${var.logging-bucket}"
+  data-bucket    = "${var.data-bucket}"
+  rate           = "${var.rate}"
+}
