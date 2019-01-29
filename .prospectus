@@ -9,11 +9,12 @@ item do
 
   deps do
     [
-      ['modules/madlibrarian', 'akerl/madlibrarian-lambda'],
-      ['modules/hookshot', 'akerl/hookshot'],
-      ['akerl/go-hello-linodians', 'akerl/go-hello-linodians'],
-      ['modules/github-auth', 'akerl/github-auth-lambda']
-    ].each do |mpath, mrepo|
+      'akerl/madlibrarian-lambda',
+      'akerl/hookshot',
+      'akerl/go-hello-linodians',
+      'akerl/github-auth-lambda'
+    ].each do |mrepo|
+      mpath = mrepo.split('/').last
       item do
         name mpath
 
@@ -24,7 +25,7 @@ item do
 
         actual do
           static
-          set File.read("#{mpath}/version").chomp
+          set File.read("versions/#{mpath}").chomp
         end
       end
     end

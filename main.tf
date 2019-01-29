@@ -1,11 +1,11 @@
 provider "aws" {
-  version = "1.54.0"
+  version = "1.57.0"
   region  = "us-east-1"
 }
 
 provider "awscreds" {
   // provider.awscreds armorfret/terraform-provider-awscreds
-  version = "0.0.5"
+  version = "0.1.0"
   region  = "us-east-1"
 }
 

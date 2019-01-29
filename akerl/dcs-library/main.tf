@@ -5,6 +5,7 @@ module "madlibrarian" {
   data-bucket    = "akerl-dcs-library"
   lambda-bucket  = "${var.lambda-bucket}"
   domain         = "dcs.coolquotes.xyz"
+  version        = "${chomp(file("${path.module}/../../versions/madlibrarian-lambda"))}"
 }
 
 variable "logging-bucket" {

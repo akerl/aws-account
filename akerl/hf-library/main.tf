@@ -5,6 +5,7 @@ module "madlibrarian" {
   data-bucket    = "akerl-hf-library"
   lambda-bucket  = "${var.lambda-bucket}"
   domain         = "hf.coolquotes.xyz"
+  version        = "${chomp(file("${path.module}/../../versions/madlibrarian-lambda"))}"
 }
 
 variable "logging-bucket" {

@@ -28,4 +28,5 @@ module "hellolinodians" {
   logging-bucket = "${var.logging-bucket}"
   data-bucket    = "${var.data-bucket}"
   rate           = "${var.rate}"
+  version        = "${chomp(file("${path.module}/../../versions/go-hello-linodians"))}"
 }

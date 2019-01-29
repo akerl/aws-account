@@ -4,6 +4,7 @@ module "github-auth" {
   config-bucket  = "akerl-quote-auth"
   lambda-bucket  = "${var.lambda-bucket}"
   domain         = "auth.coolquotes.xyz"
+  version        = "${chomp(file("${path.module}/../../versions/github-auth-lambda"))}"
 }
 
 variable "logging-bucket" {
