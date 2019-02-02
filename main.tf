@@ -15,6 +15,7 @@ module "account" {
   admins = [
     "akerl-bean",
     "akerl-mazer",
+    "akerl-codepad",
   ]
 }
 
