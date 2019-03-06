@@ -55,6 +55,11 @@ module "akerl-hookshot" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
+module "akerl-relay" {
+  source         = "./akerl/relay"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
 module "akerl-go-hello-linodians" {
   source         = "./akerl/go-hello-linodians"
   logging-bucket = "${module.account.logging-bucket}"
