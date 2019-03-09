@@ -46,6 +46,14 @@ variable "akerl-scratch-dns-name" {
   type = "string"
 }
 
+variable "akerl-private-auth-dns-name" {
+  type = "string"
+}
+
+variable "akerl-private-files-dns-name" {
+  type = "string"
+}
+
 variable "akerl-littlesnitch-rules-dns-name" {
   type = "string"
 }

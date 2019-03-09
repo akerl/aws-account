@@ -34,6 +34,8 @@ module "akerl-dns" {
   akerl-books-library-dns-name      = "${module.akerl-books-library.dns-name}"
   akerl-dcs-library-dns-name        = "${module.akerl-dcs-library.dns-name}"
   akerl-quote-auth-dns-name         = "${module.akerl-quote-auth.dns-name}"
+  akerl-private-files-dns-name      = "${module.akerl-private-files.dns-name}"
+  akerl-private-auth-dns-name       = "${module.akerl-private-auth.dns-name}"
 }
 
 module "akerl-blog" {
@@ -66,6 +68,11 @@ module "akerl-relay" {
   logging-bucket = "${module.account.logging-bucket}"
 }
 
+module "akerl-s3authproxy" {
+  source         = "./akerl/s3-auth-proxy"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
 module "akerl-go-hello-linodians" {
   source         = "./akerl/go-hello-linodians"
   logging-bucket = "${module.account.logging-bucket}"
@@ -90,6 +97,18 @@ module "akerl-quote-auth" {
   source         = "./akerl/quote-auth"
   logging-bucket = "${module.account.logging-bucket}"
   lambda-bucket  = "${module.akerl-github-auth-lambda.lambda-bucket}"
+}
+
+module "akerl-private-auth" {
+  source         = "./akerl/private-auth"
+  logging-bucket = "${module.account.logging-bucket}"
+  lambda-bucket  = "${module.akerl-github-auth-lambda.lambda-bucket}"
+}
+
+module "akerl-private-files" {
+  source         = "./akerl/private-files"
+  logging-bucket = "${module.account.logging-bucket}"
+  lambda-bucket  = "${module.akerl-s3authproxy.lambda-bucket}"
 }
 
 module "akerl-hf-library" {

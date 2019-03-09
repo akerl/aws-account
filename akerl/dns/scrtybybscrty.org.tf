@@ -53,13 +53,37 @@ resource "aws_route53_record" "a_scratch_scrtybybscrty_org" {
   }
 }
 
-resource "aws_route53_record" "a_littlesnitch-rules_scrtybybscrty_org" {
+resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
   zone_id = "${module.scrtybybscrty_org.zone_id}"
   name    = "littlesnitch.scrtybybscrty.org"
   type    = "A"
 
   alias {
     name                   = "${var.akerl-littlesnitch-rules-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "a_auth_scrtybybscrty_org" {
+  zone_id = "${module.scrtybybscrty_org.zone_id}"
+  name    = "auth.scrtybybscrty.org"
+  type    = "A"
+
+  alias {
+    name                   = "${var.akerl-private-auth-dns-name}"
+    zone_id                = "${var.cloudfront-zone-id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "a_files_scrtybybscrty_org" {
+  zone_id = "${module.scrtybybscrty_org.zone_id}"
+  name    = "files.scrtybybscrty.org"
+  type    = "A"
+
+  alias {
+    name                   = "${var.akerl-private-files-dns-name}"
     zone_id                = "${var.cloudfront-zone-id}"
     evaluate_target_health = false
   }
