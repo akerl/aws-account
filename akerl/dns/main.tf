@@ -46,6 +46,10 @@ variable "akerl-scratch-dns-name" {
   type = "string"
 }
 
+variable "akerl-littlesnitch-rules-dns-name" {
+  type = "string"
+}
+
 resource "aws_route53_delegation_set" "main" {
   reference_name = "main"
 }

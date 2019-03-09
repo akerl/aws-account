@@ -20,19 +20,20 @@ module "account" {
 }
 
 module "akerl-dns" {
-  source                       = "./akerl/dns"
-  admin_email                  = "admin@lesaker.org"
-  cloudfront-zone-id           = "${module.akerl-blog.cloudfront-zone-id}"
-  akerl-blog-dns-name          = "${module.akerl-blog.site-dns-name}"
-  akerl-blog-redirect-dns-name = "${module.akerl-blog.redirect-dns-name}"
-  akerl-keys-dns-name          = "${module.akerl-keys.site-dns-name}"
-  akerl-scratch-dns-name       = "${module.akerl-scratch.site-dns-name}"
-  amylum-repo-dns-name         = "${module.amylum-repo.site-dns-name}"
-  akerl-wedding-dns-name       = "${module.akerl-wedding.wedding-dns-name}"
-  akerl-hf-library-dns-name    = "${module.akerl-hf-library.dns-name}"
-  akerl-books-library-dns-name = "${module.akerl-books-library.dns-name}"
-  akerl-dcs-library-dns-name   = "${module.akerl-dcs-library.dns-name}"
-  akerl-quote-auth-dns-name    = "${module.akerl-quote-auth.dns-name}"
+  source                            = "./akerl/dns"
+  admin_email                       = "admin@lesaker.org"
+  cloudfront-zone-id                = "${module.akerl-blog.cloudfront-zone-id}"
+  akerl-blog-dns-name               = "${module.akerl-blog.site-dns-name}"
+  akerl-blog-redirect-dns-name      = "${module.akerl-blog.redirect-dns-name}"
+  akerl-keys-dns-name               = "${module.akerl-keys.site-dns-name}"
+  akerl-scratch-dns-name            = "${module.akerl-scratch.site-dns-name}"
+  akerl-littlesnitch-rules-dns-name = "${module.akerl-littlesnitch-rules.site-dns-name}"
+  amylum-repo-dns-name              = "${module.amylum-repo.site-dns-name}"
+  akerl-wedding-dns-name            = "${module.akerl-wedding.wedding-dns-name}"
+  akerl-hf-library-dns-name         = "${module.akerl-hf-library.dns-name}"
+  akerl-books-library-dns-name      = "${module.akerl-books-library.dns-name}"
+  akerl-dcs-library-dns-name        = "${module.akerl-dcs-library.dns-name}"
+  akerl-quote-auth-dns-name         = "${module.akerl-quote-auth.dns-name}"
 }
 
 module "akerl-blog" {
@@ -47,6 +48,11 @@ module "akerl-keys" {
 
 module "akerl-scratch" {
   source         = "./akerl/scratch"
+  logging-bucket = "${module.account.logging-bucket}"
+}
+
+module "akerl-littlesnitch-rules" {
+  source         = "./akerl/littlesnitch-rules"
   logging-bucket = "${module.account.logging-bucket}"
 }
 
