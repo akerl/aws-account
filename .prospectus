@@ -8,28 +8,6 @@ item do
   extend ProspectusTerraform::Providers.new
 
   deps do
-    [
-      'akerl/madlibrarian-lambda',
-      'akerl/hookshot',
-      'akerl/go-hello-linodians',
-      'akerl/github-auth-lambda'
-    ].each do |mrepo|
-      mpath = mrepo.split('/').last
-      item do
-        name mpath
-
-        expected do
-          github_release
-          repo mrepo
-        end
-
-        actual do
-          static
-          set File.read("versions/#{mpath}").chomp
-        end
-      end
-    end
-
     item do
       name 'terraform'
 
