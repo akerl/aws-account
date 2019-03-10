@@ -2,6 +2,12 @@ data "aws_iam_policy_document" "assume_admin" {
   statement {
     actions   = ["sts:AssumeRole"]
     resources = ["${aws_iam_role.admin.arn}"]
+
+    condition {
+      test     = "Bool"
+      variable = "aws:MultiFactorAuthPresent"
+      values   = ["true"]
+    }
   }
 }
 
