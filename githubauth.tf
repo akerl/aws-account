@@ -1,17 +1,17 @@
 module "akerl-quote-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.0.4"
-  logging-bucket = "${module.account.logging-bucket}"
-  config-bucket  = "akerl-quote-auth"
-  lambda-bucket  = "${module.akerl-githubauthlambda.publish-bucket}"
-  domain         = "auth.coolquotes.xyz"
+  version        = "0.0.5"
+  logging_bucket = "${module.account.logging_bucket}"
+  config_bucket  = "akerl-quote-auth"
+  lambda_bucket  = "${module.akerl-githubauthlambda.publish_bucket}"
+  hostname         = "auth.coolquotes.xyz"
 }
 
 module "akerl-private-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.0.4"
-  logging-bucket = "${module.account.logging-bucket}"
-  config-bucket  = "akerl-private-auth"
-  lambda-bucket  = "${module.akerl-githubauthlambda.publish-bucket}"
-  domain         = "auth.scrtybybscrty.org"
+  version        = "0.0.5"
+  logging_bucket = "${module.account.logging_bucket}"
+  config_bucket  = "akerl-private-auth"
+  lambda_bucket  = "${module.akerl-githubauthlambda.publish_bucket}"
+  hostname         = "auth.scrtybybscrty.org"
 }

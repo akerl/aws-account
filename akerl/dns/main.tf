@@ -2,59 +2,59 @@ variable "admin_email" {
   type = "string"
 }
 
-variable "cloudfront-zone-id" {
+variable "cloudfront_zone_id" {
   type = "string"
 }
 
-variable "akerl-blog-dns-name" {
+variable "akerl-blog-dns_name" {
   type = "string"
 }
 
-variable "akerl-blog-redirect-dns-name" {
+variable "akerl-blog-redirect_dns_name" {
   type = "string"
 }
 
-variable "amylum-repo-dns-name" {
+variable "amylum-repo-dns_name" {
   type = "string"
 }
 
-variable "akerl-wedding-dns-name" {
+variable "akerl-wedding-dns_name" {
   type = "string"
 }
 
-variable "akerl-dcs-library-dns-name" {
+variable "akerl-dcs-library-dns_name" {
   type = "string"
 }
 
-variable "akerl-hf-library-dns-name" {
+variable "akerl-hf-library-dns_name" {
   type = "string"
 }
 
-variable "akerl-books-library-dns-name" {
+variable "akerl-books-library-dns_name" {
   type = "string"
 }
 
-variable "akerl-quote-auth-dns-name" {
+variable "akerl-quote-auth-dns_name" {
   type = "string"
 }
 
-variable "akerl-keys-dns-name" {
+variable "akerl-keys-dns_name" {
   type = "string"
 }
 
-variable "akerl-scratch-dns-name" {
+variable "akerl-scratch-dns_name" {
   type = "string"
 }
 
-variable "akerl-private-auth-dns-name" {
+variable "akerl-private-auth-dns_name" {
   type = "string"
 }
 
-variable "akerl-private-files-dns-name" {
+variable "akerl-private-files-dns_name" {
   type = "string"
 }
 
-variable "akerl-littlesnitch-rules-dns-name" {
+variable "akerl-littlesnitch-rules-dns_name" {
   type = "string"
 }
 

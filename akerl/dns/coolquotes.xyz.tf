@@ -13,8 +13,8 @@ resource "aws_route53_record" "a_auth_coolquotes_xyz" {
   type = "A"
 
   alias {
-    name                   = "${var.akerl-quote-auth-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-quote-auth-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -26,8 +26,8 @@ resource "aws_route53_record" "a_hf_coolquotes_xyz" {
   type = "A"
 
   alias {
-    name                   = "${var.akerl-hf-library-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-hf-library-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -39,8 +39,8 @@ resource "aws_route53_record" "a_books_coolquotes_xyz" {
   type = "A"
 
   alias {
-    name                   = "${var.akerl-books-library-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-books-library-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -52,8 +52,8 @@ resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
   type = "A"
 
   alias {
-    name                   = "${var.akerl-dcs-library-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-dcs-library-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

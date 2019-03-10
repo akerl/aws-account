@@ -1,13 +1,13 @@
 module "akerl-blog" {
   source          = "armorfret/s3-website/aws"
   version         = "0.0.3"
-  logging-bucket  = "${module.account.logging-bucket}"
-  file-bucket     = "akerl-blog"
-  redirect-bucket = "akerl-blog-redirect"
-  root-domain     = "blog.akerl.org"
-  error-document  = "404/index.html"
+  logging_bucket  = "${module.account.logging_bucket}"
+  file_bucket     = "akerl-blog"
+  redirect_bucket = "akerl-blog-redirect"
+  primary_hostname     = "blog.akerl.org"
+  error_document  = "404/index.html"
 
-  redirect-domains = [
+  redirect_hostnames = [
     "lesaker.org",
     "www.lesaker.org",
     "scrtybybscrty.org",
@@ -26,39 +26,39 @@ module "akerl-blog" {
 module "akerl-keys" {
   source          = "armorfret/s3-website/aws"
   version         = "0.0.3"
-  logging-bucket  = "${var.logging-bucket}"
-  file-bucket     = "akerl-keys"
-  redirect-bucket = "akerl-keys-redirect"
-  root-domain     = "id-ed25519.pub"
-  error-document  = "404.html"
-  logging-bucket  = "${module.account.logging-bucket}"
+  logging_bucket  = "${var.logging_bucket}"
+  file_bucket     = "akerl-keys"
+  redirect_bucket = "akerl-keys-redirect"
+  primary_hostname     = "id-ed25519.pub"
+  error_document  = "404.html"
+  logging_bucket  = "${module.account.logging_bucket}"
 }
 
 module "akerl-scratch" {
   source          = "armorfret/s3-website/aws"
   version         = "0.0.3"
-  logging-bucket  = "${module.account.logging-bucket}"
-  file-bucket     = "akerl-scratch"
-  redirect-bucket = "akerl-scratch-redirect"
-  root-domain     = "scratch.scrtybybscrty.org"
-  error-document  = "404.html"
+  logging_bucket  = "${module.account.logging_bucket}"
+  file_bucket     = "akerl-scratch"
+  redirect_bucket = "akerl-scratch-redirect"
+  primary_hostname     = "scratch.scrtybybscrty.org"
+  error_document  = "404.html"
 }
 
 module "akerl-littlesnitch-rules" {
   source          = "armorfret/s3-website/aws"
   version         = "0.0.3"
-  file-bucket     = "akerl-littlesnitch-rules"
-  redirect-bucket = "akerl-littlesnitch-rules-redirect"
-  root-domain     = "littlesnitch.scrtybybscrty.org"
-  error-document  = "404.html"
-  logging-bucket  = "${module.account.logging-bucket}"
+  file_bucket     = "akerl-littlesnitch-rules"
+  redirect_bucket = "akerl-littlesnitch-rules-redirect"
+  primary_hostname     = "littlesnitch.scrtybybscrty.org"
+  error_document  = "404.html"
+  logging_bucket  = "${module.account.logging_bucket}"
 }
 
 module "amylum-repo" {
   source          = "armorfret/s3-website/aws"
   version         = "0.0.3"
-  logging-bucket  = "${module.account.logging-bucket}"
-  file-bucket     = "amylum-repo"
-  redirect-bucket = "amylum-repo-redirect"
-  root-domain     = "repo.scrtybybscrty.org"
+  logging_bucket  = "${module.account.logging_bucket}"
+  file_bucket     = "amylum-repo"
+  redirect_bucket = "amylum-repo-redirect"
+  primary_hostname     = "repo.scrtybybscrty.org"
 }

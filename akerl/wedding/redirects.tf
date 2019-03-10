@@ -7,10 +7,10 @@ variable "domains" {
   ]
 }
 
-data "aws_iam_policy_document" "redirect-bucket-read-access" {
+data "aws_iam_policy_document" "redirect_bucket-read-access" {
   statement {
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.redirect-bucket}/*"]
+    resources = ["arn:aws:s3:::${var.redirect_bucket}/*"]
 
     principals {
       type        = "AWS"
@@ -19,16 +19,16 @@ data "aws_iam_policy_document" "redirect-bucket-read-access" {
   }
 }
 
-resource "aws_s3_bucket" "redirect-bucket" {
-  bucket = "${var.redirect-bucket}"
-  policy = "${data.aws_iam_policy_document.redirect-bucket-read-access.json}"
+resource "aws_s3_bucket" "redirect_bucket" {
+  bucket = "${var.redirect_bucket}"
+  policy = "${data.aws_iam_policy_document.redirect_bucket-read-access.json}"
 
   versioning {
     enabled = "true"
   }
 
   logging {
-    target_bucket = "${var.logging-bucket}"
+    target_bucket = "${var.logging_bucket}"
     target_prefix = "akerl-wedding-redirect/"
   }
 
@@ -39,8 +39,8 @@ resource "aws_s3_bucket" "redirect-bucket" {
 
 resource "aws_cloudfront_distribution" "redirect_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.redirect-bucket.website_endpoint}"
-    origin_id   = "redirect-bucket"
+    domain_name = "${aws_s3_bucket.redirect_bucket.website_endpoint}"
+    origin_id   = "redirect_bucket"
 
     custom_origin_config {
       http_port              = "80"
@@ -56,14 +56,14 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${var.logging-bucket}.s3.amazonaws.com"
+    bucket          = "${var.logging_bucket}.s3.amazonaws.com"
     prefix          = "akerl-wedding-redirect-cdn"
   }
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "redirect-bucket"
+    target_origin_id = "redirect_bucket"
 
     forwarded_values {
       query_string = false

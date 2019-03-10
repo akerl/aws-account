@@ -12,8 +12,8 @@ resource "aws_route53_record" "a_lesaker_com" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-blog-redirect-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-blog-redirect_dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -24,8 +24,8 @@ resource "aws_route53_record" "a_www_lesaker_com" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-blog-redirect-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-blog-redirect_dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

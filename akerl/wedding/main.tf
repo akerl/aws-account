@@ -1,12 +1,12 @@
-variable "logging-bucket" {
+variable "logging_bucket" {
   type = "string"
 }
 
-variable "redirect-bucket" {
+variable "redirect_bucket" {
   type    = "string"
   default = "akerl-wedding-redirect"
 }
 
-output "wedding-dns-name" {
+output "wedding-dns_name" {
   value = "${aws_cloudfront_distribution.redirect_distribution.domain_name}"
 }

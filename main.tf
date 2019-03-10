@@ -22,25 +22,25 @@ module "account" {
 module "akerl-dns" {
   source                            = "./akerl/dns"
   admin_email                       = "admin@lesaker.org"
-  cloudfront-zone-id                = "${module.akerl-blog.cloudfront-zone-id}"
-  akerl-blog-dns-name               = "${module.akerl-blog.site-dns-name}"
-  akerl-blog-redirect-dns-name      = "${module.akerl-blog.redirect-dns-name}"
-  akerl-keys-dns-name               = "${module.akerl-keys.site-dns-name}"
-  akerl-scratch-dns-name            = "${module.akerl-scratch.site-dns-name}"
-  akerl-littlesnitch-rules-dns-name = "${module.akerl-littlesnitch-rules.site-dns-name}"
-  amylum-repo-dns-name              = "${module.amylum-repo.site-dns-name}"
-  akerl-wedding-dns-name            = "${module.akerl-wedding.wedding-dns-name}"
-  akerl-hf-library-dns-name         = "${module.akerl-hf-library.dns-name}"
-  akerl-books-library-dns-name      = "${module.akerl-books-library.dns-name}"
-  akerl-dcs-library-dns-name        = "${module.akerl-dcs-library.dns-name}"
-  akerl-quote-auth-dns-name         = "${module.akerl-quote-auth.dns-name}"
-  akerl-private-files-dns-name      = "${module.akerl-private-files.dns-name}"
-  akerl-private-auth-dns-name       = "${module.akerl-private-auth.dns-name}"
+  cloudfront_zone_id                = "${module.akerl-blog.cloudfront_zone_id}"
+  akerl-blog-dns_name               = "${module.akerl-blog.site_dns_name}"
+  akerl-blog-redirect_dns_name      = "${module.akerl-blog.redirect_dns_name}"
+  akerl-keys-dns_name               = "${module.akerl-keys.site_dns_name}"
+  akerl-scratch-dns_name            = "${module.akerl-scratch.site_dns_name}"
+  akerl-littlesnitch-rules-dns_name = "${module.akerl-littlesnitch-rules.site_dns_name}"
+  amylum-repo-dns_name              = "${module.amylum-repo.site_dns_name}"
+  akerl-wedding-dns_name            = "${module.akerl-wedding.wedding-dns_name}"
+  akerl-hf-library-dns_name         = "${module.akerl-hf-library.dns_name}"
+  akerl-books-library-dns_name      = "${module.akerl-books-library.dns_name}"
+  akerl-dcs-library-dns_name        = "${module.akerl-dcs-library.dns_name}"
+  akerl-quote-auth-dns_name         = "${module.akerl-quote-auth.dns_name}"
+  akerl-private-files-dns_name      = "${module.akerl-private-files.dns_name}"
+  akerl-private-auth-dns_name       = "${module.akerl-private-auth.dns_name}"
 }
 
 module "akerl-wedding" {
   source         = "./akerl/wedding"
-  logging-bucket = "${module.account.logging-bucket}"
+  logging_bucket = "${module.account.logging_bucket}"
 }
 
 module "akerl-aws-account" {

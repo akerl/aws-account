@@ -12,8 +12,8 @@ resource "aws_route53_record" "a_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-blog-redirect-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-blog-redirect_dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -24,8 +24,8 @@ resource "aws_route53_record" "a_www_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-blog-redirect-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-blog-redirect_dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -36,8 +36,8 @@ resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.amylum-repo-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.amylum-repo-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -48,8 +48,8 @@ resource "aws_route53_record" "a_scratch_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-scratch-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-scratch-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -60,8 +60,8 @@ resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-littlesnitch-rules-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-littlesnitch-rules-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -72,8 +72,8 @@ resource "aws_route53_record" "a_auth_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-private-auth-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-private-auth-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -84,8 +84,8 @@ resource "aws_route53_record" "a_files_scrtybybscrty_org" {
   type    = "A"
 
   alias {
-    name                   = "${var.akerl-private-files-dns-name}"
-    zone_id                = "${var.cloudfront-zone-id}"
+    name                   = "${var.akerl-private-files-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

@@ -7,6 +7,6 @@ resource "aws_s3_bucket" "logging" {
   }
 }
 
-output "logging-bucket" {
+output "logging_bucket" {
   value = "${aws_s3_bucket.logging.id}"
 }
