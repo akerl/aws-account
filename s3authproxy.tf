@@ -1,6 +1,6 @@
 module "akerl-private-files" {
   source         = "armorfret/lambda-s3authproxy/aws"
-  version        = "0.0.8"
+  version        = "0.0.9"
   logging_bucket = "${module.account.logging_bucket}"
   config_bucket  = "akerl-private-files-config"
   data_bucket    = "akerl-private-files"
