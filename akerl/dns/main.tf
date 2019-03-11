@@ -54,6 +54,10 @@ variable "akerl-private-files-dns_name" {
   type = "string"
 }
 
+variable "akerl-coolquotes-share-dns_name" {
+  type = "string"
+}
+
 variable "akerl-littlesnitch-rules-dns_name" {
   type = "string"
 }

@@ -57,3 +57,16 @@ resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_share_coolquotes_xyz" {
+  zone_id = "${module.coolquotes_xyz.zone_id}"
+
+  name = "share.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = "${var.akerl-coolquotes-share-dns_name}"
+    zone_id                = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
