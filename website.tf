@@ -26,7 +26,6 @@ module "akerl-blog" {
 module "akerl-keys" {
   source           = "armorfret/s3-website/aws"
   version          = "0.0.3"
-  logging_bucket   = "${var.logging_bucket}"
   file_bucket      = "akerl-keys"
   redirect_bucket  = "akerl-keys-redirect"
   primary_hostname = "id-ed25519.pub"
@@ -62,3 +61,4 @@ module "amylum-repo" {
   redirect_bucket  = "amylum-repo-redirect"
   primary_hostname = "repo.scrtybybscrty.org"
 }
+
