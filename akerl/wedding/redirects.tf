@@ -97,6 +97,6 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
 
 module "certificate" {
   source    = "armorfret/acm-certificate/aws"
-  version   = "0.0.2"
+  version   = "0.1.0"
   hostnames = "${var.domains}"
 }

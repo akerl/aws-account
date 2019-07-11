@@ -4,5 +4,5 @@ variable "admins" {
 
 module "admins" {
   source = "./admins"
-  admins = ["${var.admins}"]
+  admins = var.admins
 }
