@@ -1,6 +1,6 @@
 module "akerl-blog" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.0.3"
+  version          = "0.1.0"
   logging_bucket   = "${module.account.logging_bucket}"
   file_bucket      = "akerl-blog"
   redirect_bucket  = "akerl-blog-redirect"
@@ -25,7 +25,7 @@ module "akerl-blog" {
 
 module "akerl-keys" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.0.3"
+  version          = "0.1.0"
   file_bucket      = "akerl-keys"
   redirect_bucket  = "akerl-keys-redirect"
   primary_hostname = "id-ed25519.pub"
@@ -35,7 +35,7 @@ module "akerl-keys" {
 
 module "akerl-scratch" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.0.3"
+  version          = "0.1.0"
   logging_bucket   = "${module.account.logging_bucket}"
   file_bucket      = "akerl-scratch"
   redirect_bucket  = "akerl-scratch-redirect"
@@ -45,7 +45,7 @@ module "akerl-scratch" {
 
 module "akerl-littlesnitch-rules" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.0.3"
+  version          = "0.1.0"
   file_bucket      = "akerl-littlesnitch-rules"
   redirect_bucket  = "akerl-littlesnitch-rules-redirect"
   primary_hostname = "littlesnitch.scrtybybscrty.org"
@@ -55,7 +55,7 @@ module "akerl-littlesnitch-rules" {
 
 module "amylum-repo" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.0.3"
+  version          = "0.1.0"
   logging_bucket   = "${module.account.logging_bucket}"
   file_bucket      = "amylum-repo"
   redirect_bucket  = "amylum-repo-redirect"
