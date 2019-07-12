@@ -6,6 +6,7 @@ item do
 
   extend ProspectusTravis::Build.new('akerl/aws-account')
   extend ProspectusTerraform::Providers.new
+  extend ProspectusTerraform::Modules.new
 
   deps do
     item do
