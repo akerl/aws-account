@@ -1,6 +1,6 @@
 resource "aws_cloudtrail" "main-trail" {
   name                          = "main-trail"
-  s3_bucket_name                = "${aws_s3_bucket.main-trail.id}"
+  s3_bucket_name                = aws_s3_bucket.main-trail.id
   include_global_service_events = true
   is_multi_region_trail         = true
   enable_log_file_validation    = true
@@ -59,4 +59,6 @@ resource "aws_s3_bucket" "main-trail" {
     ]
 }
 POLICY
+
 }
+

@@ -1,16 +1,16 @@
 resource "aws_api_gateway_account" "account" {
-  cloudwatch_role_arn = "${aws_iam_role.apigw_cloudwatch.arn}"
+  cloudwatch_role_arn = aws_iam_role.apigw_cloudwatch.arn
 }
 
 resource "aws_iam_role_policy" "apigw_cloudwatch" {
   name   = "apigw_cloudwatch"
-  role   = "${aws_iam_role.apigw_cloudwatch.name}"
-  policy = "${data.aws_iam_policy_document.apigw_cloudwatch_perms.json}"
+  role   = aws_iam_role.apigw_cloudwatch.name
+  policy = data.aws_iam_policy_document.apigw_cloudwatch_perms.json
 }
 
 resource "aws_iam_role" "apigw_cloudwatch" {
   name               = "apigw_cloudwatch"
-  assume_role_policy = "${data.aws_iam_policy_document.apigw_cloudwatch_assume.json}"
+  assume_role_policy = data.aws_iam_policy_document.apigw_cloudwatch_assume.json
 }
 
 data "aws_iam_policy_document" "apigw_cloudwatch_assume" {
@@ -46,3 +46,4 @@ data "aws_iam_policy_document" "apigw_cloudwatch_perms" {
     ]
   }
 }
+

@@ -1,5 +1,5 @@
 variable "admins" {
-  type = "list"
+  type = list(string)
 }
 
 resource "aws_iam_user" "admins" {
