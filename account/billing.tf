@@ -15,7 +15,7 @@ resource "aws_budgets_budget" "cost" {
     threshold                  = 100
     threshold_type             = "PERCENTAGE"
     notification_type          = "FORECASTED"
-    subscriber_email_addresses = ["me@lesaker.org"]
+    subscriber_email_addresses = [var.billing_email]
   }
 }
 

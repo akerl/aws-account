@@ -17,6 +17,7 @@ module "account" {
     "akerl-mazer",
     "akerl-codepad",
   ]
+  billing_email = "me@lesaker.org"
 }
 
 module "akerl-dns" {
