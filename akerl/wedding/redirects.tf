@@ -1,5 +1,5 @@
 variable "domains" {
-  type = "list"
+  type = list(string)
 
   default = [
     "happilyeveraker.com",
@@ -20,15 +20,15 @@ data "aws_iam_policy_document" "redirect_bucket-read-access" {
 }
 
 resource "aws_s3_bucket" "redirect_bucket" {
-  bucket = "${var.redirect_bucket}"
-  policy = "${data.aws_iam_policy_document.redirect_bucket-read-access.json}"
+  bucket = var.redirect_bucket
+  policy = data.aws_iam_policy_document.redirect_bucket-read-access.json
 
   versioning {
     enabled = "true"
   }
 
   logging {
-    target_bucket = "${var.logging_bucket}"
+    target_bucket = var.logging_bucket
     target_prefix = "akerl-wedding-redirect/"
   }
 
@@ -39,7 +39,7 @@ resource "aws_s3_bucket" "redirect_bucket" {
 
 resource "aws_cloudfront_distribution" "redirect_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.redirect_bucket.website_endpoint}"
+    domain_name = aws_s3_bucket.redirect_bucket.website_endpoint
     origin_id   = "redirect_bucket"
 
     custom_origin_config {
@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
     }
   }
 
-  aliases = "${var.domains}"
+  aliases = var.domains
 
   enabled = true
 
@@ -91,12 +91,13 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
   viewer_certificate {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2018"
-    acm_certificate_arn      = "${module.certificate.arn}"
+    acm_certificate_arn      = module.certificate.arn
   }
 }
 
 module "certificate" {
   source    = "armorfret/acm-certificate/aws"
   version   = "0.1.0"
-  hostnames = "${var.domains}"
+  hostnames = var.domains
 }
+

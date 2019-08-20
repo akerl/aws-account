@@ -42,11 +42,12 @@ data "aws_iam_policy_document" "terraform-planner" {
 
 resource "aws_iam_user_policy" "terraform-planner" {
   name   = "terraform-planner"
-  user   = "${aws_iam_user.build.name}"
-  policy = "${data.aws_iam_policy_document.terraform-planner.json}"
+  user   = aws_iam_user.build.name
+  policy = data.aws_iam_policy_document.terraform-planner.json
 }
 
 resource "awscreds_iam_access_key" "build-key" {
-  user = "${aws_iam_user.build.name}"
+  user = aws_iam_user.build.name
   file = "creds/${aws_iam_user.build.name}"
 }
+
