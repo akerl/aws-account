@@ -45,3 +45,13 @@ resource "aws_route53_record" "cname_cal_lesaker_org" {
   ttl     = "86400"
   records = ["ghs.googlehosted.com."]
 }
+
+resource "aws_route53_record" "atlassian_lesaker_org" {
+  zone_id = "${module.lesaker_org.zone_id}"
+  name    = "lesaker.org"
+  type    = "TXT"
+  ttl     = "86400"
+  records = ["atlassian-domain-verification=5+FJo/9ufedvsv/oxdkEE5+mpNl+RKnk9qhL879eCSMmQGI+hAHUK0gSh5WywzMT"]
+}
+
+
