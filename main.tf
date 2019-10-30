@@ -13,8 +13,6 @@ module "account" {
   source = "./account"
 
   admins = [
-    "akerl-bean",
-    "akerl-mazer",
     "akerl-codepad",
   ]
   billing_email = "me@lesaker.org"
