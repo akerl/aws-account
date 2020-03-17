@@ -105,3 +105,17 @@ resource "aws_route53_record" "ns_wg_scrtybybscrty_org" {
   ]
 }
 
+resource "aws_route53_record" "ns_mc_scrtybybscrty_org" {
+  zone_id = module.scrtybybscrty_org.zone_id
+  name    = "mc.scrtybybscrty.org"
+  type    = "NS"
+  ttl     = "86400"
+
+  records = [
+    "ns1.linode.com",
+    "ns2.linode.com",
+    "ns3.linode.com",
+    "ns4.linode.com",
+    "ns5.linode.com",
+  ]
+}
