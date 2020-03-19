@@ -30,23 +30,10 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
-resource "aws_route53_record" "macrepo_halyard_a-rwx_org" {
+resource "aws_route53_record" "cloudkey_home_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
-  name    = "macrepo.halyard.a-rwx.org"
+  name    = "cloudkey.home.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["97.107.135.32"]
+  records = ["10.0.0.10"]
 }
-
-resource "aws_route53_record" "caa_macrepo_halyard_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "macrepo.halyard.a-rwx.org"
-  type    = "CAA"
-  ttl     = "60"
-
-  records = [
-    "0 issue \"letsencrypt.org\"",
-    "0 issuewild \";\"",
-  ]
-}
-
