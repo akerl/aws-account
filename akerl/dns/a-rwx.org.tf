@@ -30,10 +30,74 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
-resource "aws_route53_record" "cloudkey_home_a-rwx_org" {
+resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
-  name    = "cloudkey.home.a-rwx.org"
+  name    = "gateway.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.1"]
+}
+
+resource "aws_route53_record" "core_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "core.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.2"]
+}
+
+resource "aws_route53_record" "controller_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "controller.infra.home.a-rwx.org"
   type    = "A"
   ttl     = "60"
   records = ["10.0.0.10"]
+}
+
+resource "aws_route53_record" "switch0_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "switch0.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.20"]
+}
+
+resource "aws_route53_record" "switch1_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "switch1.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.21"]
+}
+
+resource "aws_route53_record" "switch2_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "switch2.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.22"]
+}
+
+resource "aws_route53_record" "wap0_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "wap0.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.40"]
+}
+
+resource "aws_route53_record" "wap1_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "wap1.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.41"]
+}
+
+resource "aws_route53_record" "wap2_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "wap2.infra.home.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.0.42"]
 }
