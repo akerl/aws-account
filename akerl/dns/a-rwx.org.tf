@@ -30,6 +30,14 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
+resource "aws_route53_record" "cname_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "home.a-rwx.org"
+  type    = "CNAME"
+  ttl     = "60"
+  records = ["akerl.dyndns.org"]
+}
+
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "gateway.infra.home.a-rwx.org"
@@ -58,10 +66,9 @@ module "controller_infra_home_certs_a-rwx_org" {
   admin_email       = var.admin_email
   domain_name       = "controller.infra.home.certs.a-rwx.org"
   delegation_set_id = aws_route53_delegation_set.controller.id
-  caa_list          = ["letsencrypt.org"]
 }
 
-resource "aws_route53_record" "ns_controller_infra_home_a-rwx_org" {
+resource "aws_route53_record" "ns_controller_infra_home_certs_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "controller.infra.home.certs.a-rwx.org"
   type    = "NS"
@@ -75,6 +82,18 @@ resource "aws_route53_record" "a_controller_infra_home_a-rwx_org" {
   type    = "A"
   ttl     = "60"
   records = ["10.0.0.10"]
+}
+
+resource "aws_route53_record" "caa_controller_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "controller.infra.home.a-rwx.org"
+  type    = "CAA"
+  ttl     = "60"
+  records = [
+    "0 iodef \"mailto:admin@lesaker.org\"",
+    "0 issuewild \";\"",
+    "0 issue \"letsencrypt.org\"",
+  ]
 }
 
 resource "aws_route53_record" "cname_acme_challenge_controller_infra_home_a-rwx_org" {
