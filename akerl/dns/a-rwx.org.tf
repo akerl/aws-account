@@ -52,29 +52,37 @@ resource "aws_route53_delegation_set" "controller" {
 }
 
 # this is necessary for LetsEncrypt cert validation
-module "controller_a-rwx_org" {
+module "controller_infra_home_certs_a-rwx_org" {
   source            = "armorfret/r53-zone/aws"
   version           = "0.2.0"
   admin_email       = var.admin_email
-  domain_name       = "controller.a-rwx.org"
+  domain_name       = "controller.infra.home.certs.a-rwx.org"
   delegation_set_id = aws_route53_delegation_set.controller.id
   caa_list          = ["letsencrypt.org"]
 }
 
 resource "aws_route53_record" "ns_controller_infra_home_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
-  name    = "controller.infra.home.a-rwx.org"
+  name    = "controller.infra.home.certs.a-rwx.org"
   type    = "NS"
   ttl     = "60"
   records = aws_route53_delegation_set.controller.name_servers
 }
 
 resource "aws_route53_record" "a_controller_infra_home_a-rwx_org" {
-  zone_id = module.controller_a-rwx_org.zone_id
+  zone_id = module.a-rwx_org.zone_id
   name    = "controller.infra.home.a-rwx.org"
   type    = "A"
   ttl     = "60"
   records = ["10.0.0.10"]
+}
+
+resource "aws_route53_record" "cname_acme_challenge_controller_infra_home_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "_acme-challenge.controller.infra.home.a-rwx.org"
+  type    = "CNAME"
+  ttl     = "60"
+  records = ["_acme-challenge.controller.infra.home.certs.a-rwx.org"]
 }
 
 data "aws_iam_policy_document" "certbot_validation" {
@@ -96,7 +104,7 @@ data "aws_iam_policy_document" "certbot_validation" {
     ]
 
     resources = [
-      "arn:aws:route53:::hostedzone/${module.controller_a-rwx_org.zone_id}",
+      "arn:aws:route53:::hostedzone/${module.controller_infra_home_certs_a-rwx_org.zone_id}",
     ]
   }
 }
