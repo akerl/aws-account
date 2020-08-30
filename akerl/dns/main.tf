@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    aws = {
+      version = "3.4.0"
+    }
+
+    awscreds = {
+      source  = "terraform.scrtybybscrty.org/armorfret/awscreds"
+      version = "0.2.0"
+    }
+  }
+}
+
 variable "admin_email" {
   type = string
 }

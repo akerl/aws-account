@@ -1,12 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      version = "3.4.0"
+    }
+
+    awscreds = {
+      source  = "terraform.scrtybybscrty.org/armorfret/awscreds"
+      version = "0.2.0"
+    }
+  }
+}
+
 provider "aws" {
-  version = "2.34.0"
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 provider "awscreds" {
-  // provider.awscreds armorfret/terraform-provider-awscreds
-  version = "0.2.0"
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 module "account" {
