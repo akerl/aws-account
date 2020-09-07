@@ -11,6 +11,6 @@ resource "aws_route53_record" "a_pumidor_akerl_dev" {
   name    = "pumidor.akerl.dev"
   type    = "A"
   ttl     = "60"
-  records = ["66.228.38.88"]
+  records = ["162.216.18.19"]
 }
 
