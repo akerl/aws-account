@@ -6,3 +6,11 @@ module "akerl_dev" {
   delegation_set_id = aws_route53_delegation_set.main.id
 }
 
+resource "aws_route53_record" "a_pumidor_akerl_dev" {
+  zone_id = module.akerl_dev.zone_id
+  name    = "pumidor.akerl.dev"
+  type    = "A"
+  ttl     = "60"
+  records = ["66.228.38.88"]
+}
+
