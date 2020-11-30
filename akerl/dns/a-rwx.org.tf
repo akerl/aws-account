@@ -1,7 +1,8 @@
 locals {
   records = {
-    "10.0.0.1" = "gateway.infra.home"
-    "10.0.0.2" = "core.infra.home"
+    # 10.0.0.0/24 Infra
+    "10.0.0.1"  = "gateway.infra.home"
+    "10.0.0.2"  = "core.infra.home"
     "10.0.0.10" = "controller.infra.home"
     "10.0.0.20" = "switch0.infra.home"
     "10.0.0.21" = "switch1.infra.home"
@@ -9,6 +10,28 @@ locals {
     "10.0.0.40" = "wap0.infra.home"
     "10.0.0.41" = "wap1.infra.home"
     "10.0.0.42" = "wap2.infra.home"
+    # 10.1.0.0/16 Lab
+    # 10.2.0.0/24 Trusted
+    # 172.16.0.0/22 IoT
+    "172.16.0.10"  = "thermostat.iot.home"
+    "172.16.0.11"  = "garage.iot.home"
+    "172.16.0.20"  = "kitchenecho.iot.home"
+    "172.16.0.21"  = "familyecho.iot.home"
+    "172.16.0.22"  = "basementecho.iot.home"
+    "172.16.0.30"  = "hello.iot.home"
+    "172.16.0.31"  = "basementcam.iot.home"
+    "172.16.0.100" = "printer.iot.home"
+    "172.16.0.101" = "weather.iot.home"
+    # 172.16.20.0/24 Gaming
+    "172.16.20.20" = "ps4.gaming.home"
+    # 192.168.0.0/24 Standard
+    "192.168.0.20" = "szeth.standard.home"
+    "192.168.0.21" = "lift.standard.home"
+    "192.168.0.22" = "wrist.standard.home"
+    "192.168.0.30" = "mazer.standard.home"
+    "192.168.0.40" = "kellyphone.standard.home"
+    "192.168.0.41" = "kellyipad.standard.home"
+    # 192.168.99.0/24 Guest
   }
 }
 
@@ -54,11 +77,11 @@ resource "aws_route53_record" "cname_home_a-rwx_org" {
 
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   for_each = local.records
-  zone_id = module.a-rwx_org.zone_id
-  name    = "${each.value}.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = [each.key]
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.value}.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = [each.key]
 }
 
 resource "aws_route53_delegation_set" "controller" {
