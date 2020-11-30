@@ -1,3 +1,17 @@
+locals {
+  records = {
+    "10.0.0.1" = "gateway.infra.home"
+    "10.0.0.2" = "core.infra.home"
+    "10.0.0.10" = "controller.infra.home"
+    "10.0.0.20" = "switch0.infra.home"
+    "10.0.0.21" = "switch1.infra.home"
+    "10.0.0.22" = "switch2.infra.home"
+    "10.0.0.40" = "wap0.infra.home"
+    "10.0.0.41" = "wap1.infra.home"
+    "10.0.0.42" = "wap2.infra.home"
+  }
+}
+
 module "a-rwx_org" {
   source            = "armorfret/r53-zone/aws"
   version           = "0.3.1"
@@ -39,21 +53,13 @@ resource "aws_route53_record" "cname_home_a-rwx_org" {
 }
 
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
+  for_each = local.records
   zone_id = module.a-rwx_org.zone_id
-  name    = "gateway.infra.home.a-rwx.org"
+  name    = "${each.value}.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["10.0.0.1"]
+  records = [each.key]
 }
-
-resource "aws_route53_record" "core_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "core.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.2"]
-}
-
 
 resource "aws_route53_delegation_set" "controller" {
   reference_name = "controller"
@@ -74,14 +80,6 @@ resource "aws_route53_record" "ns_controller_infra_home_certs_a-rwx_org" {
   type    = "NS"
   ttl     = "60"
   records = aws_route53_delegation_set.controller.name_servers
-}
-
-resource "aws_route53_record" "a_controller_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "controller.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.10"]
 }
 
 resource "aws_route53_record" "caa_controller_infra_home_a-rwx_org" {
@@ -141,52 +139,4 @@ resource "awscreds_iam_access_key" "controller_certbot" {
 
 resource "aws_iam_user" "controller_certbot" {
   name = "controller_certbot"
-}
-
-resource "aws_route53_record" "switch0_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "switch0.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.20"]
-}
-
-resource "aws_route53_record" "switch1_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "switch1.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.21"]
-}
-
-resource "aws_route53_record" "switch2_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "switch2.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.22"]
-}
-
-resource "aws_route53_record" "wap0_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "wap0.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.40"]
-}
-
-resource "aws_route53_record" "wap1_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "wap1.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.41"]
-}
-
-resource "aws_route53_record" "wap2_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "wap2.infra.home.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.0.0.42"]
 }
