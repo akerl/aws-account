@@ -14,30 +14,30 @@ locals {
     # 10.1.0.0/16 Lab
     # 10.2.0.0/24 Trusted
     # 172.16.0.0/22 IoT
-    "172.16.0.2" = "thermostat.iot.home"
-    "172.16.0.3" = "garage.iot.home"
-    "172.16.0.4" = "printer.iot.home"
-    "172.16.0.5" = "washer.iot.home"
-    "172.16.0.6" = "dryer.iot.home"
-    "172.16.0.7" = "microwave.iot.home"
-    "172.16.0.8" = "oven.iot.home"
-    "172.16.0.20" = "doorbell.iot.home"
-    "172.16.0.21" = "cam-basement.iot.home"
-    "172.16.0.22" = "cam-dog.iot.home"
-    "172.16.0.50" = "smartthings.iot.home"
-    "172.16.0.51" = "harmony.iot.home"
-    "172.16.0.52" = "nestconnect.iot.home"
-    "172.16.0.53" = "august.iot.home"
-    "172.16.0.60" = "echo-kitchen.iot.home"
-    "172.16.0.61" = "echo-basement.iot.home"
-    "172.16.0.62" = "echo-family.iot.home"
-    "172.16.0.70" = "google-bedroom.iot.home"
-    "172.16.0.80" = "tv-basement.iot.home"
-    "172.16.0.81" = "tv-family.iot.home"
-    "172.16.0.90" = "chromecast-basement.iot.home"
-    "172.16.0.91" = "chromecast-family.iot.home"
+    "172.16.0.2"   = "thermostat.iot.home"
+    "172.16.0.3"   = "garage.iot.home"
+    "172.16.0.4"   = "printer.iot.home"
+    "172.16.0.5"   = "washer.iot.home"
+    "172.16.0.6"   = "dryer.iot.home"
+    "172.16.0.7"   = "microwave.iot.home"
+    "172.16.0.8"   = "oven.iot.home"
+    "172.16.0.20"  = "doorbell.iot.home"
+    "172.16.0.21"  = "cam-basement.iot.home"
+    "172.16.0.22"  = "cam-dog.iot.home"
+    "172.16.0.50"  = "smartthings.iot.home"
+    "172.16.0.51"  = "harmony.iot.home"
+    "172.16.0.52"  = "nestconnect.iot.home"
+    "172.16.0.53"  = "august.iot.home"
+    "172.16.0.60"  = "echo-kitchen.iot.home"
+    "172.16.0.61"  = "echo-basement.iot.home"
+    "172.16.0.62"  = "echo-family.iot.home"
+    "172.16.0.70"  = "google-bedroom.iot.home"
+    "172.16.0.80"  = "tv-basement.iot.home"
+    "172.16.0.81"  = "tv-family.iot.home"
+    "172.16.0.90"  = "chromecast-basement.iot.home"
+    "172.16.0.91"  = "chromecast-family.iot.home"
     "172.16.0.100" = "hoid.iot.home"
-    "172.16.1.1" = "nanoleaf-office.iot.home"
+    "172.16.1.1"   = "nanoleaf-office.iot.home"
     # 172.16.20.0/24 Gaming
     "172.16.20.20" = "ps4.gaming.home"
     "172.16.20.30" = "graff.gaming.home"
@@ -104,82 +104,22 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   records  = [each.key]
 }
 
-resource "aws_route53_delegation_set" "controller" {
-  reference_name = "controller"
-}
-
-# this is necessary for LetsEncrypt cert validation
-module "controller_infra_home_certs_a-rwx_org" {
-  source            = "armorfret/r53-zone/aws"
-  version           = "0.3.2"
+module "controller_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
   admin_email       = var.admin_email
-  domain_name       = "controller.infra.home.certs.a-rwx.org"
-  delegation_set_id = aws_route53_delegation_set.controller.id
+  delegation_set_id = "controller"
+  subzone_name      = "controller.infra.home.certs.a-rwx.org"
+  cert_name         = "controller.infra.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-resource "aws_route53_record" "ns_controller_infra_home_certs_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "controller.infra.home.certs.a-rwx.org"
-  type    = "NS"
-  ttl     = "60"
-  records = aws_route53_delegation_set.controller.name_servers
-}
-
-resource "aws_route53_record" "caa_controller_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "controller.infra.home.a-rwx.org"
-  type    = "CAA"
-  ttl     = "60"
-  records = [
-    "0 iodef \"mailto:admin@lesaker.org\"",
-    "0 issuewild \";\"",
-    "0 issue \"letsencrypt.org\"",
-  ]
-}
-
-resource "aws_route53_record" "cname_acme_challenge_controller_infra_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "_acme-challenge.controller.infra.home.a-rwx.org"
-  type    = "CNAME"
-  ttl     = "60"
-  records = ["_acme-challenge.controller.infra.home.certs.a-rwx.org"]
-}
-
-data "aws_iam_policy_document" "certbot_validation" {
-  statement {
-    actions = [
-      "route53:ListHostedZones",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
-
-  statement {
-    actions = [
-      "route53:GetHostedZone",
-      "route53:ListResourceRecordSets",
-      "route53:ChangeResourceRecordSets",
-    ]
-
-    resources = [
-      "arn:aws:route53:::hostedzone/${module.controller_infra_home_certs_a-rwx_org.zone_id}",
-    ]
-  }
-}
-
-resource "aws_iam_user_policy" "certbot_validation" {
-  name   = "controller_certbot_validation"
-  user   = aws_iam_user.controller_certbot.name
-  policy = data.aws_iam_policy_document.certbot_validation.json
-}
-
-resource "awscreds_iam_access_key" "controller_certbot" {
-  user = aws_iam_user.controller_certbot.name
-  file = "creds/${aws_iam_user.controller_certbot.name}"
-}
-
-resource "aws_iam_user" "controller_certbot" {
-  name = "controller_certbot"
+module "hass_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
+  admin_email       = var.admin_email
+  delegation_set_id = "hass"
+  subzone_name      = "hass.infra.home.certs.a-rwx.org"
+  cert_name         = "hass.infra.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
 }
