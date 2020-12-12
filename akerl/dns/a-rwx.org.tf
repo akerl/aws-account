@@ -1,5 +1,7 @@
 locals {
   records = {
+    # External
+    "45.79.135.98" = "hass"
     # 10.0.0.0/24 Infra
     "10.0.0.1"  = "gateway.infra.home"
     "10.0.0.2"  = "core.infra.home"
@@ -121,5 +123,15 @@ module "hass_validation" {
   delegation_set_id = "hass"
   subzone_name      = "hass.infra.home.certs.a-rwx.org"
   cert_name         = "hass.infra.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "hass_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
+  admin_email       = var.admin_email
+  delegation_set_id = "hass_ext"
+  subzone_name      = "hass.certs.a-rwx.org"
+  cert_name         = "hass.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
