@@ -14,7 +14,8 @@ locals {
     "10.0.0.42"  = "wap2.infra.home"
     "10.0.0.100" = "nuc.infra.home"
     "10.0.0.101" = "hass.infra.home"
-    "10.0.0.102" = "pumidor.infra.home"
+    "10.0.0.102" = "influxdb.infra.home"
+    "10.0.0.103" = "pumidor.infra.home"
     # 10.1.0.0/16 Lab
     # 10.2.0.0/24 Trusted
     # 172.16.0.0/22 IoT
@@ -135,5 +136,35 @@ module "hass_ext_validation" {
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
   cert_name         = "hass.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "influxdb_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
+  admin_email       = var.admin_email
+  delegation_set_id = "influxdb"
+  subzone_name      = "influxdb.infra.home.certs.a-rwx.org"
+  cert_name         = "influxdb.infra.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "pumidor_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
+  admin_email       = var.admin_email
+  delegation_set_id = "pumidor"
+  subzone_name      = "pumidor.infra.home.certs.a-rwx.org"
+  cert_name         = "pumidor.infra.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "pumidor_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.3"
+  admin_email       = var.admin_email
+  delegation_set_id = "pumidor_ext"
+  subzone_name      = "pumidor.certs.a-rwx.org"
+  cert_name         = "pumidor.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
