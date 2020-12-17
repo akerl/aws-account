@@ -57,6 +57,12 @@ locals {
     "192.168.0.50" = "switch.standard.home"
     # 192.168.99.0/24 Guest
   }
+
+  nuc_vhosts = [
+    "pumidor",
+    "influxdb",
+    "hass",
+  ]
 }
 
 module "a-rwx_org" {
@@ -118,13 +124,23 @@ module "controller_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "nuc_validation" {
+resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
+  for_each = toset(local.nuc_vhosts)
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.value}.nuc.infra.home.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = ["10.0.0.100"]
+}
+
+module "nuc_vhost_validation" {
+  for_each          = toset(local.nuc_vhosts)
   source            = "armorfret/r53-certbot/aws"
   version           = "0.0.3"
   admin_email       = var.admin_email
-  delegation_set_id = "nuc"
-  subzone_name      = "nuc.infra.home.certs.a-rwx.org"
-  cert_name         = "nuc.infra.home.a-rwx.org"
+  delegation_set_id = "nuc_${each.value}"
+  subzone_name      = "${each.value}.nuc.infra.home.certs.a-rwx.org"
+  cert_name         = "${each.value}.nuc.infra.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
