@@ -1,8 +1,5 @@
 locals {
   records = {
-    # External
-    "45.79.135.98" = "hass"
-    "45.79.135.98" = "pumidor"
     # 10.0.0.0/24 Infra
     "10.0.0.1"   = "gateway.infra.home"
     "10.0.0.2"   = "core.infra.home"
@@ -63,6 +60,11 @@ locals {
     "influxdb",
     "hass",
   ]
+
+  external_vhosts = [
+    "hass",
+    "pumidor",
+  ]
 }
 
 module "a-rwx_org" {
@@ -122,6 +124,15 @@ module "controller_validation" {
   subzone_name      = "controller.infra.home.certs.a-rwx.org"
   cert_name         = "controller.infra.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+resource "aws_route53_record" "gateway_external_a-rwx_org" {
+  for_each = toset(local.external_vhosts)
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.value}.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = ["45.79.135.98"]
 }
 
 resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
