@@ -3,6 +3,7 @@ locals {
     # 10.0.0.0/24 Infra
     "10.0.0.1"   = "gateway.infra.home"
     "10.0.0.2"   = "core.infra.home"
+    "10.0.0.3"   = "tor.lab.home"
     "10.0.0.10"  = "controller.infra.home"
     "10.0.0.11"  = "ups.infra.home"
     "10.0.0.20"  = "switch0.infra.home"
@@ -13,6 +14,16 @@ locals {
     "10.0.0.42"  = "wap2.infra.home"
     "10.0.0.100" = "nuc.infra.home"
     "10.0.0.101" = "hass-int.infra.home"
+    "10.0.0.201" = "s1-ipmi.infra.home"
+    "10.0.0.202" = "s2-ipmi.infra.home"
+    "10.0.0.203" = "s3-ipmi.infra.home"
+    "10.0.0.204" = "s4-ipmi.infra.home"
+    "10.0.0.205" = "s5-ipmi.infra.home"
+    "10.0.0.211" = "s1.infra.home"
+    "10.0.0.212" = "s2.infra.home"
+    "10.0.0.213" = "s3.infra.home"
+    "10.0.0.214" = "s4.infra.home"
+    "10.0.0.215" = "s5.infra.home"
     # 10.1.0.0/16 Lab
     # 10.2.0.0/24 Trusted
     # 172.16.0.0/22 IoT
