@@ -51,6 +51,7 @@ locals {
     "172.16.0.90"  = "chromecast-basement.iot.home"
     "172.16.0.91"  = "chromecast-family.iot.home"
     "172.16.0.100" = "shelf.iot.home"
+    "172.16.0.101" = "teslacam.iot.home"
     "172.16.1.1"   = "nanoleaf-office.iot.home"
     # 172.16.20.0/24 Gaming
     "172.16.20.20" = "ps4.gaming.home"
@@ -60,6 +61,7 @@ locals {
     "192.168.0.21" = "lift.standard.home"
     "192.168.0.22" = "wrist.standard.home"
     "192.168.0.23" = "bean.standard.home"
+    "192.168.0.24" = "rpi4.standard.home"
     "192.168.0.30" = "mazer.standard.home"
     "192.168.0.31" = "mazer-wireless.standard.home"
     "192.168.0.40" = "kelly-iphone.standard.home"
