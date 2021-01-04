@@ -52,6 +52,7 @@ locals {
     "172.16.0.91"  = "chromecast-family.iot.home"
     "172.16.0.100" = "shelf.iot.home"
     "172.16.0.101" = "teslacam.iot.home"
+    "172.16.0.102" = "sdr.iot.home"
     "172.16.1.1"   = "nanoleaf-office.iot.home"
     # 172.16.20.0/24 Gaming
     "172.16.20.20" = "ps4.gaming.home"
