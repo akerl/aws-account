@@ -1,11 +1,8 @@
 locals {
   records = {
-    # 10.0.0.0/24 Infra
+    # 10.0.0.0/24 Infra (VLAN nil)
     "10.0.0.1"   = "gateway.infra.home"
     "10.0.0.2"   = "core.infra.home"
-    "10.0.0.3"   = "tor.lab.home"
-    "10.0.0.10"  = "controller.infra.home"
-    "10.0.0.11"  = "ups.infra.home"
     "10.0.0.20"  = "switch0.infra.home"
     "10.0.0.21"  = "switch1.infra.home"
     "10.0.0.22"  = "switch2.infra.home"
@@ -13,21 +10,26 @@ locals {
     "10.0.0.40"  = "wap0.infra.home"
     "10.0.0.41"  = "wap1.infra.home"
     "10.0.0.42"  = "wap2.infra.home"
-    "10.0.0.100" = "nuc.infra.home"
-    "10.0.0.101" = "hass-int.infra.home"
-    "10.0.0.201" = "s1-ipmi.infra.home"
-    "10.0.0.202" = "s2-ipmi.infra.home"
-    "10.0.0.203" = "s3-ipmi.infra.home"
-    "10.0.0.204" = "s4-ipmi.infra.home"
-    "10.0.0.205" = "s5-ipmi.infra.home"
-    "10.0.0.211" = "s1.infra.home"
-    "10.0.0.212" = "s2.infra.home"
-    "10.0.0.213" = "s3.infra.home"
-    "10.0.0.214" = "s4.infra.home"
-    "10.0.0.215" = "s5.infra.home"
-    # 10.1.0.0/16 Lab
-    # 10.2.0.0/24 Trusted
-    # 172.16.0.0/22 IoT
+    # 10.0.1.0/24 Servers (VLAN 101)
+    "10.0.1.11" = "s1-ipmi.servers.home"
+    "10.0.1.12" = "s2-ipmi.servers.home"
+    "10.0.1.13" = "s3-ipmi.servers.home"
+    "10.0.1.14" = "s4-ipmi.servers.home"
+    "10.0.1.15" = "s5-ipmi.servers.home"
+    "10.0.1.21" = "s1.servers.home"
+    "10.0.1.22" = "s2.servers.home"
+    "10.0.1.23" = "s3.servers.home"
+    "10.0.1.24" = "s4.servers.home"
+    "10.0.1.25" = "s5.servers.home"
+    "10.0.1.30"  = "ups.servers.home"
+    "10.0.1.31" = "shelf.iot.home"
+    "10.0.1.32" = "teslacam.iot.home"
+    "10.0.1.33" = "sdr.iot.home"
+    "10.0.1.100" = "nuc.servers.home"
+    "10.0.1.101" = "hass-int.servers.home"
+    # 10.1.0.0/16 Lab (VLAN 110)
+    # 10.2.0.0/24 Trusted (VLAN 120)
+    # 172.16.0.0/22 IoT (VLAN 700)
     "172.16.0.2"   = "thermostat.iot.home"
     "172.16.0.3"   = "garage.iot.home"
     "172.16.0.4"   = "printer.iot.home"
@@ -51,14 +53,11 @@ locals {
     "172.16.0.81"  = "tv-family.iot.home"
     "172.16.0.90"  = "chromecast-basement.iot.home"
     "172.16.0.91"  = "chromecast-family.iot.home"
-    "172.16.0.100" = "shelf.iot.home"
-    "172.16.0.101" = "teslacam.iot.home"
-    "172.16.0.102" = "sdr.iot.home"
     "172.16.1.1"   = "nanoleaf-office.iot.home"
-    # 172.16.20.0/24 Gaming
+    # 172.16.20.0/24 Gaming (VLAN 720)
     "172.16.20.20" = "ps4.gaming.home"
     "172.16.20.30" = "graff.gaming.home"
-    # 192.168.0.0/24 Standard
+    # 192.168.0.0/24 Standard (VLAN 900)
     "192.168.0.20" = "szeth.standard.home"
     "192.168.0.21" = "lift.standard.home"
     "192.168.0.22" = "wrist.standard.home"
@@ -69,7 +68,7 @@ locals {
     "192.168.0.40" = "kelly-iphone.standard.home"
     "192.168.0.41" = "kelly-ipad.standard.home"
     "192.168.0.50" = "switch.standard.home"
-    # 192.168.99.0/24 Guest
+    # 192.168.99.0/24 Guest (VLAN 999)
   }
 
   nuc_vhosts = [
