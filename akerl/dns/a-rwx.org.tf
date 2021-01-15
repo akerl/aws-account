@@ -1,59 +1,61 @@
 locals {
   records = {
     # 10.0.0.0/24 Infra (VLAN nil)
-    "10.0.0.1"   = "gateway.infra.home"
-    "10.0.0.2"   = "core.infra.home"
-    "10.0.0.20"  = "switch0.infra.home"
-    "10.0.0.21"  = "switch1.infra.home"
-    "10.0.0.22"  = "switch2.infra.home"
-    "10.0.0.23"  = "switch3.infra.home"
-    "10.0.0.40"  = "wap0.infra.home"
-    "10.0.0.41"  = "wap1.infra.home"
-    "10.0.0.42"  = "wap2.infra.home"
+    "10.0.0.1"  = "gateway.infra.home"
+    "10.0.0.2"  = "core.infra.home"
+    "10.0.0.20" = "switch0.infra.home"
+    "10.0.0.21" = "switch1.infra.home"
+    "10.0.0.22" = "switch2.infra.home"
+    "10.0.0.23" = "switch3.infra.home"
+    "10.0.0.40" = "wap0.infra.home"
+    "10.0.0.41" = "wap1.infra.home"
+    "10.0.0.42" = "wap2.infra.home"
     # 10.0.1.0/24 Servers (VLAN 101)
-    "10.0.1.11" = "s1-ipmi.servers.home"
-    "10.0.1.12" = "s2-ipmi.servers.home"
-    "10.0.1.13" = "s3-ipmi.servers.home"
-    "10.0.1.14" = "s4-ipmi.servers.home"
-    "10.0.1.15" = "s5-ipmi.servers.home"
-    "10.0.1.21" = "s1.servers.home"
-    "10.0.1.22" = "s2.servers.home"
-    "10.0.1.23" = "s3.servers.home"
-    "10.0.1.24" = "s4.servers.home"
-    "10.0.1.25" = "s5.servers.home"
+    "10.0.1.11"  = "s1-ipmi.servers.home"
+    "10.0.1.12"  = "s2-ipmi.servers.home"
+    "10.0.1.13"  = "s3-ipmi.servers.home"
+    "10.0.1.14"  = "s4-ipmi.servers.home"
+    "10.0.1.15"  = "s5-ipmi.servers.home"
+    "10.0.1.21"  = "s1.servers.home"
+    "10.0.1.22"  = "s2.servers.home"
+    "10.0.1.23"  = "s3.servers.home"
+    "10.0.1.24"  = "s4.servers.home"
+    "10.0.1.25"  = "s5.servers.home"
     "10.0.1.30"  = "ups.servers.home"
-    "10.0.1.31" = "shelf.iot.home"
-    "10.0.1.32" = "teslacam.iot.home"
-    "10.0.1.33" = "sdr.iot.home"
+    "10.0.1.31"  = "shelf.iot.home"
+    "10.0.1.32"  = "teslacam.iot.home"
+    "10.0.1.33"  = "sdr.iot.home"
     "10.0.1.100" = "nuc.servers.home"
     "10.0.1.101" = "hass-int.servers.home"
     # 10.1.0.0/16 Lab (VLAN 110)
     # 10.2.0.0/24 Trusted (VLAN 120)
     # 172.16.0.0/22 IoT (VLAN 700)
-    "172.16.0.2"   = "thermostat.iot.home"
-    "172.16.0.3"   = "garage.iot.home"
-    "172.16.0.4"   = "printer.iot.home"
-    "172.16.0.5"   = "washer.iot.home"
-    "172.16.0.6"   = "dryer.iot.home"
-    "172.16.0.7"   = "microwave.iot.home"
-    "172.16.0.8"   = "oven.iot.home"
-    "172.16.0.10"  = "jasnah.iot.home"
-    "172.16.0.20"  = "doorbell.iot.home"
-    "172.16.0.21"  = "cam-basement.iot.home"
-    "172.16.0.22"  = "cam-dog.iot.home"
-    "172.16.0.50"  = "smartthings.iot.home"
-    "172.16.0.51"  = "harmony.iot.home"
-    "172.16.0.52"  = "nestconnect.iot.home"
-    "172.16.0.53"  = "august.iot.home"
-    "172.16.0.60"  = "echo-kitchen.iot.home"
-    "172.16.0.61"  = "echo-basement.iot.home"
-    "172.16.0.62"  = "echo-family.iot.home"
-    "172.16.0.70"  = "google-bedroom.iot.home"
-    "172.16.0.80"  = "tv-basement.iot.home"
-    "172.16.0.81"  = "tv-family.iot.home"
-    "172.16.0.90"  = "chromecast-basement.iot.home"
-    "172.16.0.91"  = "chromecast-family.iot.home"
-    "172.16.1.1"   = "nanoleaf-office.iot.home"
+    "172.16.0.2"  = "thermostat.iot.home"
+    "172.16.0.3"  = "garage.iot.home"
+    "172.16.0.4"  = "printer.iot.home"
+    "172.16.0.5"  = "washer.iot.home"
+    "172.16.0.6"  = "dryer.iot.home"
+    "172.16.0.7"  = "microwave.iot.home"
+    "172.16.0.8"  = "oven.iot.home"
+    "172.16.0.10" = "jasnah.iot.home"
+    "172.16.0.20" = "doorbell.iot.home"
+    "172.16.0.21" = "cam-basement.iot.home"
+    "172.16.0.22" = "cam-dog.iot.home"
+    "172.16.0.50" = "smartthings.iot.home"
+    "172.16.0.51" = "harmony.iot.home"
+    "172.16.0.52" = "nestconnect.iot.home"
+    "172.16.0.53" = "august.iot.home"
+    "172.16.0.54" = "flic-basement.iot.home"
+    "172.16.0.55" = "flic-office.iot.home"
+    "172.16.0.60" = "echo-kitchen.iot.home"
+    "172.16.0.61" = "echo-basement.iot.home"
+    "172.16.0.62" = "echo-family.iot.home"
+    "172.16.0.70" = "google-bedroom.iot.home"
+    "172.16.0.80" = "tv-basement.iot.home"
+    "172.16.0.81" = "tv-family.iot.home"
+    "172.16.0.90" = "chromecast-basement.iot.home"
+    "172.16.0.91" = "chromecast-family.iot.home"
+    "172.16.1.1"  = "nanoleaf-office.iot.home"
     # 172.16.20.0/24 Gaming (VLAN 720)
     "172.16.20.20" = "ps4.gaming.home"
     "172.16.20.30" = "graff.gaming.home"
@@ -132,13 +134,13 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   records  = [each.key]
 }
 
-module "controller_validation" {
+module "gateway_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.3"
+  version           = "0.0.4"
   admin_email       = var.admin_email
-  delegation_set_id = "controller"
-  subzone_name      = "controller.infra.home.certs.a-rwx.org"
-  cert_name         = "controller.infra.home.a-rwx.org"
+  delegation_set_id = "gateway"
+  subzone_name      = "gateway.infra.home.certs.a-rwx.org"
+  cert_name         = "gateway.infra.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
@@ -163,7 +165,7 @@ resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
 module "nuc_vhost_validation" {
   for_each          = toset(local.nuc_vhosts)
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.3"
+  version           = "0.0.4"
   admin_email       = var.admin_email
   delegation_set_id = "nuc_${each.value}"
   subzone_name      = "${each.value}.nuc.infra.home.certs.a-rwx.org"
@@ -173,7 +175,7 @@ module "nuc_vhost_validation" {
 
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.3"
+  version           = "0.0.4"
   admin_email       = var.admin_email
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
@@ -183,7 +185,7 @@ module "hass_ext_validation" {
 
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.3"
+  version           = "0.0.4"
   admin_email       = var.admin_email
   delegation_set_id = "pumidor_ext"
   subzone_name      = "pumidor.certs.a-rwx.org"
