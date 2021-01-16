@@ -3,6 +3,7 @@ locals {
     # 10.0.0.0/24 Infra (VLAN nil)
     "10.0.0.1"  = "gateway.infra.home"
     "10.0.0.2"  = "core.infra.home"
+    "10.0.0.3"  = "tor.infra.home"
     "10.0.0.20" = "switch0.infra.home"
     "10.0.0.21" = "switch1.infra.home"
     "10.0.0.22" = "switch2.infra.home"
@@ -38,6 +39,7 @@ locals {
     "172.16.0.7"  = "microwave.iot.home"
     "172.16.0.8"  = "oven.iot.home"
     "172.16.0.10" = "jasnah.iot.home"
+    "172.16.0.11" = "streamdeck.iot.home"
     "172.16.0.20" = "doorbell.iot.home"
     "172.16.0.21" = "cam-basement.iot.home"
     "172.16.0.22" = "cam-dog.iot.home"
@@ -66,6 +68,7 @@ locals {
     "192.168.0.23" = "bean.standard.home"
     "192.168.0.24" = "bean-wireless.standard.home"
     "192.168.0.25" = "rpi4.standard.home"
+    "192.168.0.26" = "kindle.standard.home"
     "192.168.0.30" = "mazer.standard.home"
     "192.168.0.31" = "mazer-wireless.standard.home"
     "192.168.0.40" = "kelly-iphone.standard.home"
