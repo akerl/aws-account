@@ -26,7 +26,7 @@ locals {
     "10.0.1.32"  = "teslacam.iot.home"
     "10.0.1.33"  = "sdr.iot.home"
     "10.0.1.100" = "nuc.servers.home"
-    "10.0.1.101" = "hass-int.servers.home"
+    "10.0.1.101" = "hass-iot.servers.home"
     # 10.1.0.0/16 Lab (VLAN 110)
     # 10.2.0.0/24 Trusted (VLAN 120)
     # 172.16.0.0/22 IoT (VLAN 700)
@@ -156,10 +156,10 @@ resource "aws_route53_record" "gateway_external_a-rwx_org" {
 resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
   for_each = toset(local.nuc_vhosts)
   zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.value}.nuc.infra.home.a-rwx.org"
+  name     = "${each.value}.nuc.servers.home.a-rwx.org"
   type     = "A"
   ttl      = "60"
-  records  = ["10.0.0.100"]
+  records  = ["10.0.1.100"]
 }
 
 module "nuc_vhost_validation" {
@@ -168,8 +168,8 @@ module "nuc_vhost_validation" {
   version           = "0.0.4"
   admin_email       = var.admin_email
   delegation_set_id = "nuc_${each.value}"
-  subzone_name      = "${each.value}.nuc.infra.home.certs.a-rwx.org"
-  cert_name         = "${each.value}.nuc.infra.home.a-rwx.org"
+  subzone_name      = "${each.value}.nuc.servers.home.certs.a-rwx.org"
+  cert_name         = "${each.value}.nuc.servers.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
