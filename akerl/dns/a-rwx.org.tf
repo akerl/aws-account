@@ -58,6 +58,9 @@ locals {
     "172.16.0.90" = "chromecast-basement.iot.home"
     "172.16.0.91" = "chromecast-family.iot.home"
     "172.16.1.1"  = "nanoleaf-office.iot.home"
+    "172.16.1.2"  = "outlet-shelf.iot.home"
+    "172.16.1.3"  = "light-officeback.iot.home"
+    "172.16.1.4"  = "light-officedesk.iot.home"
     # 172.16.20.0/24 Gaming (VLAN 720)
     "172.16.20.20" = "ps4.gaming.home"
     "172.16.20.30" = "graff.gaming.home"
