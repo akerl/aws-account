@@ -26,7 +26,7 @@ locals {
     "10.0.1.32"  = "teslacam.iot.home"
     "10.0.1.33"  = "sdr.iot.home"
     "10.0.1.100" = "nuc.servers.home"
-    "10.0.1.101" = "hass-iot.servers.home"
+    "10.0.1.101" = "hass-int.servers.home"
     # 10.1.0.0/16 Lab (VLAN 110)
     # 10.2.0.0/24 Trusted (VLAN 120)
     # 172.16.0.0/22 IoT (VLAN 700)
