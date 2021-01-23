@@ -76,6 +76,7 @@ locals {
     "192.168.0.31" = "mazer-wireless.standard.home"
     "192.168.0.40" = "kelly-iphone.standard.home"
     "192.168.0.41" = "kelly-ipad.standard.home"
+    "192.168.0.42" = "kelly-laptop.standard.home"
     "192.168.0.50" = "switch.standard.home"
     # 192.168.99.0/24 Guest (VLAN 999)
   }
