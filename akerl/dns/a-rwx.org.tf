@@ -131,7 +131,7 @@ resource "aws_route53_record" "cname_home_a-rwx_org" {
   name    = "home.a-rwx.org"
   type    = "CNAME"
   ttl     = "60"
-  records = ["akerl.dyndns.org"]
+  records = ["akerl.ddns.net"]
 }
 
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
@@ -145,7 +145,7 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
 
 module "gateway_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.4"
+  version           = "0.0.5"
   admin_email       = var.admin_email
   delegation_set_id = "gateway"
   subzone_name      = "gateway.infra.home.certs.a-rwx.org"
@@ -174,7 +174,7 @@ resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
 module "nuc_vhost_validation" {
   for_each          = toset(local.nuc_vhosts)
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.4"
+  version           = "0.0.5"
   admin_email       = var.admin_email
   delegation_set_id = "nuc_${each.value}"
   subzone_name      = "${each.value}.nuc.servers.home.certs.a-rwx.org"
@@ -184,7 +184,7 @@ module "nuc_vhost_validation" {
 
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.4"
+  version           = "0.0.5"
   admin_email       = var.admin_email
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
@@ -194,7 +194,7 @@ module "hass_ext_validation" {
 
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.4"
+  version           = "0.0.5"
   admin_email       = var.admin_email
   delegation_set_id = "pumidor_ext"
   subzone_name      = "pumidor.certs.a-rwx.org"
