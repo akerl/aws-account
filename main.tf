@@ -60,3 +60,7 @@ module "akerl-aws-account" {
 module "hass" {
   source = "./hass"
 }
+
+module "nas" {
+  source = "./nas"
+}
