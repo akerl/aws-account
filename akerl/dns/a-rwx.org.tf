@@ -1,84 +1,70 @@
 locals {
   records = {
     # 10.0.0.0/24 Infra (VLAN nil)
-    "10.0.0.1"  = "gateway.infra.home"
-    "10.0.0.2"  = "core.infra.home"
-    "10.0.0.3"  = "tor.infra.home"
-    "10.0.0.20" = "switch0.infra.home"
-    "10.0.0.21" = "switch1.infra.home"
-    "10.0.0.22" = "switch2.infra.home"
-    "10.0.0.23" = "switch3.infra.home"
-    "10.0.0.40" = "wap0.infra.home"
-    "10.0.0.41" = "wap1.infra.home"
-    "10.0.0.42" = "wap2.infra.home"
+    "10.0.0.1"  = "gateway.infra"
+    "10.0.0.2"  = "core.infra"
+    "10.0.0.3"  = "leaf.infra"
+    "10.0.0.20" = "switch-theatre.infra"
+    "10.0.0.21" = "switch-family.infra"
+    "10.0.0.22" = "switch-office.infra"
+    "10.0.0.23" = "switch4.infra"
+    "10.0.0.24" = "switch5.infra"
+    "10.0.0.40" = "wap-gym.infra"
+    "10.0.0.41" = "wap-basement.infra"
+    "10.0.0.42" = "wap-garage.infra"
+    "10.0.0.43" = "wap-library.infra"
+    "10.0.0.44" = "wap-master.infra"
+    "10.0.0.45" = "wap-guest.infra"
+    "10.0.0.50" = "eap-front.infra"
+    "10.0.0.51" = "eap-fence.infra"
+    "10.0.0.52" = "eap-deck.infra"
     # 10.0.1.0/24 Servers (VLAN 101)
-    "10.0.1.11"  = "s1-ipmi.servers.home"
-    "10.0.1.12"  = "s2-ipmi.servers.home"
-    "10.0.1.13"  = "s3-ipmi.servers.home"
-    "10.0.1.14"  = "s4-ipmi.servers.home"
-    "10.0.1.15"  = "s5-ipmi.servers.home"
-    "10.0.1.21"  = "s1.servers.home"
-    "10.0.1.22"  = "s2.servers.home"
-    "10.0.1.23"  = "s3.servers.home"
-    "10.0.1.24"  = "s4.servers.home"
-    "10.0.1.25"  = "s5.servers.home"
-    "10.0.1.30"  = "ups.servers.home"
-    "10.0.1.31"  = "shelf.servers.home"
-    "10.0.1.32"  = "teslacam.servers.home"
-    "10.0.1.33"  = "sdr.servers.home"
-    "10.0.1.34"  = "rpi4.servers.home"
-    "10.0.1.100" = "nuc.servers.home"
-    "10.0.1.101" = "hass-int.servers.home"
-    # 10.1.0.0/16 Lab (VLAN 110)
-    # 10.2.0.0/24 Trusted (VLAN 120)
+    "10.0.1.11"  = "s1-ipmi.servers"
+    "10.0.1.12"  = "s2-ipmi.servers"
+    "10.0.1.13"  = "s3-ipmi.servers"
+    "10.0.1.14"  = "s4-ipmi.servers"
+    "10.0.1.15"  = "s5-ipmi.servers"
+    "10.0.1.21"  = "s1.servers"
+    "10.0.1.22"  = "s2.servers"
+    "10.0.1.23"  = "s3.servers"
+    "10.0.1.24"  = "s4.servers"
+    "10.0.1.25"  = "s5.servers"
+    "10.0.1.30"  = "ups.servers"
+    "10.0.1.31"  = "shelf.servers"
+    "10.0.1.32"  = "teslacam.servers"
+    "10.0.1.33"  = "sdr.servers"
+    "10.0.1.34"  = "rpi4.servers"
+    "10.0.1.100" = "nuc.servers"
+    "10.0.1.101" = "hass-int.servers"
+    "10.0.1.150" = "nas.servers"
+    # 10.0.2.0/24 security (VLAN 102)
+    "10.0.2.2"  = "nas.security"
+    "10.0.2.10" = "cam-front.security"
+    "10.0.2.11" = "cam-deck.security"
+    "10.0.2.12" = "cam-fence.security"
+    "10.0.2.13" = "cam-garage.security"
+    "10.0.2.24" = "cam-patio.security"
     # 172.16.0.0/22 IoT (VLAN 700)
-    "172.16.0.2"  = "thermostat.iot.home"
-    "172.16.0.3"  = "garage.iot.home"
-    "172.16.0.4"  = "printer.iot.home"
-    "172.16.0.5"  = "washer.iot.home"
-    "172.16.0.6"  = "dryer.iot.home"
-    "172.16.0.7"  = "microwave.iot.home"
-    "172.16.0.8"  = "oven.iot.home"
-    "172.16.0.10" = "jasnah.iot.home"
-    "172.16.0.11" = "streamdeck.iot.home"
-    "172.16.0.20" = "doorbell.iot.home"
-    "172.16.0.21" = "cam-basement.iot.home"
-    "172.16.0.22" = "cam-dog.iot.home"
-    "172.16.0.50" = "smartthings.iot.home"
-    "172.16.0.51" = "harmony.iot.home"
-    "172.16.0.52" = "nestconnect.iot.home"
-    "172.16.0.53" = "august.iot.home"
-    "172.16.0.54" = "flic-basement.iot.home"
-    "172.16.0.55" = "flic-office.iot.home"
-    "172.16.0.60" = "echo-kitchen.iot.home"
-    "172.16.0.61" = "echo-basement.iot.home"
-    "172.16.0.62" = "echo-family.iot.home"
-    "172.16.0.70" = "google-bedroom.iot.home"
-    "172.16.0.80" = "tv-basement.iot.home"
-    "172.16.0.81" = "tv-family.iot.home"
-    "172.16.0.90" = "chromecast-basement.iot.home"
-    "172.16.0.91" = "chromecast-family.iot.home"
-    "172.16.1.1"  = "nanoleaf-office.iot.home"
-    "172.16.1.2"  = "outlet-shelf.iot.home"
-    "172.16.1.3"  = "light-officeback.iot.home"
-    "172.16.1.4"  = "light-officedesk.iot.home"
+    "172.16.0.2" = "appletv.iot"
+    "172.16.0.3" = "flichub-office.iot"
+    "172.16.0.4" = "tivo-family.iot"
     # 172.16.20.0/24 Gaming (VLAN 720)
-    "172.16.20.20" = "ps4.gaming.home"
-    "172.16.20.30" = "graff.gaming.home"
+    "172.16.20.20" = "ps4.gaming"
+    "172.16.20.30" = "graff.gaming"
     # 192.168.0.0/24 Standard (VLAN 900)
-    "192.168.0.20" = "szeth.standard.home"
-    "192.168.0.21" = "lift.standard.home"
-    "192.168.0.22" = "wrist.standard.home"
-    "192.168.0.23" = "bean.standard.home"
-    "192.168.0.24" = "bean-wireless.standard.home"
-    "192.168.0.25" = "kindle.standard.home"
-    "192.168.0.30" = "mazer.standard.home"
-    "192.168.0.31" = "mazer-wireless.standard.home"
-    "192.168.0.40" = "kelly-iphone.standard.home"
-    "192.168.0.41" = "kelly-ipad.standard.home"
-    "192.168.0.42" = "kelly-laptop.standard.home"
-    "192.168.0.43" = "kelly-watch.standard.home"
-    "192.168.0.50" = "switch.standard.home"
+    "192.168.0.20" = "szeth.standard"
+    "192.168.0.21" = "lift.standard"
+    "192.168.0.22" = "wrist.standard"
+    "192.168.0.23" = "bean.standard"
+    "192.168.0.24" = "bean-wireless.standard"
+    "192.168.0.25" = "kindle.standard"
+    "192.168.0.30" = "mazer.standard"
+    "192.168.0.31" = "mazer-wireless.standard"
+    "192.168.0.40" = "kelly-iphone.standard"
+    "192.168.0.41" = "kelly-ipad.standard"
+    "192.168.0.42" = "kelly-laptop.standard"
+    "192.168.0.43" = "kelly-watch.standard"
+    "192.168.0.50" = "switch.standard"
     # 192.168.99.0/24 Guest (VLAN 999)
   }
 
@@ -86,11 +72,13 @@ locals {
     "pumidor",
     "influxdb",
     "hass",
+    "nas",
   ]
 
   external_vhosts = [
     "hass",
     "pumidor",
+    "nas",
   ]
 }
 
@@ -137,7 +125,7 @@ resource "aws_route53_record" "cname_home_a-rwx_org" {
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   for_each = local.records
   zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.value}.a-rwx.org"
+  name     = "${each.value}.home.a-rwx.org"
   type     = "A"
   ttl      = "60"
   records  = [each.key]
@@ -189,6 +177,16 @@ module "hass_ext_validation" {
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
   cert_name         = "hass.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "nas_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.0.5"
+  admin_email       = var.admin_email
+  delegation_set_id = "nas_ext"
+  subzone_name      = "nas.certs.a-rwx.org"
+  cert_name         = "nas.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
