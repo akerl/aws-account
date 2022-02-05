@@ -72,13 +72,13 @@ locals {
     "pumidor",
     "influxdb",
     "hass",
-    "nas",
+    "nvr",
   ]
 
   external_vhosts = [
     "hass",
     "pumidor",
-    "nas",
+    "nvr",
   ]
 }
 
@@ -180,13 +180,13 @@ module "hass_ext_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "nas_ext_validation" {
+module "nvr_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.0.5"
   admin_email       = var.admin_email
-  delegation_set_id = "nas_ext"
-  subzone_name      = "nas.certs.a-rwx.org"
-  cert_name         = "nas.a-rwx.org"
+  delegation_set_id = "nvr_ext"
+  subzone_name      = "nvr.certs.a-rwx.org"
+  cert_name         = "nvr.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
