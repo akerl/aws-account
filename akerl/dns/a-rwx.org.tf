@@ -141,6 +141,14 @@ module "gateway_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+resource "aws_route53_record" "proxy_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "proxy.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["45.79.135.98"]
+}
+
 resource "aws_route53_record" "gateway_external_a-rwx_org" {
   for_each = toset(local.external_vhosts)
   zone_id  = module.a-rwx_org.zone_id
