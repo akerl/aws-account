@@ -76,8 +76,11 @@ locals {
   ]
 
   external_vhosts = [
-    "hass",
     "pumidor",
+  ]
+
+  wg_vhosts = [
+    "hass",
     "nvr",
   ]
 }
@@ -156,6 +159,15 @@ resource "aws_route53_record" "gateway_external_a-rwx_org" {
   type     = "A"
   ttl      = "60"
   records  = ["45.79.135.98"]
+}
+
+resource "aws_route53_record" "gateway_wg_a-rwx_org" {
+  for_each = toset(local.wg_vhosts)
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.value}.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = ["10.255.255.1"]
 }
 
 resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
