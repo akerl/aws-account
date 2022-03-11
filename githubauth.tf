@@ -1,6 +1,6 @@
 module "akerl-quote-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.2.6"
+  version        = "0.3.0"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-quote-auth"
   lambda_bucket  = module.akerl-githubauthlambda.publish_bucket
@@ -9,7 +9,7 @@ module "akerl-quote-auth" {
 
 module "akerl-private-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.2.6"
+  version        = "0.3.0"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-private-auth"
   lambda_bucket  = module.akerl-githubauthlambda.publish_bucket

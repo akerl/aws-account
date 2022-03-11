@@ -87,7 +87,7 @@ locals {
 
 module "a-rwx_org" {
   source            = "armorfret/r53-zone/aws"
-  version           = "0.3.2"
+  version           = "0.4.0"
   admin_email       = var.admin_email
   domain_name       = "a-rwx.org"
   delegation_set_id = aws_route53_delegation_set.main.id
@@ -136,7 +136,7 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
 
 module "gateway_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.5"
+  version           = "0.1.0"
   admin_email       = var.admin_email
   delegation_set_id = "gateway"
   subzone_name      = "gateway.infra.home.certs.a-rwx.org"
@@ -182,7 +182,7 @@ resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
 module "nuc_vhost_validation" {
   for_each          = toset(local.nuc_vhosts)
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.5"
+  version           = "0.1.0"
   admin_email       = var.admin_email
   delegation_set_id = "nuc_${each.value}"
   subzone_name      = "${each.value}.nuc.servers.home.certs.a-rwx.org"
@@ -192,7 +192,7 @@ module "nuc_vhost_validation" {
 
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.5"
+  version           = "0.1.0"
   admin_email       = var.admin_email
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
@@ -202,7 +202,7 @@ module "hass_ext_validation" {
 
 module "nvr_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.5"
+  version           = "0.1.0"
   admin_email       = var.admin_email
   delegation_set_id = "nvr_ext"
   subzone_name      = "nvr.certs.a-rwx.org"
@@ -212,7 +212,7 @@ module "nvr_ext_validation" {
 
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.0.5"
+  version           = "0.1.0"
   admin_email       = var.admin_email
   delegation_set_id = "pumidor_ext"
   subzone_name      = "pumidor.certs.a-rwx.org"

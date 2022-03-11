@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      version = "3.4.0"
-    }
-  }
-}
-
 data "aws_iam_policy_document" "trust_policy" {
   statement {
     actions = ["sts:AssumeRole"]
