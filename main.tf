@@ -24,6 +24,7 @@ module "account" {
 
   admins = [
     "akerl-codepad",
+    "akerl-wilson",
   ]
   billing_email = "me@lesaker.org"
 }
