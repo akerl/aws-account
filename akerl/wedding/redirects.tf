@@ -44,7 +44,8 @@ resource "aws_s3_bucket_versioning" "redirect_bucket" {
 resource "aws_s3_bucket_website_configuration" "redirect_bucket" {
   bucket = aws_s3_bucket.redirect_bucket.bucket
   redirect_all_requests_to {
-    host_name = "https://www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
+    host_name = "www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
+    protocol  = "https"
   }
 }
 
