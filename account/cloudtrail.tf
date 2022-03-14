@@ -28,7 +28,10 @@ resource "aws_cloudtrail" "main-trail" {
 
 resource "aws_s3_bucket" "main-trail" {
   bucket = "akerl-cloudtrail"
+}
 
+resource "aws_s3_bucket_policy" "main-trail" {
+  bucket = aws_s3_bucket.main-trail.id
   policy = <<POLICY
 {
     "Version": "2012-10-17",

@@ -21,19 +21,30 @@ data "aws_iam_policy_document" "redirect_bucket-read-access" {
 
 resource "aws_s3_bucket" "redirect_bucket" {
   bucket = var.redirect_bucket
+}
+
+resource "aws_s3_bucket_logging" "redirect_bucket" {
+  bucket        = aws_s3_bucket.redirect_bucket.id
+  target_bucket = var.logging_bucket
+  target_prefix = "akerl-wedding-redirect/"
+}
+
+resource "aws_s3_bucket_policy" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
   policy = data.aws_iam_policy_document.redirect_bucket-read-access.json
+}
 
-  versioning {
-    enabled = "true"
+resource "aws_s3_bucket_versioning" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
+}
 
-  logging {
-    target_bucket = var.logging_bucket
-    target_prefix = "akerl-wedding-redirect/"
-  }
-
-  website {
-    redirect_all_requests_to = "https://www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
+resource "aws_s3_bucket_website_configuration" "redirect_bucket" {
+  bucket = aws_s3_bucket.redirect_bucket.bucket
+  redirect_all_requests_to {
+    host_name = "https://www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
   }
 }
 

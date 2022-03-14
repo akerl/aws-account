@@ -24,6 +24,6 @@ provider "terraform.scrtybybscrty.org/armorfret/awscreds" {
   version     = "0.3.0"
   constraints = "0.3.0, ~> 0.3"
   hashes = [
-    "h1:8g7WInnBD4ltVda64fy6INkAK386CjWNL0CevZjqYU4=",
+    "h1:cDeBGQ6O/CKGynkzT1LtEhybURLYVaylsCzH16lSzf8=",
   ]
 }

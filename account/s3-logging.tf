@@ -1,10 +1,17 @@
 resource "aws_s3_bucket" "logging" {
   bucket = "akerl-s3-logs"
-  acl    = "log-delivery-write"
+}
 
-  versioning {
-    enabled = true
+resource "aws_s3_bucket_versioning" "logging" {
+  bucket = aws_s3_bucket.logging.id
+  versioning_configuration {
+    status = "Enabled"
   }
+}
+
+resource "aws_s3_bucket_acl" "logging" {
+  bucket = aws_s3_bucket.logging.id
+  acl    = "log-delivery-write"
 }
 
 output "logging_bucket" {
