@@ -5,18 +5,9 @@ module "puppet-vault" {
   vault_bucket   = "akerl-puppet"
   logging_bucket = module.account.logging_bucket
   servers = [
-    "codepad",
     "dmz",
-    "grafana",
-    "hass",
     "host",
-    "influxdb",
-    "kiosk-office",
-    "kiosk-rack",
     "kiosk-tea",
-    "monitor",
-    "nuc",
-    "syslog",
-    "teslacam",
+    "influxsb",
   ]
 }
