@@ -8,6 +8,6 @@ module "puppet-vault" {
     "dmz",
     "host",
     "kiosk-tea",
-    "influxsb",
+    "influxdb",
   ]
 }

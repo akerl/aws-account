@@ -206,3 +206,13 @@ module "pumidor_ext_validation" {
   cert_name         = "pumidor.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
+
+module "influxdb_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.0"
+  admin_email       = var.admin_email
+  delegation_set_id = "influxdb"
+  subzone_name      = "influxdb.servers.home.certs.a-rwx.org"
+  cert_name         = "influxdb.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
