@@ -23,12 +23,7 @@ locals {
     "10.0.1.91"  = "kiosk-office.servers"
     "10.0.1.92"  = "kiosk-rack.servers"
     "10.0.1.110" = "influxdb.servers"
-    "10.0.1.111" = "grafana.servers"
-    "10.0.1.112" = "nginx.servers"
-    "10.0.1.113" = "syslog.servers"
-    "10.0.1.114" = "hass.servers"
-    "10.0.1.115" = "monitor.servers"
-    "10.0.1.116" = "bastion.servers"
+    "10.0.1.111" = "pumidor.servers"
     "10.0.1.150" = "nas.servers"
     # 10.0.2.0/24 security (VLAN 102)
     "10.0.2.2"  = "nas.security"
