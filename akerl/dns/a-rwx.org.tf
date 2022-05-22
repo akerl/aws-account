@@ -211,3 +211,23 @@ module "influxdb_validation" {
   cert_name         = "influxdb.servers.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
+
+module "pumidor_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.0"
+  admin_email       = var.admin_email
+  delegation_set_id = "pumidor"
+  subzone_name      = "pumidor.servers.home.certs.a-rwx.org"
+  cert_name         = "pumidor.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "nas_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.0"
+  admin_email       = var.admin_email
+  delegation_set_id = "nas"
+  subzone_name      = "nas.servers.home.certs.a-rwx.org"
+  cert_name         = "nas.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
