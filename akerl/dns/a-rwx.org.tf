@@ -110,7 +110,7 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
 
 module "gateway_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "gateway"
   subzone_name      = "gateway.infra.home.certs.a-rwx.org"
@@ -131,7 +131,7 @@ resource "aws_route53_record" "dmz_a-rwx_org" {
   name    = "dmz.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["45.33.65.28"]
+  records = ["96.126.107.11"]
 }
 
 resource "aws_route53_record" "gateway_external_a-rwx_org" {
@@ -164,7 +164,7 @@ resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
 module "nuc_vhost_validation" {
   for_each          = toset(local.nuc_vhosts)
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "nuc_${each.value}"
   subzone_name      = "${each.value}.nuc.servers.home.certs.a-rwx.org"
@@ -174,7 +174,7 @@ module "nuc_vhost_validation" {
 
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "hass_ext"
   subzone_name      = "hass.certs.a-rwx.org"
@@ -184,7 +184,7 @@ module "hass_ext_validation" {
 
 module "nvr_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "nvr_ext"
   subzone_name      = "nvr.certs.a-rwx.org"
@@ -194,7 +194,7 @@ module "nvr_ext_validation" {
 
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "pumidor_ext"
   subzone_name      = "pumidor.certs.a-rwx.org"
@@ -204,7 +204,7 @@ module "pumidor_ext_validation" {
 
 module "influxdb_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "influxdb"
   subzone_name      = "influxdb.servers.home.certs.a-rwx.org"
@@ -214,7 +214,7 @@ module "influxdb_validation" {
 
 module "pumidor_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "pumidor"
   subzone_name      = "pumidor.servers.home.certs.a-rwx.org"
@@ -224,7 +224,7 @@ module "pumidor_validation" {
 
 module "nas_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.0"
+  version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "nas"
   subzone_name      = "nas.servers.home.certs.a-rwx.org"

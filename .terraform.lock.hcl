@@ -21,9 +21,9 @@ provider "registry.terraform.io/hashicorp/aws" {
 }
 
 provider "terraform.scrtybybscrty.org/armorfret/awscreds" {
-  version     = "0.3.0"
-  constraints = "0.3.0, ~> 0.3"
+  version     = "0.5.0"
+  constraints = "0.5.0, ~> 0.5"
   hashes = [
-    "h1:cDeBGQ6O/CKGynkzT1LtEhybURLYVaylsCzH16lSzf8=",
+    "h1:uSXfJnvyKYvmMfBi/I/fyORa64KIaC6fw37tqB4SiXs=",
   ]
 }
