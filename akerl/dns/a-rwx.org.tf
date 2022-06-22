@@ -19,11 +19,14 @@ locals {
     "10.0.0.51" = "eap-fence.infra"
     "10.0.0.52" = "eap-deck.infra"
     # 10.0.1.0/24 Servers (VLAN 101)
+    "10.0.1.80"  = "hass.servers"
     "10.0.1.90"  = "kiosk-tea.servers"
     "10.0.1.91"  = "kiosk-office.servers"
     "10.0.1.92"  = "kiosk-rack.servers"
+    "10.0.1.100" = "host.servers"
     "10.0.1.110" = "influxdb.servers"
     "10.0.1.111" = "pumidor.servers"
+    "10.0.1.112" = "hub.servers"
     "10.0.1.150" = "nas.servers"
     # 10.0.2.0/24 security (VLAN 102)
     "10.0.2.2"  = "nas.security"
@@ -33,30 +36,16 @@ locals {
     "10.0.2.13" = "cam-garage.security"
     "10.0.2.24" = "cam-patio.security"
     # 172.16.0.0/22 IoT (VLAN 700)
+    "172.16.0.10" = "basement-receiver.iot"
     "172.16.1.10" = "cam-sunroom.iot"
     "172.16.1.11" = "cam-family.iot"
     "172.16.1.12" = "cam-living.iot"
     "172.16.1.13" = "cam-basement.iot"
     # 172.16.20.0/24 Gaming (VLAN 720)
-    # 192.168.0.0/24 Standard (VLAN 900)
+    # 192.168.1.0/24 Standard (VLAN 900)
+    "192.168.1.14" = "philote.standard"
     # 192.168.99.0/24 Guest (VLAN 999)
   }
-
-  nuc_vhosts = [
-    "pumidor",
-    "influxdb",
-    "hass",
-    "nvr",
-  ]
-
-  external_vhosts = [
-    "pumidor",
-  ]
-
-  wg_vhosts = [
-    "hass",
-    "nvr",
-  ]
 }
 
 module "a-rwx_org" {
@@ -132,33 +121,6 @@ resource "aws_route53_record" "dmz_a-rwx_org" {
   type    = "A"
   ttl     = "60"
   records = ["96.126.107.11"]
-}
-
-resource "aws_route53_record" "gateway_external_a-rwx_org" {
-  for_each = toset(local.external_vhosts)
-  zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.value}.a-rwx.org"
-  type     = "A"
-  ttl      = "60"
-  records  = ["45.79.135.98"]
-}
-
-resource "aws_route53_record" "gateway_wg_a-rwx_org" {
-  for_each = toset(local.wg_vhosts)
-  zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.value}.a-rwx.org"
-  type     = "A"
-  ttl      = "60"
-  records  = ["10.255.255.1"]
-}
-
-resource "aws_route53_record" "gateway_nuc_infra_home_a-rwx_org" {
-  for_each = toset(local.nuc_vhosts)
-  zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.value}.nuc.servers.home.a-rwx.org"
-  type     = "A"
-  ttl      = "60"
-  records  = ["10.0.1.100"]
 }
 
 module "nuc_vhost_validation" {
