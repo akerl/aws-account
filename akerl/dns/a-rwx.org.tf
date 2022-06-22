@@ -123,17 +123,6 @@ resource "aws_route53_record" "dmz_a-rwx_org" {
   records = ["96.126.107.11"]
 }
 
-module "nuc_vhost_validation" {
-  for_each          = toset(local.nuc_vhosts)
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.1"
-  admin_email       = var.admin_email
-  delegation_set_id = "nuc_${each.value}"
-  subzone_name      = "${each.value}.nuc.servers.home.certs.a-rwx.org"
-  cert_name         = "${each.value}.nuc.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
-}
-
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
