@@ -123,6 +123,14 @@ resource "aws_route53_record" "dmz_a-rwx_org" {
   records = ["96.126.107.11"]
 }
 
+resource "aws_route53_record" "nvr_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "nvr.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.255.255.1"]
+}
+
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
