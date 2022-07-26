@@ -7,6 +7,7 @@ data "aws_iam_policy_document" "s3-write" {
     actions = [
       "s3:ListBucket",
       "s3:PutObject",
+      "s3:DeleteObject",
     ]
 
     resources = [
