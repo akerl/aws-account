@@ -80,14 +80,6 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   }
 }
 
-resource "aws_route53_record" "cname_home_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "home.a-rwx.org"
-  type    = "CNAME"
-  ttl     = "60"
-  records = ["akerl.ddns.net"]
-}
-
 resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
   for_each = local.records
   zone_id  = module.a-rwx_org.zone_id
@@ -107,58 +99,12 @@ module "gateway_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-resource "aws_route53_record" "proxy_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "proxy.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["45.79.135.98"]
-}
-
 resource "aws_route53_record" "dmz_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "dmz.a-rwx.org"
   type    = "A"
   ttl     = "60"
   records = ["96.126.107.11"]
-}
-
-resource "aws_route53_record" "nvr_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "nvr.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["10.255.255.1"]
-}
-
-module "hass_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.1"
-  admin_email       = var.admin_email
-  delegation_set_id = "hass_ext"
-  subzone_name      = "hass.certs.a-rwx.org"
-  cert_name         = "hass.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
-}
-
-module "nvr_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.1"
-  admin_email       = var.admin_email
-  delegation_set_id = "nvr_ext"
-  subzone_name      = "nvr.certs.a-rwx.org"
-  cert_name         = "nvr.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
-}
-
-module "pumidor_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.1"
-  admin_email       = var.admin_email
-  delegation_set_id = "pumidor_ext"
-  subzone_name      = "pumidor.certs.a-rwx.org"
-  cert_name         = "pumidor.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
 }
 
 module "influxdb_validation" {
