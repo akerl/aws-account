@@ -99,12 +99,20 @@ module "gateway_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-resource "aws_route53_record" "dmz_a-rwx_org" {
+resource "aws_route53_record" "dmz_linode_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
-  name    = "dmz.a-rwx.org"
+  name    = "dmz.linode.a-rwx.org"
   type    = "A"
   ttl     = "60"
   records = ["96.126.107.11"]
+}
+
+resource "aws_route53_record" "codepad_linode_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "codepad.linode.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["172.104.214.163"]
 }
 
 module "influxdb_validation" {
