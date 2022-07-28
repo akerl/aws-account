@@ -46,6 +46,11 @@ locals {
     "192.168.1.14" = "philote.standard"
     # 192.168.99.0/24 Guest (VLAN 999)
   }
+
+  ext_records = [
+    "nvr",
+    "pumidor",
+  ]
 }
 
 module "a-rwx_org" {
@@ -99,6 +104,15 @@ module "gateway_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
+  for_each = toset(local.ext_records)
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.key}.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = ["10.255.255.2"]
+}
+
 resource "aws_route53_record" "dmz_linode_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "dmz.linode.a-rwx.org"
@@ -142,5 +156,25 @@ module "nas_validation" {
   delegation_set_id = "nas"
   subzone_name      = "nas.servers.home.certs.a-rwx.org"
   cert_name         = "nas.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "pumidor_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "pumidor"
+  subzone_name      = "pumidor.certs.a-rwx.org"
+  cert_name         = "pumidor.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "nvr_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "nvr"
+  subzone_name      = "nvr.certs.a-rwx.org"
+  cert_name         = "nvr.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
