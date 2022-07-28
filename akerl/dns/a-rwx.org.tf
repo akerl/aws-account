@@ -47,9 +47,13 @@ locals {
     # 192.168.99.0/24 Guest (VLAN 999)
   }
 
-  ext_records = [
+  hub_records = [
     "nvr",
     "pumidor",
+  ]
+
+  ext_records = [
+    "hass",
   ]
 }
 
@@ -104,13 +108,22 @@ module "gateway_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+resource "aws_route53_record" "dmz_hub_linode_a-rwx_org" {
+  for_each = toset(local.hub_records)
+  zone_id  = module.a-rwx_org.zone_id
+  name     = "${each.key}.a-rwx.org"
+  type     = "A"
+  ttl      = "60"
+  records  = ["10.255.255.2"]
+}
+
 resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
   for_each = toset(local.ext_records)
   zone_id  = module.a-rwx_org.zone_id
   name     = "${each.key}.a-rwx.org"
   type     = "A"
   ttl      = "60"
-  records  = ["10.255.255.2"]
+  records  = ["96.126.107.11"]
 }
 
 resource "aws_route53_record" "dmz_linode_a-rwx_org" {
