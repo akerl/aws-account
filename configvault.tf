@@ -11,5 +11,6 @@ module "puppet-vault" {
     "pumidor",
     "hub",
     "dmz",
+    "hass",
   ]
 }
