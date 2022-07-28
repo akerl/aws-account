@@ -159,6 +159,16 @@ module "nas_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "hass_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "hass"
+  subzone_name      = "hass.servers.home.certs.a-rwx.org"
+  cert_name         = "hass.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
@@ -176,5 +186,15 @@ module "nvr_ext_validation" {
   delegation_set_id = "nvr"
   subzone_name      = "nvr.certs.a-rwx.org"
   cert_name         = "nvr.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "hass_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "hass"
+  subzone_name      = "hass.certs.a-rwx.org"
+  cert_name         = "hass.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
