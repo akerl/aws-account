@@ -103,10 +103,11 @@ locals {
   hub_records = [
     "nvr",
     "pumidor",
+    "hass",
   ]
 
   ext_records = [
-    "hass",
+    "hass-ext",
   ]
 }
 
@@ -167,7 +168,7 @@ resource "aws_route53_record" "dmz_hub_linode_a-rwx_org" {
   name     = "${each.key}.a-rwx.org"
   type     = "A"
   ttl      = "60"
-  records  = ["10.255.255.2"]
+  records  = ["10.0.1.112"]
 }
 
 resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
@@ -262,5 +263,15 @@ module "hass_ext_validation" {
   delegation_set_id = "hass"
   subzone_name      = "hass.certs.a-rwx.org"
   cert_name         = "hass.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "hass_ext_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "hass"
+  subzone_name      = "hass-ext.certs.a-rwx.org"
+  cert_name         = "hass-ext.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
