@@ -30,6 +30,8 @@ locals {
     "10.0.1.110" = "influxdb.servers"
     "10.0.1.111" = "pumidor.servers"
     "10.0.1.112" = "hub.servers"
+    "10.0.1.113" = "syslog.servers"
+    "10.0.1.114" = "monitoring.servers"
     "10.0.1.150" = "nas.servers"
     # 10.0.2.0/24 security (VLAN 102)
     "10.0.2.2"  = "nas.security"
