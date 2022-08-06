@@ -259,8 +259,8 @@ module "logs_validation" {
   version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "logs"
-  subzone_name      = "logs.servers.home.certs.a-rwx.org"
-  cert_name         = "logs.servers.home.a-rwx.org"
+  subzone_name      = "logs.certs.a-rwx.org"
+  cert_name         = "logs.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
@@ -269,8 +269,8 @@ module "log-ingest_validation" {
   version           = "0.1.1"
   admin_email       = var.admin_email
   delegation_set_id = "log-ingest"
-  subzone_name      = "log-ingest.servers.home.certs.a-rwx.org"
-  cert_name         = "log-ingest.servers.home.a-rwx.org"
+  subzone_name      = "log-ingest.certs.a-rwx.org"
+  cert_name         = "log-ingest.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 module "pumidor_ext_validation" {
