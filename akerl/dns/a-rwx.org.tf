@@ -31,7 +31,8 @@ locals {
     "10.0.1.111" = "pumidor.servers"
     "10.0.1.112" = "hub.servers"
     "10.0.1.113" = "syslog.servers"
-    "10.0.1.114" = "monitoring.servers"
+    "10.0.1.114" = "metrics.servers"
+    "10.0.1.115" = "grafana.servers"
     "10.0.1.150" = "nas.servers"
     # 10.0.2.0/24 security (VLAN 102)
     "10.0.2.2"  = "nas.security"
@@ -106,6 +107,7 @@ locals {
     "nvr",
     "pumidor",
     "hass",
+    "grafana",
   ]
 
   ext_records = [
@@ -226,6 +228,16 @@ module "pumidor_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "grafana_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "grafana"
+  subzone_name      = "grafana.servers.home.certs.a-rwx.org"
+  cert_name         = "grafana.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
 module "nas_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
@@ -256,13 +268,13 @@ module "logs_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "pumidor_ext_validation" {
+module "grafana_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
   admin_email       = var.admin_email
-  delegation_set_id = "pumidor"
-  subzone_name      = "pumidor.certs.a-rwx.org"
-  cert_name         = "pumidor.a-rwx.org"
+  delegation_set_id = "grafana"
+  subzone_name      = "grafana.certs.a-rwx.org"
+  cert_name         = "grafana.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
