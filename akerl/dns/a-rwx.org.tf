@@ -173,6 +173,22 @@ resource "aws_route53_record" "dmz_hub_linode_a-rwx_org" {
   records  = ["10.0.1.112"]
 }
 
+resource "aws_route53_record" "logs_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "logs.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.1.113"]
+}
+
+resource "aws_route53_record" "log-ingest_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "log-ingest.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.1.113"]
+}
+
 resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
   for_each = toset(local.ext_records)
   zone_id  = module.a-rwx_org.zone_id
@@ -238,6 +254,25 @@ module "hass_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "logs_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "logs"
+  subzone_name      = "logs.servers.home.certs.a-rwx.org"
+  cert_name         = "logs.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "log-ingest_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "log-ingest"
+  subzone_name      = "log-ingest.servers.home.certs.a-rwx.org"
+  cert_name         = "log-ingest.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
 module "pumidor_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"

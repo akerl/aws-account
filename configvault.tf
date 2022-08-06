@@ -12,5 +12,6 @@ module "puppet-vault" {
     "hub",
     "dmz",
     "hass",
+    "syslog",
   ]
 }
