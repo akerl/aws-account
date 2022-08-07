@@ -180,7 +180,7 @@ resource "aws_route53_record" "logs_a-rwx_org" {
   name    = "logs.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["10.0.1.113"]
+  records = ["10.0.1.112"]
 }
 
 resource "aws_route53_record" "metrics_a-rwx_org" {
@@ -188,7 +188,7 @@ resource "aws_route53_record" "metrics_a-rwx_org" {
   name    = "metrics.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["10.0.1.114"]
+  records = ["10.0.1.112"]
 }
 
 resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
@@ -236,6 +236,26 @@ module "pumidor_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "syslog_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "syslog"
+  subzone_name      = "syslog.servers.home.certs.a-rwx.org"
+  cert_name         = "syslog.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "metrics_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "metrics"
+  subzone_name      = "metrics.servers.home.certs.a-rwx.org"
+  cert_name         = "metrics.servers.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
 module "grafana_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
@@ -266,7 +286,7 @@ module "hass_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "logs_validation" {
+module "logs_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
   admin_email       = var.admin_email
@@ -276,7 +296,7 @@ module "logs_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "metrics_validation" {
+module "metrics_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
   admin_email       = var.admin_email
