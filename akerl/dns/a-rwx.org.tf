@@ -216,6 +216,22 @@ resource "aws_route53_record" "codepad_linode_a-rwx_org" {
   records = ["172.104.214.163"]
 }
 
+resource "aws_route53_record" "dmz_int_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "dmz.wg0.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.255.255.1"]
+}
+
+resource "aws_route53_record" "codepad_int_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "codepad.wg0.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.255.255.5"]
+}
+
 module "influxdb_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
