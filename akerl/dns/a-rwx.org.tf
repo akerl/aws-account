@@ -183,6 +183,14 @@ resource "aws_route53_record" "logs_a-rwx_org" {
   records = ["10.0.1.113"]
 }
 
+resource "aws_route53_record" "metrics_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "metrics.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.1.114"]
+}
+
 resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
   for_each = toset(local.ext_records)
   zone_id  = module.a-rwx_org.zone_id
@@ -265,6 +273,16 @@ module "logs_validation" {
   delegation_set_id = "logs"
   subzone_name      = "logs.certs.a-rwx.org"
   cert_name         = "logs.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
+module "metrics_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "metrics"
+  subzone_name      = "metrics.certs.a-rwx.org"
+  cert_name         = "metrics.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
