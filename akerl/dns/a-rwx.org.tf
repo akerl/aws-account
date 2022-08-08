@@ -111,10 +111,6 @@ locals {
     "hass",
     "grafana",
   ]
-
-  ext_records = [
-    "hass-ext",
-  ]
 }
 
 module "a-rwx_org" {
@@ -193,15 +189,6 @@ resource "aws_route53_record" "metrics_a-rwx_org" {
   records = ["10.0.1.112"]
 }
 
-resource "aws_route53_record" "dmz_ext_linode_a-rwx_org" {
-  for_each = toset(local.ext_records)
-  zone_id  = module.a-rwx_org.zone_id
-  name     = "${each.key}.a-rwx.org"
-  type     = "A"
-  ttl      = "60"
-  records  = ["96.126.107.11"]
-}
-
 resource "aws_route53_record" "dmz_linode_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "dmz.linode.a-rwx.org"
@@ -224,6 +211,14 @@ resource "aws_route53_record" "dmz_int_a-rwx_org" {
   type    = "A"
   ttl     = "60"
   records = ["10.255.255.1"]
+}
+
+resource "aws_route53_record" "zwave_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "zwave.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.1.80"]
 }
 
 resource "aws_route53_record" "codepad_int_a-rwx_org" {
@@ -354,12 +349,12 @@ module "hass_ext_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
-module "hass_ext_ext_validation" {
+module "zwave_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
   admin_email       = var.admin_email
-  delegation_set_id = "hass"
-  subzone_name      = "hass-ext.certs.a-rwx.org"
-  cert_name         = "hass-ext.a-rwx.org"
+  delegation_set_id = "zwave"
+  subzone_name      = "zwave.certs.a-rwx.org"
+  cert_name         = "zwave.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
