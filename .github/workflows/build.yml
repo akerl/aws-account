@@ -1,0 +1,32 @@
+name: Build
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      TERRAFORM_VERSION: 0.12.12
+      TFBIN_DIR: $HOME/tfbin
+      AWSCREDS_CHECKSUM: 50e47e133b7bc8317b819e40919fe6daaed5b7f1a501bc1a08c57b9ef7aabb84
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Download Terraform
+      run: ./scripts/download_terraform.sh $TERRAFORM_VERSION
+    - name: Download awscreds provider
+      run: ./scripts/download_provider.sh awscreds $AWSCREDS_CHECKSUM
+    - name: Init workspace
+      run: ~/tfbin/terraform init -upgrade -input=false
+    - name: Check format
+      run: ~/tfbin/terraform fmt -write=false -diff=true -check
+    - name: Check plan
+      run: ~/tfbin/terraform plan -detailed-exitcode -input=false
+    - name: Post to a Slack channel
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v1.18.0
+      with:
+        channel-id: ${{ secrets.SLACK_BOT_CHANNEL }}
+        slack-message: "GitHub build result: ${{ job.status }}\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
