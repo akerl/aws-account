@@ -7,7 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      TERRAFORM_VERSION: 0.12.12
+      TERRAFORM_VERSION: 1.2.7
       TFBIN_DIR: $HOME/tfbin
       AWSCREDS_CHECKSUM: 50e47e133b7bc8317b819e40919fe6daaed5b7f1a501bc1a08c57b9ef7aabb84
     steps:
