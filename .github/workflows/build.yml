@@ -5,7 +5,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       TERRAFORM_VERSION: 1.2.7
       AWSCREDS_CHECKSUM: e1e0cf9b929e0ba3b60e87f5050365672c4a5ea62ed9a49efad9d7620ff4a5e0
