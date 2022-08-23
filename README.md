@@ -1,7 +1,7 @@
 aws-account
 ===========
 
-[![Build Status](https://img.shields.io/travis/com/akerl/aws-account.svg)](https://travis-ci.com/akerl/aws-account)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/akerl/aws-account/Build)](https://github.com/akerl/aws-account/actions)
 
 This is the terraform I use to configure my main AWS account
 
