@@ -26,8 +26,8 @@ data "aws_iam_policy_document" "terraform-planner" {
       "cloudfront:Get*",
       "cloudfront:List*",
       "cloudtrail:Describe*",
-      "cloudtrail:List*",
       "cloudtrail:Get*",
+      "cloudtrail:List*",
       "cloudwatch:Describe*",
       "ec2:Describe*",
       "events:Describe*",
@@ -41,10 +41,11 @@ data "aws_iam_policy_document" "terraform-planner" {
       "s3:GetAccelerateConfiguration",
       "s3:GetBucket*",
       "s3:GetEncryptionConfiguration",
-      "s3:ListBucket",
       "s3:GetLifecycleConfiguration",
       "s3:GetReplicationConfiguration",
       "s3:ListAllMyBuckets",
+      "s3:ListBucket",
+      "ses:Get*",
       "sns:Get*",
     ]
 
