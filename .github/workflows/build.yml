@@ -20,6 +20,8 @@ jobs:
       run: ./scripts/download_provider.sh awscreds $AWSCREDS_CHECKSUM
     - name: Init workspace
       run: ~/tfbin/terraform init -upgrade -input=false
+    - name: test
+      run: ~/.terraform.d/plugins/terraform.scrtybybscrty.org/armorfret/awscreds/0.5.5/linux_amd64/terraform-provider-awscreds_v0.5.5
     - name: Check format
       run: ~/tfbin/terraform fmt -write=false -diff=true -check
     - name: Check plan
