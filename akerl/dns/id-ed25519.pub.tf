@@ -12,9 +12,20 @@ resource "aws_route53_record" "a_id-ed25519_pub" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-keys-dns_name
+    name                   = var.akerl-blog-redirect_dns_name
     zone_id                = var.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
+resource "aws_route53_record" "www_id-ed25519_pub" {
+  zone_id = module.id-ed25519_pub.zone_id
+  name    = "www.id-ed25519.pub"
+  type    = "A"
+
+  alias {
+    name                   = var.akerl-blog-redirect_dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

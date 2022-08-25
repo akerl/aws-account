@@ -38,14 +38,6 @@ variable "akerl-quote-auth-dns_name" {
   type = string
 }
 
-variable "akerl-keys-dns_name" {
-  type = string
-}
-
-variable "akerl-scratch-dns_name" {
-  type = string
-}
-
 variable "akerl-private-auth-dns_name" {
   type = string
 }
@@ -55,10 +47,6 @@ variable "akerl-private-files-dns_name" {
 }
 
 variable "akerl-coolquotes-share-dns_name" {
-  type = string
-}
-
-variable "akerl-littlesnitch-rules-dns_name" {
   type = string
 }
 

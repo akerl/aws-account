@@ -42,30 +42,6 @@ resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
   }
 }
 
-resource "aws_route53_record" "a_scratch_scrtybybscrty_org" {
-  zone_id = module.scrtybybscrty_org.zone_id
-  name    = "scratch.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = var.akerl-scratch-dns_name
-    zone_id                = var.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
-  zone_id = module.scrtybybscrty_org.zone_id
-  name    = "littlesnitch.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = var.akerl-littlesnitch-rules-dns_name
-    zone_id                = var.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "a_auth_scrtybybscrty_org" {
   zone_id = module.scrtybybscrty_org.zone_id
   name    = "auth.scrtybybscrty.org"
@@ -88,19 +64,4 @@ resource "aws_route53_record" "a_files_scrtybybscrty_org" {
     zone_id                = var.cloudfront_zone_id
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "ns_mc_scrtybybscrty_org" {
-  zone_id = module.scrtybybscrty_org.zone_id
-  name    = "mc.scrtybybscrty.org"
-  type    = "NS"
-  ttl     = "86400"
-
-  records = [
-    "ns1.linode.com",
-    "ns2.linode.com",
-    "ns3.linode.com",
-    "ns4.linode.com",
-    "ns5.linode.com",
-  ]
 }
