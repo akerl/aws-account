@@ -87,6 +87,7 @@ locals {
     "172.16.1.50"  = "airthings-hub.iot"
     "172.16.1.51"  = "airthings-office.iot"
     "172.16.1.60"  = "flic-office.iot"
+    "172.16.1.61"  = "flic-bedroom.iot"
     "172.16.1.70"  = "owlet.iot"
     "172.16.1.71"  = "hatch.iot"
     "172.16.1.80"  = "roomba-rover.iot"
