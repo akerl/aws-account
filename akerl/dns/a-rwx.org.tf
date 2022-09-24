@@ -111,7 +111,7 @@ locals {
     "192.168.1.18"  = "bean.standard"
     "192.168.1.19"  = "wrist.standard"
     "192.168.1.20"  = "switch.standard"
-    "192.168.1.100" = "kelly-switch.standard"
+    "192.168.1.100" = "kelly-switch-wired.standard"
     "192.168.1.101" = "kelly-imac.standard"
     "192.168.1.102" = "kelly-iphone.standard"
     "192.168.1.103" = "kelly-ipad.standard"
