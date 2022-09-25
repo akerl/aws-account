@@ -1,11 +1,13 @@
 module "akerl-blog" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.4.7"
+  version          = "0.5.3"
   logging_bucket   = module.account.logging_bucket
   file_bucket      = "akerl-blog"
   redirect_bucket  = "akerl-blog-redirect"
   primary_hostname = "blog.akerl.org"
   error_document   = "404/index.html"
+
+  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src https://www.google-analytics.com"
 
   redirect_hostnames = [
     "lesaker.org",
@@ -29,7 +31,7 @@ module "akerl-blog" {
 
 module "amylum-repo" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.4.7"
+  version          = "0.5.3"
   logging_bucket   = module.account.logging_bucket
   file_bucket      = "amylum-repo"
   redirect_bucket  = "amylum-repo-redirect"

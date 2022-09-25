@@ -343,6 +343,16 @@ module "grafana_ext_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "pumidor_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "pumidor"
+  subzone_name      = "pumidor.certs.a-rwx.org"
+  cert_name         = "pumidor.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
 module "nvr_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.1.1"
