@@ -17,5 +17,6 @@ module "puppet-vault" {
     "metrics",
     "pumidor",
     "syslog",
+    "teslamate",
   ]
 }
