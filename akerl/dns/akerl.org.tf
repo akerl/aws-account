@@ -1,6 +1,6 @@
 module "akerl_org" {
   source            = "armorfret/r53-zone/aws"
-  version           = "0.4.0"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   domain_name       = "akerl.org"
   delegation_set_id = aws_route53_delegation_set.main.id
@@ -42,3 +42,10 @@ resource "aws_route53_record" "a_blog_akerl_org" {
   }
 }
 
+resource "aws_route53_record" "a_goat_akerl_org" {
+  zone_id = module.akerl_org.zone_id
+  name    = "goat.akerl.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["170.187.160.67"]
+}

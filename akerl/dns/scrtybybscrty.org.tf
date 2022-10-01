@@ -1,6 +1,6 @@
 module "scrtybybscrty_org" {
   source            = "armorfret/r53-zone/aws"
-  version           = "0.4.0"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   domain_name       = "scrtybybscrty.org"
   delegation_set_id = aws_route53_delegation_set.main.id
