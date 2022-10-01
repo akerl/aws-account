@@ -7,7 +7,7 @@ module "akerl-blog" {
   primary_hostname = "blog.akerl.org"
   error_document   = "404/index.html"
 
-  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src https://www.google-analytics.com"
+  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' goat.akerl.org; script-src 'self' 'unsafe-inline' https://goat.akerl.org https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src"
 
   redirect_hostnames = [
     "lesaker.org",
