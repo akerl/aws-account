@@ -18,5 +18,6 @@ module "puppet-vault" {
     "pumidor",
     "syslog",
     "teslamate",
+    "goat",
   ]
 }

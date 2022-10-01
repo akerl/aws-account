@@ -49,3 +49,13 @@ resource "aws_route53_record" "a_goat_akerl_org" {
   ttl     = "60"
   records = ["170.187.160.67"]
 }
+
+module "goat_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.1.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "goat"
+  subzone_name      = "goat.certs.akerl.org"
+  cert_name         = "goat.akerl.org"
+  parent_zone_id    = module.akerl_org.zone_id
+}

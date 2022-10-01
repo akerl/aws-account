@@ -221,6 +221,14 @@ resource "aws_route53_record" "codepad_linode_a-rwx_org" {
   records = ["172.104.214.163"]
 }
 
+resource "aws_route53_record" "goat_linode_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "goat.linode.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["170.187.160.67"]
+}
+
 resource "aws_route53_record" "dmz_int_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "dmz.wg0.a-rwx.org"
@@ -243,6 +251,14 @@ resource "aws_route53_record" "codepad_int_a-rwx_org" {
   type    = "A"
   ttl     = "60"
   records = ["10.255.255.5"]
+}
+
+resource "aws_route53_record" "goat_int_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "goat.wg0.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.255.255.6"]
 }
 
 module "influxdb_validation" {
