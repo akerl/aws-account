@@ -400,3 +400,16 @@ module "zwave_ext_validation" {
   cert_name         = "zwave.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
+
+resource "aws_route53_record" "a_watchdog_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+
+  name = "watchdog.a-rwx.org"
+  type = "A"
+
+  alias {
+    name                   = var.akerl-watchdog-site-dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

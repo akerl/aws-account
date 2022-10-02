@@ -50,6 +50,10 @@ variable "akerl-coolquotes-share-dns_name" {
   type = string
 }
 
+variable "akerl-watchdog-site-dns_name" {
+  type = string
+}
+
 resource "aws_route53_delegation_set" "main" {
   reference_name = "main"
 }

@@ -45,6 +45,7 @@ module "akerl-dns" {
   akerl-private-files-dns_name    = module.akerl-private-files.dns_name
   akerl-private-auth-dns_name     = module.akerl-private-auth.dns_name
   akerl-coolquotes-share-dns_name = module.akerl-coolquotes-share.dns_name
+  akerl-watchdog-site-dns_name    = module.akerl-watchdog-site.dns_name
 }
 
 module "akerl-wedding" {
