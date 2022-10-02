@@ -1,6 +1,6 @@
 module "akerl-watchdog-site" {
   source         = "armorfret/lambda-watchdog/aws"
-  version        = "0.0.3"
+  version        = "0.0.4"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-watchdog-site"
   data_bucket    = "akerl-watchdog-site"
