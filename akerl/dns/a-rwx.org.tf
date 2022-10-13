@@ -23,7 +23,6 @@ locals {
     "10.0.0.52" = "eap-deck.infra"
     # 10.0.1.0/24 Servers (VLAN 101)
     "10.0.1.80"  = "hass.servers"
-    "10.0.1.90"  = "kiosk-tea.servers"
     "10.0.1.91"  = "kiosk-office.servers"
     "10.0.1.100" = "host.servers"
     "10.0.1.110" = "influxdb.servers"
@@ -74,6 +73,7 @@ locals {
     "172.16.1.11"  = "cam-family.iot"
     "172.16.1.12"  = "cam-living.iot"
     "172.16.1.13"  = "cam-basement.iot"
+    "172.16.1.19"  = "kiosk-tea.iot"
     "172.16.1.20"  = "thermostat-bar.iot"
     "172.16.1.21"  = "thermostat-basement.iot"
     "172.16.1.22"  = "thermostat-library.iot"
