@@ -25,3 +25,10 @@ module "akerl-watchdog" {
   publish_bucket = "akerl-watchdog"
   logging_bucket = module.account.logging_bucket
 }
+
+module "akerl-goat-backup" {
+  source         = "armorfret/s3-publish/aws"
+  version        = "0.2.4"
+  publish_bucket = "akerl-goat-backup"
+  logging_bucket = module.account.logging_bucket
+}
