@@ -42,6 +42,18 @@ resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
   }
 }
 
+resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
+  zone_id = module.scrtybybscrty_org.zone_id
+  name    = "littlesnitch.scrtybybscrty.org"
+  type    = "A"
+
+  alias {
+    name                   = var.akerl-littlesnitch-dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "a_auth_scrtybybscrty_org" {
   zone_id = module.scrtybybscrty_org.zone_id
   name    = "auth.scrtybybscrty.org"

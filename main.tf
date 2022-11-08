@@ -37,6 +37,7 @@ module "akerl-dns" {
   akerl-blog-dns_name             = module.akerl-blog.site_dns_name
   akerl-blog-redirect_dns_name    = module.akerl-blog.redirect_dns_name
   amylum-repo-dns_name            = module.amylum-repo.site_dns_name
+  akerl-littlesnitch-dns_name     = module.akerl-littlesnitch.site_dns_name
   akerl-wedding-dns_name          = module.akerl-wedding.wedding-dns_name
   akerl-hf-library-dns_name       = module.akerl-hf-library.dns_name
   akerl-books-library-dns_name    = module.akerl-books-library.dns_name

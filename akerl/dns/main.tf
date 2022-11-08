@@ -18,6 +18,10 @@ variable "amylum-repo-dns_name" {
   type = string
 }
 
+variable "akerl-littlesnitch-dns_name" {
+  type = string
+}
+
 variable "akerl-wedding-dns_name" {
   type = string
 }
