@@ -38,3 +38,11 @@ module "amylum-repo" {
   primary_hostname = "repo.scrtybybscrty.org"
 }
 
+module "akerl-littlesnitch" {
+  source           = "armorfret/s3-website/aws"
+  version          = "0.5.3"
+  logging_bucket   = module.account.logging_bucket
+  file_bucket      = "akerl-littlesnitch"
+  redirect_bucket  = "akerl-littlesnitch-redirect"
+  primary_hostname = "littlesnitch.scrtybybscrty.org"
+}
