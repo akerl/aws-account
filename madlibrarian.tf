@@ -1,6 +1,6 @@
 module "akerl-hf-library" {
   source         = "armorfret/lambda-madlibrarian/aws"
-  version        = "0.4.0"
+  version        = "0.5.0"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-hf-library"
   data_bucket    = "akerl-hf-library"
@@ -10,7 +10,7 @@ module "akerl-hf-library" {
 
 module "akerl-books-library" {
   source         = "armorfret/lambda-madlibrarian/aws"
-  version        = "0.4.0"
+  version        = "0.5.0"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-book-library"
   data_bucket    = "akerl-book-library"
@@ -20,7 +20,7 @@ module "akerl-books-library" {
 
 module "akerl-dcs-library" {
   source         = "armorfret/lambda-madlibrarian/aws"
-  version        = "0.4.0"
+  version        = "0.5.0"
   logging_bucket = module.account.logging_bucket
   config_bucket  = "akerl-dcs-library"
   data_bucket    = "akerl-dcs-library"

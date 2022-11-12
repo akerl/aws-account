@@ -7,7 +7,7 @@ terraform {
 
     awscreds = {
       source  = "armorfret/awscreds"
-      version = "~> 0.5"
+      version = "~> 0.6"
     }
   }
 }
