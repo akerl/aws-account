@@ -6,8 +6,8 @@ terraform {
     }
 
     awscreds = {
-      source  = "terraform.scrtybybscrty.org/armorfret/awscreds"
-      version = "0.5.5"
+      source  = "armorfret/awscreds"
+      version = "0.5.9"
     }
   }
 }

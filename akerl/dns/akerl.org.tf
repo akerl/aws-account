@@ -52,7 +52,7 @@ resource "aws_route53_record" "a_goat_akerl_org" {
 
 module "goat_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.1.1"
+  version           = "0.2.0"
   admin_email       = var.admin_email
   delegation_set_id = "goat"
   subzone_name      = "goat.certs.akerl.org"
