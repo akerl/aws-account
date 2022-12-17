@@ -19,5 +19,6 @@ module "puppet-vault" {
     "syslog",
     "teslamate",
     "goat",
+    "kiosk-bar",
   ]
 }
