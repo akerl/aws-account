@@ -15,7 +15,6 @@ module "puppet-vault" {
     "kiosk-office",
     "kiosk-tea",
     "metrics",
-    "pumidor",
     "syslog",
     "teslamate",
     "goat",
