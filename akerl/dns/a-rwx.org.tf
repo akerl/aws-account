@@ -26,7 +26,6 @@ locals {
     "10.0.1.91"  = "kiosk-office.servers"
     "10.0.1.100" = "host.servers"
     "10.0.1.110" = "influxdb.servers"
-    "10.0.1.111" = "pumidor.servers"
     "10.0.1.112" = "hub.servers"
     "10.0.1.113" = "syslog.servers"
     "10.0.1.114" = "metrics.servers"
@@ -125,7 +124,6 @@ locals {
 
   hub_records = [
     "nvr",
-    "pumidor",
     "hass",
     "grafana",
   ]
@@ -270,16 +268,6 @@ module "influxdb_validation" {
   delegation_set_id = "influxdb"
   subzone_name      = "influxdb.servers.home.certs.a-rwx.org"
   cert_name         = "influxdb.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
-}
-
-module "pumidor_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "pumidor"
-  subzone_name      = "pumidor.servers.home.certs.a-rwx.org"
-  cert_name         = "pumidor.servers.home.a-rwx.org"
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
