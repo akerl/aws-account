@@ -68,7 +68,6 @@ locals {
     "172.16.0.32"  = "power-serverfan.iot"
     "172.16.0.33"  = "power-chargers.iot"
     "172.16.0.34"  = "power-desktop.iot"
-    "172.16.0.40"  = "usb-kvm.iot"
     "172.16.1.10"  = "cam-sunroom.iot"
     "172.16.1.11"  = "cam-family.iot"
     "172.16.1.12"  = "cam-living.iot"
@@ -105,6 +104,7 @@ locals {
     "172.16.20.11" = "hyrum.gaming"
     # 192.168.1.0/24 Standard (VLAN 900)
     "192.168.1.2"   = "printer.standard"
+    "192.168.1.3"   = "usb-kvm.standard"
     "192.168.1.10"  = "lift.standard"
     "192.168.1.11"  = "szeth.standard"
     "192.168.1.12"  = "wilson.standard"
