@@ -68,6 +68,7 @@ locals {
     "172.16.0.32"  = "power-serverfan.iot"
     "172.16.0.33"  = "power-chargers.iot"
     "172.16.0.34"  = "power-desktop.iot"
+    "172.16.0.40"  = "usb-kvm.iot"
     "172.16.1.10"  = "cam-sunroom.iot"
     "172.16.1.11"  = "cam-family.iot"
     "172.16.1.12"  = "cam-living.iot"
