@@ -53,7 +53,7 @@ locals {
     "172.16.0.13"  = "nanoleaf.iot"
     "172.16.0.14"  = "gaming-remote.iot"
     "172.16.0.15"  = "jasnah.iot"
-    "172.16.0.16"  = "kindle.iot"
+    "172.16.0.16"  = "akerl-oasis.iot"
     "172.16.0.20"  = "solar-gw-1.iot"
     "172.16.0.21"  = "solar-gw-2.iot"
     "172.16.0.22"  = "solar-pv-1.iot"
