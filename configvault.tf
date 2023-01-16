@@ -18,5 +18,6 @@ module "puppet-vault" {
     "syslog",
     "teslamate",
     "goat",
+    "usb-kvm",
   ]
 }
