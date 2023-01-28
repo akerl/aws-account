@@ -42,7 +42,7 @@ locals {
     # 172.16.0.0/22 IoT (VLAN 700)
     "172.16.0.3"   = "vrroom.iot"
     "172.16.0.4"   = "tivo-family.iot"
-    "172.16.0.5"   = "tivo-theatre.iot"
+    "172.16.0.5"   = "tivo-bar.iot"
     "172.16.0.6"   = "receiver-theatre.iot"
     "172.16.0.7"   = "tv-family.iot"
     "172.16.0.8"   = "tivo-bedroom.iot"
@@ -54,6 +54,7 @@ locals {
     "172.16.0.14"  = "gaming-remote.iot"
     "172.16.0.15"  = "jasnah.iot"
     "172.16.0.16"  = "akerl-oasis.iot"
+    "172.16.0.17"  = "tivo-theatre.iot"
     "172.16.0.20"  = "solar-gw-1.iot"
     "172.16.0.21"  = "solar-gw-2.iot"
     "172.16.0.22"  = "solar-pv-1.iot"
