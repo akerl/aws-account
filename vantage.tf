@@ -488,7 +488,7 @@ data "aws_iam_policy_document" "vantage_assume_role" {
 
     principals {
       type        = "AWS"
-      identifiers = ["AROAZFRV7IUISOPYCL4CM"]
+      identifiers = ["arn:aws:iam::630399649041:role/vantage-account-sync-a70532e2-82ff-439b-9542-eb8d9331e137"]
     }
     condition {
       variable = "sts:ExternalId"
