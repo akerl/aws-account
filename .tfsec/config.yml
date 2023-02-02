@@ -4,3 +4,7 @@ exclude:
 - aws-cloudfront-enable-waf
 - aws-s3-enable-bucket-encryption
 - aws-s3-encryption-customer-key
+- aws-s3-no-public-buckets
+- aws-s3-ignore-public-acls
+- aws-s3-block-public-policy
+- aws-s3-block-public-acls
