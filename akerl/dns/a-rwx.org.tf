@@ -308,6 +308,16 @@ module "grafana_validation" {
   parent_zone_id    = module.a-rwx_org.zone_id
 }
 
+module "printer_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.4.1"
+  admin_email       = var.admin_email
+  delegation_set_id = "printer"
+  subzone_name      = "printer.standard.home.certs.a-rwx.org"
+  cert_name         = "printer.standard.home.a-rwx.org"
+  parent_zone_id    = module.a-rwx_org.zone_id
+}
+
 module "nas_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.4.1"
