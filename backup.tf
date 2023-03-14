@@ -31,7 +31,7 @@ resource "aws_s3_bucket_versioning" "backups" {
 resource "aws_s3_bucket_logging" "backups" {
   bucket = aws_s3_bucket.backups.id
 
-  target_bucket = module.account.logging_bucket
+  target_bucket = aws_s3_bucket.logging.id
   target_prefix = "${aws_s3_bucket.backups.id}/"
 }
 

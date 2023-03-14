@@ -18,4 +18,3 @@ resource "aws_budgets_budget" "cost" {
     subscriber_email_addresses = [var.billing_email]
   }
 }
-

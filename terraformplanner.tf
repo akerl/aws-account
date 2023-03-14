@@ -1,18 +1,4 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-
-    awscreds = {
-      source  = "armorfret/awscreds"
-      version = "~> 0.6"
-    }
-  }
-}
-
-resource "aws_iam_user" "build" {
+resource "aws_iam_user" "terraform-planner" {
   name = "build-akerl-aws-account"
 }
 
@@ -60,12 +46,12 @@ data "aws_iam_policy_document" "terraform-planner" {
 
 resource "aws_iam_user_policy" "terraform-planner" {
   name   = "terraform-planner"
-  user   = aws_iam_user.build.name
+  user   = aws_iam_user.terraform-planner.name
   policy = data.aws_iam_policy_document.terraform-planner.json
 }
 
 resource "awscreds_iam_access_key" "build-key" {
-  user = aws_iam_user.build.name
-  file = "creds/${aws_iam_user.build.name}"
+  user = aws_iam_user.terraform-planner.name
+  file = "creds/${aws_iam_user.terraform-planner.name}"
 }
 

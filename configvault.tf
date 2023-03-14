@@ -3,7 +3,7 @@ module "puppet-vault" {
   version        = "0.2.0"
   prefix         = "puppet"
   vault_bucket   = "akerl-puppet"
-  logging_bucket = module.account.logging_bucket
+  logging_bucket = aws_s3_bucket.logging.id
   servers = [
     "codepad",
     "dmz",

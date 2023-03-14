@@ -1,4 +1,4 @@
-variable "domains" {
+variable "wedding_domains" {
   type = list(string)
 
   default = [
@@ -7,10 +7,10 @@ variable "domains" {
   ]
 }
 
-data "aws_iam_policy_document" "redirect_bucket-read-access" {
+data "aws_iam_policy_document" "wedding_redirect_bucket-read-access" {
   statement {
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.redirect_bucket}/*"]
+    resources = ["arn:aws:s3:::${aws_s3_bucket.wedding_redirect_bucket.id}/*"]
 
     principals {
       type        = "AWS"
@@ -19,39 +19,39 @@ data "aws_iam_policy_document" "redirect_bucket-read-access" {
   }
 }
 
-resource "aws_s3_bucket" "redirect_bucket" {
-  bucket = var.redirect_bucket
+resource "aws_s3_bucket" "wedding_redirect_bucket" {
+  bucket = "akerl-wedding-redirect"
 }
 
-resource "aws_s3_bucket_logging" "redirect_bucket" {
-  bucket        = aws_s3_bucket.redirect_bucket.id
-  target_bucket = var.logging_bucket
+resource "aws_s3_bucket_logging" "wedding_redirect_bucket" {
+  bucket        = aws_s3_bucket.wedding_redirect_bucket.id
+  target_bucket = aws_s3_bucket.logging.id
   target_prefix = "akerl-wedding-redirect/"
 }
 
-resource "aws_s3_bucket_policy" "redirect_bucket" {
-  bucket = aws_s3_bucket.redirect_bucket.id
-  policy = data.aws_iam_policy_document.redirect_bucket-read-access.json
+resource "aws_s3_bucket_policy" "wedding_redirect_bucket" {
+  bucket = aws_s3_bucket.wedding_redirect_bucket.id
+  policy = data.aws_iam_policy_document.wedding_redirect_bucket-read-access.json
 }
 
-resource "aws_s3_bucket_versioning" "redirect_bucket" {
-  bucket = aws_s3_bucket.redirect_bucket.id
+resource "aws_s3_bucket_versioning" "wedding_redirect_bucket" {
+  bucket = aws_s3_bucket.wedding_redirect_bucket.id
   versioning_configuration {
     status = "Enabled"
   }
 }
 
-resource "aws_s3_bucket_website_configuration" "redirect_bucket" {
-  bucket = aws_s3_bucket.redirect_bucket.bucket
+resource "aws_s3_bucket_website_configuration" "wedding_redirect_bucket" {
+  bucket = aws_s3_bucket.wedding_redirect_bucket.bucket
   redirect_all_requests_to {
     host_name = "www.theknot.com/us/kelly-watts-and-les-aker-may-2017"
     protocol  = "https"
   }
 }
 
-resource "aws_cloudfront_distribution" "redirect_distribution" {
+resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
   origin {
-    domain_name = aws_s3_bucket_website_configuration.redirect_bucket.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.wedding_redirect_bucket.website_endpoint
     origin_id   = "redirect_bucket"
 
     custom_origin_config {
@@ -62,13 +62,13 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
     }
   }
 
-  aliases = var.domains
+  aliases = var.wedding_domains
 
   enabled = true
 
   logging_config {
     include_cookies = false
-    bucket          = "${var.logging_bucket}.s3.amazonaws.com"
+    bucket          = "${aws_s3_bucket.logging.id}.s3.amazonaws.com"
     prefix          = "akerl-wedding-redirect-cdn"
   }
 
@@ -103,13 +103,13 @@ resource "aws_cloudfront_distribution" "redirect_distribution" {
   viewer_certificate {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2018"
-    acm_certificate_arn      = module.certificate.arn
+    acm_certificate_arn      = module.wedding_certificate.arn
   }
 }
 
-module "certificate" {
+module "wedding_certificate" {
   source    = "armorfret/acm-certificate/aws"
   version   = "0.2.0"
-  hostnames = var.domains
+  hostnames = var.wedding_domains
 }
 
