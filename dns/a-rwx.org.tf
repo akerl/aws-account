@@ -77,6 +77,7 @@ locals {
     "172.16.1.11"  = "cam-family.iot"
     "172.16.1.12"  = "cam-living.iot"
     "172.16.1.13"  = "cam-basement.iot"
+    "172.16.1.18"  = "kiosk-poker.iot"
     "172.16.1.19"  = "kiosk-tea.iot"
     "172.16.1.20"  = "thermostat-bar.iot"
     "172.16.1.21"  = "thermostat-basement.iot"

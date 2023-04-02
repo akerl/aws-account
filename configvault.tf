@@ -19,5 +19,6 @@ module "puppet-vault" {
     "teslamate",
     "goat",
     "usb-kvm",
+    "kiosk-poker",
   ]
 }
