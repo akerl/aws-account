@@ -1,6 +1,6 @@
 module "akerl_org" {
   source            = "armorfret/r53-zone/aws"
-  version           = "0.5.0"
+  version           = "0.6.0"
   admin_email       = var.admin_email
   domain_name       = "akerl.org"
   delegation_set_id = aws_route53_delegation_set.main.id
@@ -52,7 +52,7 @@ resource "aws_route53_record" "a_goat_akerl_org" {
 
 module "goat_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "goat"
   subzone_name      = "goat.certs.akerl.org"

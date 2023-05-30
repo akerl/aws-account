@@ -139,7 +139,7 @@ locals {
 
 module "a-rwx_org" {
   source            = "armorfret/r53-zone/aws"
-  version           = "0.5.0"
+  version           = "0.6.0"
   admin_email       = var.admin_email
   domain_name       = "a-rwx.org"
   delegation_set_id = aws_route53_delegation_set.main.id
@@ -180,7 +180,7 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
 
 module "gateway_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "gateway"
   subzone_name      = "gateway.infra.home.certs.a-rwx.org"
@@ -271,7 +271,7 @@ resource "aws_route53_record" "goat_int_a-rwx_org" {
 
 module "influxdb_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "influxdb"
   subzone_name      = "influxdb.servers.home.certs.a-rwx.org"
@@ -281,7 +281,7 @@ module "influxdb_validation" {
 
 module "syslog_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "syslog"
   subzone_name      = "syslog.servers.home.certs.a-rwx.org"
@@ -291,7 +291,7 @@ module "syslog_validation" {
 
 module "metrics_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "metrics"
   subzone_name      = "metrics.servers.home.certs.a-rwx.org"
@@ -301,7 +301,7 @@ module "metrics_validation" {
 
 module "grafana_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "grafana"
   subzone_name      = "grafana.servers.home.certs.a-rwx.org"
@@ -311,7 +311,7 @@ module "grafana_validation" {
 
 module "printer_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "printer"
   subzone_name      = "printer.standard.home.certs.a-rwx.org"
@@ -321,7 +321,7 @@ module "printer_validation" {
 
 module "nas_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "nas"
   subzone_name      = "nas.servers.home.certs.a-rwx.org"
@@ -331,7 +331,7 @@ module "nas_validation" {
 
 module "hass_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "hass"
   subzone_name      = "hass.servers.home.certs.a-rwx.org"
@@ -341,7 +341,7 @@ module "hass_validation" {
 
 module "logs_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "logs"
   subzone_name      = "logs.certs.a-rwx.org"
@@ -351,7 +351,7 @@ module "logs_ext_validation" {
 
 module "metrics_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "metrics"
   subzone_name      = "metrics.certs.a-rwx.org"
@@ -361,7 +361,7 @@ module "metrics_ext_validation" {
 
 module "grafana_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "grafana"
   subzone_name      = "grafana.certs.a-rwx.org"
@@ -371,7 +371,7 @@ module "grafana_ext_validation" {
 
 module "nvr_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "nvr"
   subzone_name      = "nvr.certs.a-rwx.org"
@@ -381,7 +381,7 @@ module "nvr_ext_validation" {
 
 module "hass_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "hass"
   subzone_name      = "hass.certs.a-rwx.org"
@@ -391,7 +391,7 @@ module "hass_ext_validation" {
 
 module "zwave_ext_validation" {
   source            = "armorfret/r53-certbot/aws"
-  version           = "0.4.1"
+  version           = "0.5.0"
   admin_email       = var.admin_email
   delegation_set_id = "zwave"
   subzone_name      = "zwave.certs.a-rwx.org"

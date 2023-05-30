@@ -109,7 +109,7 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
 
 module "wedding_certificate" {
   source    = "armorfret/acm-certificate/aws"
-  version   = "0.2.0"
+  version   = "0.3.0"
   hostnames = var.wedding_domains
 }
 
