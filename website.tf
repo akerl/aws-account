@@ -1,6 +1,6 @@
 module "akerl-blog" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.9.0"
+  version          = "0.9.1"
   logging_bucket   = aws_s3_bucket.logging.id
   file_bucket      = "akerl-blog"
   redirect_bucket  = "akerl-blog-redirect"
@@ -31,7 +31,7 @@ module "akerl-blog" {
 
 module "amylum-repo" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.9.0"
+  version          = "0.9.1"
   logging_bucket   = aws_s3_bucket.logging.id
   file_bucket      = "amylum-repo"
   redirect_bucket  = "amylum-repo-redirect"
@@ -40,7 +40,7 @@ module "amylum-repo" {
 
 module "akerl-littlesnitch" {
   source           = "armorfret/s3-website/aws"
-  version          = "0.9.0"
+  version          = "0.9.1"
   logging_bucket   = aws_s3_bucket.logging.id
   file_bucket      = "akerl-littlesnitch"
   redirect_bucket  = "akerl-littlesnitch-redirect"
