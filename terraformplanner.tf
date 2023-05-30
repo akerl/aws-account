@@ -37,6 +37,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "sns:Get*",
       "sns:List*",
       "sqs:Get*",
+      "sqs:List*",
     ]
 
     resources = [
