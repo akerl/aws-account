@@ -39,7 +39,6 @@ module "akerl-dns" {
   cloudfront_zone_id              = module.akerl-blog.cloudfront_zone_id
   akerl-blog-dns_name             = module.akerl-blog.site_dns_name
   akerl-blog-redirect_dns_name    = module.akerl-blog.redirect_dns_name
-  amylum-repo-dns_name            = module.amylum-repo.site_dns_name
   akerl-littlesnitch-dns_name     = module.akerl-littlesnitch.site_dns_name
   akerl-wedding-dns_name          = aws_cloudfront_distribution.wedding_redirect_distribution.domain_name
   akerl-hf-library-dns_name       = module.akerl-hf-library.dns_name

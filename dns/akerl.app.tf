@@ -60,3 +60,15 @@ resource "aws_route53_record" "a_watchdog_akerl_app" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_poker_akerl_app" {
+  zone_id = module.akerl_app.zone_id
+  name    = "poker.akerl.app"
+  type    = "A"
+
+  alias {
+    name                   = var.akerl-blindclock-site-dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

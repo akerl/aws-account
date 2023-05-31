@@ -33,15 +33,6 @@ module "akerl-blog" {
   ]
 }
 
-module "amylum-repo" {
-  source           = "armorfret/s3-website/aws"
-  version          = "0.10.0"
-  logging_bucket   = aws_s3_bucket.logging.id
-  file_bucket      = "amylum-repo"
-  redirect_bucket  = "amylum-repo-redirect"
-  primary_hostname = "repo.scrtybybscrty.org"
-}
-
 module "akerl-littlesnitch" {
   source           = "armorfret/s3-website/aws"
   version          = "0.10.0"

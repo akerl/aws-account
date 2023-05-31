@@ -30,18 +30,6 @@ resource "aws_route53_record" "a_www_scrtybybscrty_org" {
   }
 }
 
-resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
-  zone_id = module.scrtybybscrty_org.zone_id
-  name    = "repo.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = var.amylum-repo-dns_name
-    zone_id                = var.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
   zone_id = module.scrtybybscrty_org.zone_id
   name    = "littlesnitch.scrtybybscrty.org"
@@ -73,18 +61,6 @@ resource "aws_route53_record" "a_files_scrtybybscrty_org" {
 
   alias {
     name                   = var.akerl-private-files-dns_name
-    zone_id                = var.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "a_poker_scrtybybscrty_org" {
-  zone_id = module.scrtybybscrty_org.zone_id
-  name    = "poker.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = var.akerl-blindclock-site-dns_name
     zone_id                = var.cloudfront_zone_id
     evaluate_target_health = false
   }

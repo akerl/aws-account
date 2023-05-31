@@ -14,10 +14,6 @@ variable "akerl-blog-redirect_dns_name" {
   type = string
 }
 
-variable "amylum-repo-dns_name" {
-  type = string
-}
-
 variable "akerl-littlesnitch-dns_name" {
   type = string
 }
