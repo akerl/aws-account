@@ -5,5 +5,5 @@ module "akerl-blindclock-site" {
   config_bucket  = "akerl-blindclock-data"
   data_bucket    = "akerl-blindclock-data"
   lambda_bucket  = module.akerl-blindclock.publish_bucket
-  hostname       = "poker.scrtybybscrty.org"
+  hostname       = "poker.akerl.app"
 }
