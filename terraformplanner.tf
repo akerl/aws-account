@@ -25,6 +25,7 @@ data "aws_iam_policy_document" "terraform-planner" {
       "lambda:Get*",
       "lambda:List*",
       "logs:Describe*",
+      "logs:List*",
       "route53:Get*",
       "route53:List*",
       "s3:GetAccelerateConfiguration",

@@ -22,8 +22,6 @@ module "akerl-blog" {
     "www.akerl.com",
     "a-rwx.org",
     "www.a-rwx.org",
-    "id-ed25519.pub",
-    "www.id-ed25519.pub",
     "akerl.dev",
     "www.akerl.dev",
     "akerl.app",
