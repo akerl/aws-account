@@ -58,6 +58,10 @@ variable "akerl-watchdog-site-dns_name" {
   type = string
 }
 
+variable "akerl-blindclock-site-dns_name" {
+  type = string
+}
+
 resource "aws_route53_delegation_set" "main" {
   reference_name = "main"
 }

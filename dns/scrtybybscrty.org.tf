@@ -77,3 +77,15 @@ resource "aws_route53_record" "a_files_scrtybybscrty_org" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_poker_scrtybybscrty_org" {
+  zone_id = module.scrtybybscrty_org.zone_id
+  name    = "poker.scrtybybscrty.org"
+  type    = "A"
+
+  alias {
+    name                   = var.akerl-blindclock-site-dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

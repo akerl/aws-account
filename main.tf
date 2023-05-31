@@ -50,4 +50,5 @@ module "akerl-dns" {
   akerl-private-auth-dns_name     = module.akerl-private-auth.dns_name
   akerl-coolquotes-share-dns_name = module.akerl-coolquotes-share.dns_name
   akerl-watchdog-site-dns_name    = module.akerl-watchdog-site.dns_name
+  akerl-blindclock-site-dns_name  = module.akerl-blindclock-site.dns_name
 }
