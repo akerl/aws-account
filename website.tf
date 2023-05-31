@@ -7,7 +7,7 @@ module "akerl-blog" {
   primary_hostname = "blog.akerl.org"
   error_document   = "404/index.html"
 
-  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' goat.akerl.org; script-src 'self' 'unsafe-inline' https://goat.akerl.org https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src"
+  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' goat.akerl.app; script-src 'self' 'unsafe-inline' https://goat.akerl.app https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src"
 
   redirect_hostnames = [
     "lesaker.org",
@@ -26,6 +26,10 @@ module "akerl-blog" {
     "www.id-ed25519.pub",
     "akerl.dev",
     "www.akerl.dev",
+    "akerl.app",
+    "www.akerl.app",
+    "akerl.net",
+    "www.akerl.net",
   ]
 }
 

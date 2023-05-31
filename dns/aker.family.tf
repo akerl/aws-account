@@ -5,4 +5,3 @@ module "aker_family" {
   domain_name       = "aker.family"
   delegation_set_id = aws_route53_delegation_set.main.id
 }
-

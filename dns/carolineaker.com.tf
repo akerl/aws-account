@@ -5,4 +5,3 @@ module "carolineaker_com" {
   domain_name       = "carolineaker.com"
   delegation_set_id = aws_route53_delegation_set.main.id
 }
-

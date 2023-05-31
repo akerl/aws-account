@@ -29,4 +29,3 @@ resource "aws_route53_record" "a_www_lesaker_com" {
     evaluate_target_health = false
   }
 }
-

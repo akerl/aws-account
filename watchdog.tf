@@ -5,7 +5,7 @@ module "akerl-watchdog-site" {
   config_bucket  = "akerl-watchdog-site"
   data_bucket    = "akerl-watchdog-site"
   lambda_bucket  = module.akerl-watchdog.publish_bucket
-  hostname       = "watchdog.a-rwx.org"
+  hostname       = "watchdog.akerl.app"
   alert_email    = "me@lesaker.org"
 }
 
