@@ -40,6 +40,13 @@ module "akerl-frame" {
   logging_bucket = aws_s3_bucket.logging.id
 }
 
+module "akerl-lambda-basic-auth" {
+  source         = "armorfret/s3-publish/aws"
+  version        = "0.7.0"
+  publish_bucket = "akerl-lambda-basic-auth"
+  logging_bucket = aws_s3_bucket.logging.id
+}
+
 module "akerl-goat-backup" {
   source         = "armorfret/s3-publish/aws"
   version        = "0.7.0"
