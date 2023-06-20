@@ -47,6 +47,13 @@ module "akerl-lambda-basic-auth" {
   logging_bucket = aws_s3_bucket.logging.id
 }
 
+module "akerl-hookexporter" {
+  source         = "armorfret/s3-publish/aws"
+  version        = "0.7.0"
+  publish_bucket = "akerl-hookexporter"
+  logging_bucket = aws_s3_bucket.logging.id
+}
+
 module "akerl-goat-backup" {
   source         = "armorfret/s3-publish/aws"
   version        = "0.7.0"

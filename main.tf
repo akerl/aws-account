@@ -51,4 +51,5 @@ module "akerl-dns" {
   akerl-watchdog-site-dns_name    = module.akerl-watchdog-site.dns_name
   akerl-blindclock-site-dns_name  = module.akerl-blindclock-site.dns_name
   akerl-frame-site-dns_name       = module.akerl-frame-site.dns_name
+  akerl-hook-site-dns_name        = module.akerl-hook-site.dns_name
 }

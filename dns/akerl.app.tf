@@ -84,3 +84,15 @@ resource "aws_route53_record" "a_frame_akerl_app" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "a_exporter_akerl_app" {
+  zone_id = module.akerl_app.zone_id
+  name    = "exporter.akerl.app"
+  type    = "A"
+
+  alias {
+    name                   = var.akerl-hook-site-dns_name
+    zone_id                = var.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
