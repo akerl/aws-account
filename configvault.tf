@@ -20,5 +20,6 @@ module "puppet-vault" {
     "goat",
     "usb-kvm",
     "kiosk-poker",
+    "cultivator",
   ]
 }

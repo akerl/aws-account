@@ -31,6 +31,7 @@ locals {
     "10.0.1.114" = "metrics.servers"
     "10.0.1.115" = "grafana.servers"
     "10.0.1.116" = "teslamate.servers"
+    "10.0.1.117" = "cultivator.servers"
     "10.0.1.150" = "nas.servers"
     # 10.0.2.0/24 security (VLAN 102)
     "10.0.2.2"  = "nas.security"
