@@ -41,6 +41,7 @@ locals {
     "10.0.2.13" = "cam-garage.security"
     "10.0.2.14" = "cam-patio.security"
     # 172.16.0.0/22 IoT (VLAN 700)
+    "172.16.0.2"   = "appletv.iot"
     "172.16.0.3"   = "vrroom.iot"
     "172.16.0.4"   = "tivo-family.iot"
     "172.16.0.5"   = "tivo-bar.iot"
@@ -131,7 +132,6 @@ locals {
     "192.168.1.18"  = "bean.standard"
     "192.168.1.19"  = "wrist.standard"
     "192.168.1.20"  = "switch.standard"
-    "192.168.1.30"  = "appletv.standard"
     "192.168.1.100" = "kelly-switch-wired.standard"
     "192.168.1.101" = "kelly-imac.standard"
     "192.168.1.102" = "kelly-iphone.standard"
