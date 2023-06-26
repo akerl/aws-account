@@ -46,8 +46,6 @@ locals {
     "172.16.0.5"   = "tivo-bar.iot"
     "172.16.0.6"   = "receiver-theatre.iot"
     "172.16.0.7"   = "tv-family.iot"
-    "172.16.0.8"   = "tivo-bedroom.iot"
-    "172.16.0.9"   = "tv-bedroom.iot"
     "172.16.0.10"  = "snoo.iot"
     "172.16.0.11"  = "simplisafe.iot"
     "172.16.0.12"  = "myq.iot"
