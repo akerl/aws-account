@@ -1,7 +1,10 @@
+---
 name: Build
-on:
-  pull_request:
+'on':
   push:
+    branches:
+    - main
+  pull_request_target:
 jobs:
   build:
     name: Build
@@ -14,19 +17,19 @@ jobs:
       with:
         submodules: recursive
     - name: Download Terraform
-      run: ./scripts/download_terraform.sh $TERRAFORM_VERSION
+      run: "./scripts/download_terraform.sh $TERRAFORM_VERSION"
     - name: Init workspace
-      run: ~/tfbin/terraform init -upgrade -input=false
+      run: "~/tfbin/terraform init -upgrade -input=false"
     - name: Check format
-      run: ~/tfbin/terraform fmt -write=false -diff=true -check
+      run: "~/tfbin/terraform fmt -write=false -diff=true -check"
     - name: Check plan
-      run: ~/tfbin/terraform plan -detailed-exitcode -input=false
+      run: "~/tfbin/terraform plan -detailed-exitcode -input=false"
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+        AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
     - name: Post to hook-exporter
-      run: ./.github/exporter.sh
+      run: "./.github/exporter.sh"
       env:
-        EXPORTER_TOKEN: ${{ secrets.EXPORTER_TOKEN }}
-        JOB_STATUS: ${{ job.status }}
-      if: ${{ always() }}
+        EXPORTER_TOKEN: "${{ secrets.EXPORTER_TOKEN }}"
+        JOB_STATUS: "${{ job.status }}"
+      if: "${{ always() }}"
