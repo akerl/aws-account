@@ -60,3 +60,10 @@ module "akerl-goat-backup" {
   publish_bucket = "akerl-goat-backup"
   logging_bucket = aws_s3_bucket.logging.id
 }
+
+module "akerl-charts-backup" {
+  source         = "armorfret/s3-publish/aws"
+  version        = "0.7.0"
+  publish_bucket = "akerl-charts-backup"
+  logging_bucket = aws_s3_bucket.logging.id
+}

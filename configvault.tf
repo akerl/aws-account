@@ -21,5 +21,6 @@ module "puppet-vault" {
     "usb-kvm",
     "kiosk-poker",
     "cultivator",
+    "charts",
   ]
 }

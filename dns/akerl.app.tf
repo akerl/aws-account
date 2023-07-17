@@ -48,6 +48,24 @@ module "goat_ext_validation" {
   parent_zone_id    = module.akerl_app.zone_id
 }
 
+resource "aws_route53_record" "a_charts_akerl_app" {
+  zone_id = module.akerl_app.zone_id
+  name    = "charts.akerl.app"
+  type    = "A"
+  ttl     = "60"
+  records = ["143.42.119.89"]
+}
+
+module "charts_ext_validation" {
+  source            = "armorfret/r53-certbot/aws"
+  version           = "0.5.0"
+  admin_email       = var.admin_email
+  delegation_set_id = "charts"
+  subzone_name      = "charts.certs.akerl.app"
+  cert_name         = "charts.akerl.app"
+  parent_zone_id    = module.akerl_app.zone_id
+}
+
 resource "aws_route53_record" "a_watchdog_akerl_app" {
   zone_id = module.akerl_app.zone_id
 
