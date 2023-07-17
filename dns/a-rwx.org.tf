@@ -247,6 +247,14 @@ resource "aws_route53_record" "goat_linode_a-rwx_org" {
   records = ["170.187.160.67"]
 }
 
+resource "aws_route53_record" "charts_linode_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "charts.linode.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["143.42.119.89"]
+}
+
 resource "aws_route53_record" "dmz_int_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
   name    = "dmz.wg0.a-rwx.org"
