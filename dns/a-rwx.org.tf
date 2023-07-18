@@ -287,6 +287,14 @@ resource "aws_route53_record" "goat_int_a-rwx_org" {
   records = ["10.255.255.6"]
 }
 
+resource "aws_route53_record" "charts_int_a-rwx_org" {
+  zone_id = module.a-rwx_org.zone_id
+  name    = "charts.wg0.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.255.255.8"]
+}
+
 module "influxdb_validation" {
   source            = "armorfret/r53-certbot/aws"
   version           = "0.5.0"
