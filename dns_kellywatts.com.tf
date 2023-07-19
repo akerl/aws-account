@@ -22,4 +22,3 @@ resource "aws_route53_record" "cname_www_kellywatts_com" {
   ttl     = "86400"
   records = ["domains.tumblr.com."]
 }
-

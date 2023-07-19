@@ -12,8 +12,8 @@ resource "aws_route53_record" "a_happilyeveraker_com" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-wedding-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = aws_cloudfront_distribution.wedding_redirect_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.wedding_redirect_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
@@ -24,8 +24,8 @@ resource "aws_route53_record" "a_www_happilyeveraker_com" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-wedding-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = aws_cloudfront_distribution.wedding_redirect_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.wedding_redirect_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }

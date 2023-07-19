@@ -3,7 +3,7 @@ resource "aws_ses_domain_identity" "nas" {
 }
 
 resource "aws_route53_record" "nas_verification" {
-  zone_id = "Z1GSN0DUY7LO3I"
+  zone_id = "Z06324102J3IVSSCKNZ4A"
   name    = "_amazonses.${aws_ses_domain_identity.nas.domain}"
   type    = "TXT"
   ttl     = "600"

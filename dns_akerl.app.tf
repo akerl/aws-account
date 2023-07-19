@@ -12,8 +12,8 @@ resource "aws_route53_record" "a_akerl_app" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-blog-redirect_dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-blog.redirect_dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -24,8 +24,8 @@ resource "aws_route53_record" "a_www_akerl_app" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-blog-redirect_dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-blog.redirect_dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -39,13 +39,11 @@ resource "aws_route53_record" "a_goat_akerl_app" {
 }
 
 module "goat_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "goat"
-  subzone_name      = "goat.certs.akerl.app"
-  cert_name         = "goat.akerl.app"
-  parent_zone_id    = module.akerl_app.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "goat.akerl.app"
+  zone_id     = module.akerl_app.zone_id
 }
 
 resource "aws_route53_record" "a_charts_akerl_app" {
@@ -57,13 +55,11 @@ resource "aws_route53_record" "a_charts_akerl_app" {
 }
 
 module "charts_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "charts"
-  subzone_name      = "charts.certs.akerl.app"
-  cert_name         = "charts.akerl.app"
-  parent_zone_id    = module.akerl_app.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "charts.akerl.app"
+  zone_id     = module.akerl_app.zone_id
 }
 
 resource "aws_route53_record" "a_watchdog_akerl_app" {
@@ -73,8 +69,8 @@ resource "aws_route53_record" "a_watchdog_akerl_app" {
   type = "A"
 
   alias {
-    name                   = var.akerl-watchdog-site-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-watchdog-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -85,8 +81,8 @@ resource "aws_route53_record" "a_poker_akerl_app" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-blindclock-site-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-blindclock-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -97,8 +93,8 @@ resource "aws_route53_record" "a_frame_akerl_app" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-frame-site-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-frame-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -109,8 +105,8 @@ resource "aws_route53_record" "a_exporter_akerl_app" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-hook-site-dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-hook-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }

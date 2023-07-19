@@ -168,8 +168,8 @@ resource "aws_route53_record" "a_a-rwx_org" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-blog-redirect_dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-blog.redirect_dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -180,8 +180,8 @@ resource "aws_route53_record" "a_www_a-rwx_org" {
   type    = "A"
 
   alias {
-    name                   = var.akerl-blog-redirect_dns_name
-    zone_id                = var.cloudfront_zone_id
+    name                   = module.akerl-blog.redirect_dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -196,13 +196,11 @@ resource "aws_route53_record" "gateway_infra_home_a-rwx_org" {
 }
 
 module "gateway_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "gateway"
-  subzone_name      = "gateway.infra.home.certs.a-rwx.org"
-  cert_name         = "gateway.infra.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "gateway.infra.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 resource "aws_route53_record" "dmz_hub_linode_a-rwx_org" {
@@ -281,131 +279,105 @@ resource "aws_route53_record" "charts_int_a-rwx_org" {
 }
 
 module "influxdb_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "influxdb"
-  subzone_name      = "influxdb.servers.home.certs.a-rwx.org"
-  cert_name         = "influxdb.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "influxdb.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "syslog_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "syslog"
-  subzone_name      = "syslog.servers.home.certs.a-rwx.org"
-  cert_name         = "syslog.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "syslog.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "metrics_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "metrics"
-  subzone_name      = "metrics.servers.home.certs.a-rwx.org"
-  cert_name         = "metrics.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "metrics.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "grafana_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "grafana"
-  subzone_name      = "grafana.servers.home.certs.a-rwx.org"
-  cert_name         = "grafana.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "grafana.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "printer_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "printer"
-  subzone_name      = "printer.standard.home.certs.a-rwx.org"
-  cert_name         = "printer.standard.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "printer.standard.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "nas_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "nas"
-  subzone_name      = "nas.servers.home.certs.a-rwx.org"
-  cert_name         = "nas.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "nas.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "hass_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "hass"
-  subzone_name      = "hass.servers.home.certs.a-rwx.org"
-  cert_name         = "hass.servers.home.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "hass.servers.home.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "logs_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "logs"
-  subzone_name      = "logs.certs.a-rwx.org"
-  cert_name         = "logs.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "logs.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "metrics_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "metrics"
-  subzone_name      = "metrics.certs.a-rwx.org"
-  cert_name         = "metrics.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "metrics.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "grafana_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "grafana"
-  subzone_name      = "grafana.certs.a-rwx.org"
-  cert_name         = "grafana.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "grafana.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "nvr_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "nvr"
-  subzone_name      = "nvr.certs.a-rwx.org"
-  cert_name         = "nvr.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "nvr.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "hass_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "hass"
-  subzone_name      = "hass.certs.a-rwx.org"
-  cert_name         = "hass.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "hass.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
 
 module "zwave_ext_validation" {
-  source            = "armorfret/r53-certbot/aws"
-  version           = "0.5.0"
-  admin_email       = var.admin_email
-  delegation_set_id = "zwave"
-  subzone_name      = "zwave.certs.a-rwx.org"
-  cert_name         = "zwave.a-rwx.org"
-  parent_zone_id    = module.a-rwx_org.zone_id
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.2"
+  admin_email = var.admin_email
+  cert_name   = "zwave.a-rwx.org"
+  zone_id     = module.a-rwx_org.zone_id
 }
