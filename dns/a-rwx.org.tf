@@ -147,6 +147,13 @@ locals {
   ]
 }
 
+data "terraform_remote_state" "linode" {
+  backend = "http"
+  config = {
+    address = "https://raw.githubusercontent.com/akerl/linode-account/main/terraform.tfstate"
+  }
+}
+
 module "a-rwx_org" {
   source            = "armorfret/r53-zone/aws"
   version           = "0.6.0"
@@ -223,36 +230,14 @@ resource "aws_route53_record" "metrics_a-rwx_org" {
   records = ["10.0.1.112"]
 }
 
-resource "aws_route53_record" "dmz_linode_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "dmz.linode.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["96.126.107.11"]
-}
+resource "aws_route53_record" "linode" {
+  for_each = data.terraform_remote_state.linode.outputs.instance_addresses
 
-resource "aws_route53_record" "codepad_linode_a-rwx_org" {
   zone_id = module.a-rwx_org.zone_id
-  name    = "codepad.linode.a-rwx.org"
+  name    = "${each.key}.linode.a-rwx.org"
   type    = "A"
   ttl     = "60"
-  records = ["172.104.214.163"]
-}
-
-resource "aws_route53_record" "goat_linode_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "goat.linode.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["170.187.160.67"]
-}
-
-resource "aws_route53_record" "charts_linode_a-rwx_org" {
-  zone_id = module.a-rwx_org.zone_id
-  name    = "charts.linode.a-rwx.org"
-  type    = "A"
-  ttl     = "60"
-  records = ["143.42.119.89"]
+  records = [each.value]
 }
 
 resource "aws_route53_record" "dmz_int_a-rwx_org" {
