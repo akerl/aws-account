@@ -22,5 +22,6 @@ module "puppet-vault" {
     "kiosk-poker",
     "cultivator",
     "charts",
+    "unpoller",
   ]
 }
