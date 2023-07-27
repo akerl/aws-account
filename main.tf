@@ -38,7 +38,42 @@ variable "admin_email" {
   default = "admin@lesaker.org"
 }
 
-resource "aws_route53_delegation_set" "main" {
-  reference_name = "main"
+variable "domains" {
+  type = set(string)
+  default = [
+    "a-rwx.org",
+    "aker.family",
+    "akerl.app",
+    "akerl.com",
+    "akerl.dev",
+    "akerl.net",
+    "akerl.org",
+    "aliceaker.com",
+    "carolineaker.com",
+    "coolquotes.xyz",
+    "happilyeveraker.com",
+    "id-ed25519.pub",
+    "kellywatts.com",
+    "lesaker.com",
+    "lesaker.org",
+    "scrtybybscrty.org",
+  ]
 }
 
+data "terraform_remote_state" "linode" {
+  backend = "http"
+  config = {
+    address = "https://raw.githubusercontent.com/akerl/linode-account/main/terraform.tfstate"
+  }
+}
+
+data "terraform_remote_state" "unifi" {
+  backend = "http"
+  config = {
+    address = "https://raw.githubusercontent.com/akerl/unifi-site/main/terraform.tfstate"
+  }
+}
+
+output "nameservers" {
+  value = aws_route53_delegation_set.main.name_servers
+}

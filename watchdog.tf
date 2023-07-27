@@ -9,3 +9,15 @@ module "akerl-watchdog-site" {
   alert_email    = "me@lesaker.org"
 }
 
+resource "aws_route53_record" "a_watchdog_akerl_app" {
+  zone_id = module.zones["akerl.app"].zone_id
+
+  name = "watchdog.akerl.app"
+  type = "A"
+
+  alias {
+    name                   = module.akerl-watchdog-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

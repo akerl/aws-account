@@ -28,3 +28,41 @@ module "akerl-dcs-library" {
   hostname       = "dcs.coolquotes.xyz"
 }
 
+resource "aws_route53_record" "a_hf_coolquotes_xyz" {
+  zone_id = module.zones["coolquotes.xyz"].zone_id
+
+  name = "hf.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = module.akerl-hf-library.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "a_books_coolquotes_xyz" {
+  zone_id = module.zones["coolquotes.xyz"].zone_id
+
+  name = "books.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = module.akerl-books-library.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
+  zone_id = module.zones["coolquotes.xyz"].zone_id
+
+  name = "dcs.coolquotes.xyz"
+  type = "A"
+
+  alias {
+    name                   = module.akerl-dcs-library.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

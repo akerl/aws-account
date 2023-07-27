@@ -1,7 +1,5 @@
-variable "wedding_domains" {
-  type = list(string)
-
-  default = [
+locals {
+  wedding_domains = [
     "happilyeveraker.com",
     "www.happilyeveraker.com",
   ]
@@ -62,7 +60,7 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
     }
   }
 
-  aliases = var.wedding_domains
+  aliases = local.wedding_domains
 
   enabled = true
 
@@ -110,6 +108,29 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
 module "wedding_certificate" {
   source    = "armorfret/acm-certificate/aws"
   version   = "0.3.0"
-  hostnames = var.wedding_domains
+  hostnames = local.wedding_domains
 }
 
+resource "aws_route53_record" "a_happilyeveraker_com" {
+  zone_id = module.zones["happilyeveraker.com"].zone_id
+  name    = "happilyeveraker.com"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.wedding_redirect_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.wedding_redirect_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "a_www_happilyeveraker_com" {
+  zone_id = module.zones["happilyeveraker.com"].zone_id
+  name    = "www.happilyeveraker.com"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.wedding_redirect_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.wedding_redirect_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}

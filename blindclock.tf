@@ -7,3 +7,15 @@ module "akerl-blindclock-site" {
   lambda_bucket  = module.akerl-blindclock.publish_bucket
   hostname       = "poker.akerl.app"
 }
+
+resource "aws_route53_record" "a_poker_akerl_app" {
+  zone_id = module.zones["akerl.app"].zone_id
+  name    = "poker.akerl.app"
+  type    = "A"
+
+  alias {
+    name                   = module.akerl-blindclock-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}

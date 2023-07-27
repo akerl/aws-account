@@ -10,3 +10,15 @@ module "akerl-frame-site" {
   auth_lambda_bucket = "akerl-lambda-basic-auth"
   auth_config_bucket = "akerl-frame-auth"
 }
+
+resource "aws_route53_record" "a_frame_akerl_app" {
+  zone_id = module.zones["akerl.app"].zone_id
+  name    = "frame.akerl.app"
+  type    = "A"
+
+  alias {
+    name                   = module.akerl-frame-site.dns_name
+    zone_id                = module.akerl-blog.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
