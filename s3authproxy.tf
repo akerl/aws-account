@@ -1,6 +1,6 @@
 module "akerl-private-files" {
   source         = "armorfret/lambda-s3authproxy/aws"
-  version        = "0.7.3"
+  version        = "0.7.4"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-private-files-config"
   data_bucket    = "akerl-private-files"
@@ -22,7 +22,7 @@ resource "aws_route53_record" "a_files_scrtybybscrty_org" {
 
 module "akerl-coolquotes-share" {
   source         = "armorfret/lambda-s3authproxy/aws"
-  version        = "0.7.3"
+  version        = "0.7.4"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-coolquotes-share-config"
   data_bucket    = "akerl-coolquotes-share"

@@ -4,7 +4,7 @@ resource "aws_route53_delegation_set" "main" {
 
 module "zones" {
   source  = "armorfret/r53-zone/aws"
-  version = "0.6.0"
+  version = "0.6.1"
 
   for_each = var.domains
 
