@@ -1,8 +1,8 @@
-resource "aws_iam_user" "grafana" {
+resource "aws_iam_user" "grafana" { #tfsec:ignore:aws-iam-no-user-attached-policies
   name = "grafana"
 }
 
-data "aws_iam_policy_document" "grafana-cloudwatch" {
+data "aws_iam_policy_document" "grafana-cloudwatch" { #tfsec:ignore:aws-iam-no-policy-wildcards
   statement {
     sid = "readMetrics"
 

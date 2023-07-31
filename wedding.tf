@@ -21,6 +21,24 @@ resource "aws_s3_bucket" "wedding_redirect_bucket" {
   bucket = "akerl-wedding-redirect"
 }
 
+resource "aws_s3_bucket_public_access_block" "wedding_redirect_bucket" {
+  bucket                  = aws_s3_bucket.wedding_redirect_bucket.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "wedding_redirect_bucket" { #tfsec:ignore:aws-s3-encryption-customer-key
+  bucket = aws_s3_bucket.wedding_redirect_bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
 resource "aws_s3_bucket_logging" "wedding_redirect_bucket" {
   bucket        = aws_s3_bucket.wedding_redirect_bucket.id
   target_bucket = aws_s3_bucket.logging.id
@@ -47,7 +65,7 @@ resource "aws_s3_bucket_website_configuration" "wedding_redirect_bucket" {
   }
 }
 
-resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
+resource "aws_cloudfront_distribution" "wedding_redirect_distribution" { #tfsec:ignore:aws-cloudfront-enable-waf
   origin {
     domain_name = aws_s3_bucket_website_configuration.wedding_redirect_bucket.website_endpoint
     origin_id   = "redirect_bucket"
@@ -100,7 +118,7 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" {
 
   viewer_certificate {
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2018"
+    minimum_protocol_version = "TLSv1.2_2021"
     acm_certificate_arn      = module.wedding_certificate.arn
   }
 }

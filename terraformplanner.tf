@@ -1,8 +1,8 @@
-resource "aws_iam_user" "terraform-planner" {
+resource "aws_iam_user" "terraform-planner" { #tfsec:ignore:aws-iam-no-user-attached-policies
   name = "build-akerl-aws-account"
 }
 
-data "aws_iam_policy_document" "terraform-planner" {
+data "aws_iam_policy_document" "terraform-planner" { #tfsec:ignore:aws-iam-no-policy-wildcards
   statement {
     actions = [
       "acm:Describe*",

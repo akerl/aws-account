@@ -1,3 +1,5 @@
+#tfsec:ignore:aws-cloudtrail-ensure-cloudwatch-integration
+#tfsec:ignore:aws-cloudtrail-enable-at-rest-encryption
 resource "aws_cloudtrail" "main-trail" {
   name                          = "main-trail"
   s3_bucket_name                = aws_s3_bucket.main-trail.id
@@ -26,8 +28,34 @@ resource "aws_cloudtrail" "main-trail" {
   }
 }
 
-resource "aws_s3_bucket" "main-trail" {
+resource "aws_s3_bucket" "main-trail" { #tfsec:ignore:aws-s3-enable-bucket-logging
   bucket = "akerl-cloudtrail"
+}
+
+resource "aws_s3_bucket_versioning" "main-trail" {
+  bucket = aws_s3_bucket.main-trail.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "main-trail" {
+  bucket                  = aws_s3_bucket.main-trail.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+#tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket_server_side_encryption_configuration" "main-trail" {
+  bucket = aws_s3_bucket.main-trail.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
 }
 
 resource "aws_s3_bucket_policy" "main-trail" {
@@ -67,6 +95,24 @@ POLICY
 
 resource "aws_s3_bucket" "logging" {
   bucket = "akerl-s3-logs"
+}
+
+resource "aws_s3_bucket_public_access_block" "logging" {
+  bucket                  = aws_s3_bucket.logging.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "logging" { #tfsec:ignore:aws-s3-encryption-customer-key
+  bucket = aws_s3_bucket.logging.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
 }
 
 resource "aws_s3_bucket_versioning" "logging" {
@@ -112,7 +158,7 @@ data "aws_iam_policy_document" "apigw_cloudwatch_assume" {
   }
 }
 
-data "aws_iam_policy_document" "apigw_cloudwatch_perms" {
+data "aws_iam_policy_document" "apigw_cloudwatch_perms" { #tfsec:ignore:aws-iam-no-policy-wildcards
   statement {
     actions = [
       "logs:CreateLogGroup",
