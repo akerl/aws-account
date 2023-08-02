@@ -125,7 +125,7 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" { #tfsec:
 
 module "wedding_certificate" {
   source    = "armorfret/acm-certificate/aws"
-  version   = "0.3.1"
+  version   = "0.3.2"
   hostnames = local.wedding_domains
 }
 

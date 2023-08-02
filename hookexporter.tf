@@ -1,6 +1,6 @@
 module "akerl-hook-site" {
   source         = "armorfret/lambda-hookexporter/aws"
-  version        = "0.1.0"
+  version        = "0.1.1"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-hookexporter-config"
   data_bucket    = "akerl-hookexporter-data"
