@@ -24,6 +24,12 @@ jobs:
       run: "~/tfbin/terraform init -upgrade -input=false"
     - name: Check format
       run: "~/tfbin/terraform fmt -write=false -diff=true -check"
+    - name: Run Trivy
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'config'
+        hide-progress: false
+        exit-code: '1'
     - name: Check plan
       run: "~/tfbin/terraform plan -detailed-exitcode -input=false"
       env:
