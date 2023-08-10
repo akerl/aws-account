@@ -1,6 +1,4 @@
-#tfsec:ignore:aws-cloudtrail-ensure-cloudwatch-integration
-#tfsec:ignore:aws-cloudtrail-enable-at-rest-encryption
-resource "aws_cloudtrail" "main-trail" {
+resource "aws_cloudtrail" "main-trail" { #trivy:ignore:AVD-AWS-0015 #trivy:ignore:AVD-AWS-0162
   name                          = "main-trail"
   s3_bucket_name                = aws_s3_bucket.main-trail.id
   include_global_service_events = true
@@ -28,7 +26,7 @@ resource "aws_cloudtrail" "main-trail" {
   }
 }
 
-resource "aws_s3_bucket" "main-trail" { #tfsec:ignore:aws-s3-enable-bucket-logging
+resource "aws_s3_bucket" "main-trail" { #trivy:ignore:AVD-AWS-0089 #trivy:ignore:AVD-AWS-0321
   bucket = "akerl-cloudtrail"
 }
 
@@ -47,8 +45,7 @@ resource "aws_s3_bucket_public_access_block" "main-trail" {
   restrict_public_buckets = true
 }
 
-#tfsec:ignore:aws-s3-encryption-customer-key
-resource "aws_s3_bucket_server_side_encryption_configuration" "main-trail" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "main-trail" { #trivy:ignore:AVD-AWS-0132
   bucket = aws_s3_bucket.main-trail.id
 
   rule {
@@ -93,7 +90,7 @@ POLICY
 
 }
 
-resource "aws_s3_bucket" "logging" {
+resource "aws_s3_bucket" "logging" { #trivy:ignore:AVD-AWS-0321
   bucket = "akerl-s3-logs"
 }
 
@@ -105,7 +102,7 @@ resource "aws_s3_bucket_public_access_block" "logging" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "logging" { #tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket_server_side_encryption_configuration" "logging" {
   bucket = aws_s3_bucket.logging.id
 
   rule {
@@ -158,7 +155,7 @@ data "aws_iam_policy_document" "apigw_cloudwatch_assume" {
   }
 }
 
-data "aws_iam_policy_document" "apigw_cloudwatch_perms" { #tfsec:ignore:aws-iam-no-policy-wildcards
+data "aws_iam_policy_document" "apigw_cloudwatch_perms" {
   statement {
     actions = [
       "logs:CreateLogGroup",

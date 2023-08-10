@@ -29,7 +29,7 @@ resource "aws_s3_bucket_public_access_block" "wedding_redirect_bucket" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "wedding_redirect_bucket" { #tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket_server_side_encryption_configuration" "wedding_redirect_bucket" { #trivy:ignore:AVD-AWS-0132
   bucket = aws_s3_bucket.wedding_redirect_bucket.id
 
   rule {
@@ -65,7 +65,7 @@ resource "aws_s3_bucket_website_configuration" "wedding_redirect_bucket" {
   }
 }
 
-resource "aws_cloudfront_distribution" "wedding_redirect_distribution" { #tfsec:ignore:aws-cloudfront-enable-waf
+resource "aws_cloudfront_distribution" "wedding_redirect_distribution" { #trivy:ignore:AVD-AWS-0011
   origin {
     domain_name = aws_s3_bucket_website_configuration.wedding_redirect_bucket.website_endpoint
     origin_id   = "redirect_bucket"

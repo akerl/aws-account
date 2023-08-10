@@ -29,7 +29,7 @@ resource "aws_s3_bucket_public_access_block" "backups" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "backups" { #tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket_server_side_encryption_configuration" "backups" { #trivy:ignore:AVD-AWS-0132
   bucket = aws_s3_bucket.backups.id
 
   rule {
@@ -64,6 +64,6 @@ resource "awscreds_iam_access_key" "backups" {
   file = "creds/${local.user}"
 }
 
-resource "aws_iam_user" "backups" { #tfsec:ignore:aws-iam-no-user-attached-policies
+resource "aws_iam_user" "backups" { #trivy:ignore:AVD-AWS-0143
   name = local.user
 }

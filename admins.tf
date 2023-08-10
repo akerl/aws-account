@@ -1,4 +1,4 @@
-resource "aws_iam_account_password_policy" "strict" { #tfsec:ignore:aws-iam-set-max-password-age
+resource "aws_iam_account_password_policy" "strict" { #trivy:ignore:AVD-AWS-0062
   minimum_password_length        = 32
   password_reuse_prevention      = 24
   require_lowercase_characters   = true

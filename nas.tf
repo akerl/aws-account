@@ -35,7 +35,7 @@ resource "awscreds_iam_access_key" "nas" {
   file = "creds/${aws_iam_user.nas.name}"
 }
 
-resource "aws_iam_user" "nas" { #tfsec:ignore:aws-iam-no-user-attached-policies
+resource "aws_iam_user" "nas" { #trivy:ignore:AVD-AWS-0143
   name = "ses-sender"
 }
 
