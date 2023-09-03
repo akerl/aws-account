@@ -1,6 +1,6 @@
 module "akerl-blindclock-site" {
   source         = "armorfret/lambda-blindclock/aws"
-  version        = "0.2.3"
+  version        = "0.3.0"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-blindclock-data"
   data_bucket    = "akerl-blindclock-data"

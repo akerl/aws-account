@@ -21,6 +21,21 @@ resource "aws_s3_bucket" "backups" {
   bucket = local.user
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "backups" {
+  bucket = aws_s3_bucket.backups.id
+
+  rule {
+    id     = "expiry"
+    status = "Enabled"
+
+    filter {}
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "backups" {
   bucket                  = aws_s3_bucket.backups.id
   block_public_acls       = true
