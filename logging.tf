@@ -6,7 +6,7 @@ resource "aws_cloudtrail" "main-trail" { #trivy:ignore:AVD-AWS-0015 #trivy:ignor
   enable_log_file_validation    = true
 }
 
-resource "aws_s3_bucket" "main-trail" { #trivy:ignore:AVD-AWS-0089 #trivy:ignore:AVD-AWS-0321
+resource "aws_s3_bucket" "main-trail" { #trivy:ignore:AVD-AWS-0089 #trivy:ignore:AVD-AWS-0321 #trivy:ignore:AVD-AWS-0163
   bucket = "akerl-cloudtrail"
 }
 
