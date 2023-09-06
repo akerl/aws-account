@@ -23,6 +23,5 @@ module "puppet-vault" {
     "cultivator",
     "charts",
     "unpoller",
-    "ubuntu",
   ]
 }
