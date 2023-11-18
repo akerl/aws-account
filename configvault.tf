@@ -16,7 +16,6 @@ module "puppet-vault" {
     "kiosk-tea",
     "metrics",
     "syslog",
-    "teslamate",
     "goat",
     "usb-kvm",
     "kiosk-poker",
