@@ -23,5 +23,6 @@ module "puppet-vault" {
     "charts",
     "unpoller",
     "proxy",
+    "mqtt",
   ]
 }
