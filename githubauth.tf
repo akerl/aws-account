@@ -1,6 +1,6 @@
 module "akerl-quote-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.8.0"
+  version        = "0.9.0"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-quote-auth"
   lambda_bucket  = module.akerl-githubauthlambda.publish_bucket
@@ -22,7 +22,7 @@ resource "aws_route53_record" "a_auth_coolquotes_xyz" {
 
 module "akerl-private-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.8.0"
+  version        = "0.9.0"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-private-auth"
   lambda_bucket  = module.akerl-githubauthlambda.publish_bucket
