@@ -38,6 +38,22 @@ module "charts_ext_validation" {
   zone_id     = module.zones["akerl.app"].zone_id
 }
 
+module "frameproxy_proxy_validation" {
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.4"
+  admin_email = var.admin_email
+  cert_name   = "frameproxy.a-rwx.org"
+  zone_id     = module.zones["a-rwx.org"].zone_id
+}
+
+resource "aws_route53_record" "frameproxy_a-rwx_org" {
+  zone_id = module.zones["a-rwx.org"].zone_id
+  name    = "frameproxy.a-rwx.org"
+  type    = "A"
+  ttl     = "60"
+  records = ["10.0.1.80"]
+}
+
 module "frameproxy_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"
