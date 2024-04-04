@@ -38,6 +38,18 @@ module "charts_ext_validation" {
   zone_id     = module.zones["akerl.app"].zone_id
 }
 
+module "frameproxy_validation" {
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.4"
+  admin_email = var.admin_email
+  cert_name   = "frame.akerl.app"
+  zone_id     = module.zones["akerl.app"].zone_id
+  issue_list = [
+    "letsencrypt.org; validationmethods=dns-01",
+    "amazon.com",
+  ]
+}
+
 module "influxdb_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"
