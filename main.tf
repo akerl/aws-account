@@ -25,6 +25,7 @@ variable "admins" {
   default = [
     "akerl-codepad",
     "akerl-wilson",
+    "akerl-hafte",
   ]
 }
 
