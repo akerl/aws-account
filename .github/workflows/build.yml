@@ -30,6 +30,7 @@ jobs:
         scan-type: 'config'
         hide-progress: false
         exit-code: '1'
+        version: latest
     - name: Check plan
       run: "~/tfbin/terraform plan -detailed-exitcode -input=false"
       env:
