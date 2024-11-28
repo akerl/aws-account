@@ -21,5 +21,6 @@ module "puppet-vault" {
     "unpoller",
     "proxy",
     "mqtt",
+    "ledgerdb",
   ]
 }
