@@ -90,6 +90,14 @@ module "metrics_validation" {
   zone_id     = module.zones["a-rwx.org"].zone_id
 }
 
+module "heracles_validation" {
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.4"
+  admin_email = var.admin_email
+  cert_name   = "heracles.servers.home.a-rwx.org"
+  zone_id     = module.zones["a-rwx.org"].zone_id
+}
+
 module "grafana_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"

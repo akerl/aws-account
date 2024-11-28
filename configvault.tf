@@ -22,5 +22,6 @@ module "puppet-vault" {
     "proxy",
     "mqtt",
     "ledgerdb",
+    "heracles",
   ]
 }
