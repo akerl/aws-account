@@ -5,23 +5,23 @@ module "puppet-vault" {
   vault_bucket   = "akerl-puppet"
   logging_bucket = aws_s3_bucket.logging.id
   servers = [
+    "budget",
+    "charts",
     "codepad",
     "dmz",
+    "goat",
     "grafana",
     "hass",
+    "heracles",
     "host",
     "hub",
     "kiosk-office",
+    "kiosk-poker",
     "kiosk-tea",
     "metrics",
-    "syslog",
-    "goat",
-    "kiosk-poker",
-    "charts",
-    "unpoller",
-    "proxy",
     "mqtt",
-    "ledgerdb",
-    "heracles",
+    "proxy",
+    "syslog",
+    "unpoller",
   ]
 }

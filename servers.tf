@@ -66,14 +66,6 @@ module "frameproxy_validation" {
   ]
 }
 
-module "influxdb_validation" {
-  source      = "armorfret/r53-certbot/aws"
-  version     = "0.6.4"
-  admin_email = var.admin_email
-  cert_name   = "influxdb.servers.home.a-rwx.org"
-  zone_id     = module.zones["a-rwx.org"].zone_id
-}
-
 module "syslog_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"
@@ -98,11 +90,11 @@ module "heracles_validation" {
   zone_id     = module.zones["a-rwx.org"].zone_id
 }
 
-module "ledgerdb_validation" {
+module "budget_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"
   admin_email = var.admin_email
-  cert_name   = "ledgerdb.servers.home.a-rwx.org"
+  cert_name   = "budget.servers.home.a-rwx.org"
   zone_id     = module.zones["a-rwx.org"].zone_id
 }
 
