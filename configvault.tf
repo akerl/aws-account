@@ -15,6 +15,7 @@ module "puppet-vault" {
     "heracles",
     "host",
     "hub",
+    "k8s",
     "kiosk-office",
     "kiosk-poker",
     "kiosk-tea",
