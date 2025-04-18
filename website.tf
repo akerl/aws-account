@@ -32,7 +32,7 @@ module "akerl-blog" {
   primary_hostname = "blog.akerl.org"
   error_document   = "404/index.html"
 
-  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' goat.akerl.app; script-src 'self' 'unsafe-inline' https://goat.akerl.app https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src"
+  content_security_policy = "frame-ancestors 'none'; default-src 'none'; img-src 'self' goat.akerl.app; script-src 'self' https://goat.akerl.app https://gist.github.com; style-src 'self' 'unsafe-inline' https://github.githubassets.com; object-src 'none'; connect-src https://goat.akerl.app/count; require-trusted-types-for 'script'"
 
   redirect_hostnames = local.blog_redirects
 }
