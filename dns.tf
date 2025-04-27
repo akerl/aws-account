@@ -5,6 +5,7 @@ locals {
     "grafana",
     "metrics",
     "logs",
+    "baby",
   ]
 
   wg_records = {

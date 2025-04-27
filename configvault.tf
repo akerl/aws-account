@@ -23,5 +23,6 @@ module "puppet-vault" {
     "proxy",
     "syslog",
     "unpoller",
+    "baby",
   ]
 }

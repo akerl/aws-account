@@ -122,6 +122,14 @@ module "hass_validation" {
   zone_id     = module.zones["a-rwx.org"].zone_id
 }
 
+module "baby_validation" {
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.4"
+  admin_email = var.admin_email
+  cert_name   = "baby.servers.home.a-rwx.org"
+  zone_id     = module.zones["a-rwx.org"].zone_id
+}
+
 module "logs_ext_validation" {
   source      = "armorfret/r53-certbot/aws"
   version     = "0.6.4"
@@ -161,6 +169,15 @@ module "hass_ext_validation" {
   cert_name   = "hass.a-rwx.org"
   zone_id     = module.zones["a-rwx.org"].zone_id
 }
+
+module "baby_ext_validation" {
+  source      = "armorfret/r53-certbot/aws"
+  version     = "0.6.4"
+  admin_email = var.admin_email
+  cert_name   = "baby.a-rwx.org"
+  zone_id     = module.zones["a-rwx.org"].zone_id
+}
+
 
 module "zwave_ext_validation" {
   source      = "armorfret/r53-certbot/aws"
