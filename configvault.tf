@@ -24,5 +24,6 @@ module "puppet-vault" {
     "syslog",
     "unpoller",
     "baby",
+    "influx",
   ]
 }
