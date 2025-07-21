@@ -25,5 +25,6 @@ module "puppet-vault" {
     "unpoller",
     "baby",
     "influx",
+    "garmin",
   ]
 }
