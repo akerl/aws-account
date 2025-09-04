@@ -24,8 +24,8 @@ locals {
     "frame-ancestors 'none';",
     "default-src 'none';",
     "img-src 'self' goat.akerl.app;",
-    "script-src 'self' 'unsafe-inline' https://goat.akerl.app https://gist.github.com;",
-    "style-src 'self' 'unsafe-inline' https://github.githubassets.com;",
+    "script-src 'self' 'unsafe-inline' https://goat.akerl.app;",
+    "style-src 'self' 'unsafe-inline';",
     "object-src 'none';",
     "connect-src https://goat.akerl.app/count;",
   ]
