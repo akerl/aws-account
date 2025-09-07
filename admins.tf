@@ -9,8 +9,8 @@ resource "aws_iam_account_password_policy" "strict" { #trivy:ignore:AVD-AWS-0062
 }
 
 resource "aws_iam_user" "admins" {
-  name  = var.admins[count.index]
-  count = length(var.admins)
+  for_each = var.admins
+  name     = each.key
 }
 
 resource "aws_iam_group_membership" "admins" {
@@ -21,9 +21,9 @@ resource "aws_iam_group_membership" "admins" {
 }
 
 resource "awscreds_iam_access_key" "admins" {
-  user       = var.admins[count.index]
-  file       = "creds/account-admins-${var.admins[count.index]}"
-  count      = length(var.admins)
+  for_each   = var.admins
+  user       = each.key
+  file       = "creds/account-admins-${each.key}"
   depends_on = [aws_iam_user.admins]
 }
 

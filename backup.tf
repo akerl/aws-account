@@ -1,7 +1,3 @@
-locals {
-  user = "akerl-backups"
-}
-
 data "aws_iam_policy_document" "s3-write" {
   statement {
     actions = [
@@ -11,14 +7,14 @@ data "aws_iam_policy_document" "s3-write" {
     ]
 
     resources = [
-      "arn:aws:s3:::${local.user}",
-      "arn:aws:s3:::${local.user}/*",
+      "arn:aws:s3:::${var.backup_user}",
+      "arn:aws:s3:::${var.backup_user}/*",
     ]
   }
 }
 
 resource "aws_s3_bucket" "backups" {
-  bucket = local.user
+  bucket = var.backup_user
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "backups" {
@@ -69,16 +65,16 @@ resource "aws_s3_bucket_logging" "backups" {
 }
 
 resource "aws_iam_user_policy" "backups" {
-  user   = local.user
+  user   = var.backup_user
   name   = "s3-write"
   policy = data.aws_iam_policy_document.s3-write.json
 }
 
 resource "awscreds_iam_access_key" "backups" {
-  user = local.user
-  file = "creds/${local.user}"
+  user = var.backup_user
+  file = "creds/${var.backup_user}"
 }
 
 resource "aws_iam_user" "backups" { #trivy:ignore:AVD-AWS-0143
-  name = local.user
+  name = var.backup_user
 }
