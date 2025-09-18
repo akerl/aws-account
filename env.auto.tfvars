@@ -17,6 +17,7 @@ domains = [
   "akerl.org",
   "aliceaker.com",
   "carolineaker.com",
+  "claireaker.com",
   "coolquotes.xyz",
   "happilyeveraker.com",
   "id-ed25519.pub",
@@ -24,6 +25,7 @@ domains = [
   "lesaker.com",
   "lesaker.org",
   "scrtybybscrty.org",
+  "sophieaker.com",
 ]
 
 servers = [
