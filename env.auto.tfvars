@@ -20,7 +20,6 @@ domains = [
   "claireaker.com",
   "coolquotes.xyz",
   "happilyeveraker.com",
-  "id-ed25519.pub",
   "kellywatts.com",
   "lesaker.com",
   "lesaker.org",
