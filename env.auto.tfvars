@@ -8,22 +8,18 @@ billing_email = "me@lesaker.org"
 admin_email   = "admin@lesaker.org"
 
 domains = [
-  "a-rwx.org",
+  "a-rwx.org", # legacy
   "aker.family",
-  "akerl.app",
+  "akerl.app", # legacy
   "akerl.com",
-  "akerl.dev",
-  "akerl.net",
   "akerl.org",
   "aliceaker.com",
   "carolineaker.com",
   "claireaker.com",
-  "coolquotes.xyz",
   "happilyeveraker.com",
   "kellywatts.com",
   "lesaker.com",
   "lesaker.org",
-  "scrtybybscrty.org",
   "sophieaker.com",
 ]
 
@@ -60,6 +56,7 @@ hub_records = [
   "metrics",
   "logs",
   "baby",
+  "vrroom",
 ]
 
 hass_records = [
@@ -106,4 +103,5 @@ certificates = {
   "baby.a-rwx.org" : null,
   "zwave.a-rwx.org" : null,
   "gateway.infra.home.a-rwx.org" : null,
+  "vrroom.a-rwx.org" : null,
 }

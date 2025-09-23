@@ -5,7 +5,7 @@ module "akerl-hf-library" {
   config_bucket  = "akerl-hf-library"
   data_bucket    = "akerl-hf-library"
   lambda_bucket  = module.akerl-madlibrarian.publish_bucket
-  hostname       = "hf.coolquotes.xyz"
+  hostname       = "hf.quotes.akerl.org"
 }
 
 module "akerl-books-library" {
@@ -15,7 +15,7 @@ module "akerl-books-library" {
   config_bucket  = "akerl-book-library"
   data_bucket    = "akerl-book-library"
   lambda_bucket  = module.akerl-madlibrarian.publish_bucket
-  hostname       = "books.coolquotes.xyz"
+  hostname       = "books.quotes.akerl.org"
 }
 
 module "akerl-dcs-library" {
@@ -25,13 +25,13 @@ module "akerl-dcs-library" {
   config_bucket  = "akerl-dcs-library"
   data_bucket    = "akerl-dcs-library"
   lambda_bucket  = module.akerl-madlibrarian.publish_bucket
-  hostname       = "dcs.coolquotes.xyz"
+  hostname       = "dcs.quotes.akerl.org"
 }
 
-resource "aws_route53_record" "a_hf_coolquotes_xyz" {
-  zone_id = module.zones["coolquotes.xyz"].zone_id
+resource "aws_route53_record" "a_hf_quotes_akerl_org" {
+  zone_id = module.zones["akerl.org"].zone_id
 
-  name = "hf.coolquotes.xyz"
+  name = "hf.quotes.akerl.org"
   type = "A"
 
   alias {
@@ -41,10 +41,10 @@ resource "aws_route53_record" "a_hf_coolquotes_xyz" {
   }
 }
 
-resource "aws_route53_record" "a_books_coolquotes_xyz" {
-  zone_id = module.zones["coolquotes.xyz"].zone_id
+resource "aws_route53_record" "a_books_quotes_akerl_org" {
+  zone_id = module.zones["akerl.org"].zone_id
 
-  name = "books.coolquotes.xyz"
+  name = "books.quotes.akerl.org"
   type = "A"
 
   alias {
@@ -54,10 +54,10 @@ resource "aws_route53_record" "a_books_coolquotes_xyz" {
   }
 }
 
-resource "aws_route53_record" "a_dcs_coolquotes_xyz" {
-  zone_id = module.zones["coolquotes.xyz"].zone_id
+resource "aws_route53_record" "a_dcs_quotes_akerl_org" {
+  zone_id = module.zones["akerl.org"].zone_id
 
-  name = "dcs.coolquotes.xyz"
+  name = "dcs.quotes.akerl.org"
   type = "A"
 
   alias {

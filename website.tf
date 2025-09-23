@@ -2,22 +2,12 @@ locals {
   blog_redirects = [
     "lesaker.org",
     "www.lesaker.org",
-    "scrtybybscrty.org",
-    "www.scrtybybscrty.org",
     "lesaker.com",
     "www.lesaker.com",
     "akerl.org",
     "www.akerl.org",
     "akerl.com",
     "www.akerl.com",
-    "a-rwx.org",
-    "www.a-rwx.org",
-    "akerl.dev",
-    "www.akerl.dev",
-    "akerl.app",
-    "www.akerl.app",
-    "akerl.net",
-    "www.akerl.net",
   ]
 
   blog_csp = [
@@ -35,7 +25,7 @@ locals {
 
 module "akerl-blog" {
   source                  = "armorfret/s3-website/aws"
-  version                 = "0.11.4"
+  version                 = "0.11.6"
   logging_bucket          = aws_s3_bucket.logging.id
   file_bucket             = "akerl-blog"
   redirect_bucket         = "akerl-blog-redirect"
@@ -67,48 +57,6 @@ resource "aws_route53_record" "blog_redirect" {
   alias {
     name                   = module.akerl-blog.redirect_dns_name
     zone_id                = module.akerl-blog.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-module "akerl-littlesnitch" {
-  source           = "armorfret/s3-website/aws"
-  version          = "0.11.4"
-  logging_bucket   = aws_s3_bucket.logging.id
-  file_bucket      = "akerl-littlesnitch"
-  redirect_bucket  = "akerl-littlesnitch-redirect"
-  primary_hostname = "littlesnitch.scrtybybscrty.org"
-}
-
-resource "aws_route53_record" "a_littlesnitch_scrtybybscrty_org" {
-  zone_id = module.zones["scrtybybscrty.org"].zone_id
-  name    = "littlesnitch.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = module.akerl-littlesnitch.site_dns_name
-    zone_id                = module.akerl-littlesnitch.cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-module "amylum-repo" {
-  source           = "armorfret/s3-website/aws"
-  version          = "0.11.4"
-  logging_bucket   = aws_s3_bucket.logging.id
-  file_bucket      = "amylum-repo"
-  redirect_bucket  = "amylum-repo-redirect"
-  primary_hostname = "repo.scrtybybscrty.org"
-}
-
-resource "aws_route53_record" "a_repo_scrtybybscrty_org" {
-  zone_id = module.zones["scrtybybscrty.org"].zone_id
-  name    = "repo.scrtybybscrty.org"
-  type    = "A"
-
-  alias {
-    name                   = module.amylum-repo.site_dns_name
-    zone_id                = module.amylum-repo.cloudfront_zone_id
     evaluate_target_health = false
   }
 }
