@@ -1,18 +1,18 @@
 module "akerl-watchdog-site" {
   source         = "armorfret/lambda-watchdog/aws"
-  version        = "0.8.0"
+  version        = "0.8.1"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-watchdog-site"
   data_bucket    = "akerl-watchdog-site"
   lambda_bucket  = module.akerl-watchdog.publish_bucket
-  hostname       = "watchdog.akerl.app"
+  hostname       = "watchdog.akerl.org"
   alert_email    = "me@lesaker.org"
 }
 
-resource "aws_route53_record" "a_watchdog_akerl_app" {
-  zone_id = module.zones["akerl.app"].zone_id
+resource "aws_route53_record" "a_watchdog_akerl_org" {
+  zone_id = module.zones["akerl.org"].zone_id
 
-  name = "watchdog.akerl.app"
+  name = "watchdog.akerl.org"
   type = "A"
 
   alias {

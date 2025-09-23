@@ -10,7 +10,6 @@ admin_email   = "admin@lesaker.org"
 domains = [
   "a-rwx.org", # legacy
   "aker.family",
-  "akerl.app", # legacy
   "akerl.com",
   "akerl.org",
   "aliceaker.com",
@@ -77,15 +76,15 @@ wg_records = {
 }
 
 linode_aliases = {
-  "goat.akerl.app" : "goat",
-  "charts.akerl.app" : "charts",
+  "goat.akerl.org" : "goat",
+  "charts.akerl.org" : "charts",
 }
 
 certificates = {
-  "goat.akerl.app" : null,
-  "charts.akerl.app" : null,
+  "goat.akerl.org" : null,
+  "charts.akerl.org" : null,
   "frameproxy.a-rwx.org" : null,
-  "frame.akerl.app" : ["letsencrypt.org; validationmethods=dns-01", "amazon.com"],
+  "frame.akerl.org" : ["letsencrypt.org; validationmethods=dns-01", "amazon.com"],
   "syslog.servers.home.a-rwx.org" : null,
   "metrics.servers.home.a-rwx.org" : null,
   "influx.servers.home.a-rwx.org" : null,

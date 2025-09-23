@@ -13,11 +13,11 @@ locals {
   blog_csp = [
     "frame-ancestors 'none';",
     "default-src 'none';",
-    "img-src 'self' goat.akerl.app;",
-    "script-src 'self' 'unsafe-inline' https://goat.akerl.app;",
+    "img-src 'self' goat.akerl.org;",
+    "script-src 'self' 'unsafe-inline' https://goat.akerl.org;",
     "style-src 'self' 'unsafe-inline';",
     "object-src 'none';",
-    "connect-src https://goat.akerl.app/count;",
+    "connect-src https://goat.akerl.org/count;",
   ]
 
   host_to_zone_regex = "/^(?:.*\\.)?([^.]+\\.[^.]+)$/"

@@ -1,16 +1,16 @@
 module "akerl-blindclock-site" {
   source         = "armorfret/lambda-blindclock/aws"
-  version        = "0.4.2"
+  version        = "0.4.3"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-blindclock-data"
   data_bucket    = "akerl-blindclock-data"
   lambda_bucket  = module.akerl-blindclock.publish_bucket
-  hostname       = "poker.akerl.app"
+  hostname       = "poker.akerl.org"
 }
 
-resource "aws_route53_record" "a_poker_akerl_app" {
-  zone_id = module.zones["akerl.app"].zone_id
-  name    = "poker.akerl.app"
+resource "aws_route53_record" "a_poker_akerl_org" {
+  zone_id = module.zones["akerl.org"].zone_id
+  name    = "poker.akerl.org"
   type    = "A"
 
   alias {

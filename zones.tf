@@ -2,7 +2,6 @@ locals {
   ignore_domains = [
     "sophieaker.com",
     "claireaker.com",
-    "akerl.app",
   ]
 }
 
