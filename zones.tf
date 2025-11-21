@@ -1,17 +1,10 @@
-locals {
-  ignore_domains = [
-    "sophieaker.com",
-    "claireaker.com",
-  ]
-}
-
 resource "aws_route53_delegation_set" "main" {
   reference_name = "main"
 }
 
 module "zones" {
   source  = "armorfret/r53-zone/aws"
-  version = "0.6.2"
+  version = "0.7.0"
 
   for_each = var.domains
 

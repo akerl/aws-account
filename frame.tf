@@ -1,6 +1,6 @@
 module "akerl-frame-site" {
   source         = "armorfret/lambda-frame/aws"
-  version        = "0.3.4"
+  version        = "0.4.0"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-frame-data"
   data_bucket    = "akerl-frame-photos"

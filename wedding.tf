@@ -125,7 +125,7 @@ resource "aws_cloudfront_distribution" "wedding_redirect_distribution" { #trivy:
 
 module "wedding_certificate" {
   source    = "armorfret/acm-certificate/aws"
-  version   = "0.3.2"
+  version   = "0.4.0"
   hostnames = local.wedding_domains
 }
 
