@@ -41,7 +41,6 @@ servers = [
   "proxy",
   "syslog",
   "unpoller",
-  "baby",
   "influx",
   "garmin",
 ]
@@ -54,7 +53,6 @@ hub_records = [
   "grafana",
   "metrics",
   "logs",
-  "baby",
   "vrroom",
 ]
 
@@ -93,13 +91,11 @@ certificates = {
   "printer.standard.home.a-rwx.org" : null,
   "nas.servers.home.a-rwx.org" : null,
   "hass.servers.home.a-rwx.org" : null,
-  "baby.servers.home.a-rwx.org" : null,
   "logs.a-rwx.org" : null,
   "metrics.a-rwx.org" : null,
   "grafana.a-rwx.org" : null,
   "nvr.a-rwx.org" : null,
   "hass.a-rwx.org" : null,
-  "baby.a-rwx.org" : null,
   "zwave.a-rwx.org" : null,
   "gateway.infra.home.a-rwx.org" : null,
   "vrroom.a-rwx.org" : null,
