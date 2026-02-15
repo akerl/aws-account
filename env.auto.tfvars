@@ -54,6 +54,7 @@ hub_records = [
   "metrics",
   "logs",
   "vrroom",
+  "receiver-theatre",
 ]
 
 hass_records = [
@@ -99,4 +100,5 @@ certificates = {
   "zwave.a-rwx.org" : null,
   "gateway.infra.home.a-rwx.org" : null,
   "vrroom.a-rwx.org" : null,
+  "receiver-theatre.a-rwx.org" : null,
 }
