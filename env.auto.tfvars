@@ -101,4 +101,5 @@ certificates = {
   "gateway.infra.home.a-rwx.org" : null,
   "vrroom.a-rwx.org" : null,
   "receiver-theatre.a-rwx.org" : null,
+  "host-kvm.servers.home.a-rwx.org" : null,
 }
