@@ -72,6 +72,7 @@ wg_records = {
   "10.255.255.7" : "charts",
   "10.255.255.8" : "heracles",
   "10.255.255.9" : "proxy",
+  "10.255.255.200" : "host-kvm",
 }
 
 linode_aliases = {
@@ -101,5 +102,5 @@ certificates = {
   "gateway.infra.home.a-rwx.org" : null,
   "vrroom.a-rwx.org" : null,
   "receiver-theatre.a-rwx.org" : null,
-  "host-kvm.servers.home.a-rwx.org" : null,
+  "host-kvm.wg0.a-rwx.org" : null,
 }
