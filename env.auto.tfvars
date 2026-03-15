@@ -74,6 +74,7 @@ wg_records = {
   "10.255.255.9" : "proxy",
   "10.255.255.200" : "host-kvm",
   "10.255.255.201" : "syl",
+  "10.255.255.202" : "maya",
 }
 
 linode_aliases = {
@@ -104,4 +105,6 @@ certificates = {
   "vrroom.a-rwx.org" : null,
   "receiver-theatre.a-rwx.org" : null,
   "host-kvm.wg0.a-rwx.org" : null,
+  "syl.wg0.a-rwx.org" : null,
+  "maya.wg0.a-rwx.org" : null,
 }
