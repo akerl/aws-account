@@ -73,6 +73,7 @@ wg_records = {
   "10.255.255.8" : "heracles",
   "10.255.255.9" : "proxy",
   "10.255.255.200" : "host-kvm",
+  "10.255.255.201" : "syl",
 }
 
 linode_aliases = {
