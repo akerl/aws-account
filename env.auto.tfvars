@@ -6,6 +6,7 @@ admins = [
 
 billing_email = "me@lesaker.org"
 admin_email   = "admin@lesaker.org"
+dmarc_email   = "dmarc@lesaker.org"
 
 domains = [
   "a-rwx.org", # legacy

@@ -10,6 +10,10 @@ variable "admin_email" {
   type = string
 }
 
+variable "dmarc_email" {
+  type = string
+}
+
 variable "domains" {
   type = set(string)
 }
