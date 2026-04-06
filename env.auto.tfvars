@@ -61,6 +61,7 @@ hub_records = [
 hass_records = [
   "zwave.a-rwx.org",
   "frameproxy.a-rwx.org",
+  "ecowitt.a-rwx.org",
 ]
 
 wg_records = {
