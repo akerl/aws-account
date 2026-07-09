@@ -1,5 +1,4 @@
 admins = [
-  "akerl-codepad",
   "akerl-wilson",
   "akerl-hafte",
 ]
@@ -25,7 +24,6 @@ domains = [
 
 servers = [
   "charts",
-  "codepad",
   "dmz",
   "goat",
   "grafana",
@@ -69,7 +67,6 @@ wg_records = {
   "10.255.255.2" : "hub",
   "10.255.255.3" : "k8s",
   "10.255.255.4" : "metrics",
-  "10.255.255.5" : "codepad",
   "10.255.255.6" : "goat",
   "10.255.255.7" : "charts",
   "10.255.255.8" : "heracles",
