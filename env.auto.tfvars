@@ -81,6 +81,8 @@ wg_records = {
 linode_aliases = {
   "goat.akerl.org" : "goat",
   "charts.akerl.org" : "charts",
+  "policybot.akerl.org" : "ghbots",
+  "bulldozer.akerl.org" : "ghbots",
 }
 
 certificates = {
@@ -108,4 +110,6 @@ certificates = {
   "host-kvm.wg0.a-rwx.org" : null,
   "syl.wg0.a-rwx.org" : null,
   "maya.wg0.a-rwx.org" : null,
+  "policybot.akerl.org" : null,
+  "bulldozer.akerl.org" : null,
 }
