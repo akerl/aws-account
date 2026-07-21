@@ -43,6 +43,7 @@ servers = [
   "influx",
   "garmin",
   "ghbots",
+  "fleet",
 ]
 
 backup_user = "akerl-backups"
@@ -73,6 +74,7 @@ wg_records = {
   "10.255.255.8" : "heracles",
   "10.255.255.9" : "proxy",
   "10.255.255.10" : "ghbots",
+  "10.255.255.11" : "fleet",
   "10.255.255.200" : "host-kvm",
   "10.255.255.201" : "syl",
   "10.255.255.202" : "maya",
@@ -83,6 +85,7 @@ linode_aliases = {
   "charts.akerl.org" : "charts",
   "policybot.akerl.org" : "ghbots",
   "bulldozer.akerl.org" : "ghbots",
+  "fleet.akerl.org" : "fleet",
 }
 
 certificates = {
@@ -112,4 +115,5 @@ certificates = {
   "maya.wg0.a-rwx.org" : null,
   "policybot.akerl.org" : null,
   "bulldozer.akerl.org" : null,
+  "fleet.akerl.org" : null,
 }
