@@ -67,10 +67,3 @@ module "akerl-charts-backup" {
   publish_bucket = "akerl-charts-backup"
   logging_bucket = aws_s3_bucket.logging.id
 }
-
-module "akerl-fleet-backup" {
-  source         = "armorfret/s3-publish/aws"
-  version        = "0.9.0"
-  publish_bucket = "akerl-fleet-backup"
-  logging_bucket = aws_s3_bucket.logging.id
-}
