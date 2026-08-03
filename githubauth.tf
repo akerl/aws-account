@@ -1,6 +1,6 @@
 module "akerl-quote-auth" {
   source         = "armorfret/lambda-githubauth/aws"
-  version        = "0.11.4"
+  version        = "0.11.5"
   logging_bucket = aws_s3_bucket.logging.id
   config_bucket  = "akerl-quote-auth"
   lambda_bucket  = module.akerl-githubauthlambda.publish_bucket
