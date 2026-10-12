@@ -17,6 +17,21 @@ resource "aws_s3_bucket_versioning" "main-trail" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "main-trail" {
+  bucket = aws_s3_bucket.main-trail.id
+
+  rule {
+    id     = "expiry"
+    status = "Enabled"
+
+    filter {}
+
+    expiration {
+      days = 90
+    }
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "main-trail" {
   bucket                  = aws_s3_bucket.main-trail.id
   block_public_acls       = true
@@ -102,6 +117,21 @@ resource "aws_s3_bucket_versioning" "logging" {
 resource "aws_s3_bucket_acl" "logging" {
   bucket = aws_s3_bucket.logging.id
   acl    = "log-delivery-write"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "logging" {
+  bucket = aws_s3_bucket.logging.id
+
+  rule {
+    id     = "expiry"
+    status = "Enabled"
+
+    filter {}
+
+    expiration {
+      days = 90
+    }
+  }
 }
 
 resource "aws_api_gateway_account" "account" {

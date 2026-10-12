@@ -25,7 +25,7 @@ locals {
 
 module "akerl-blog" {
   source                  = "armorfret/s3-website/aws"
-  version                 = "0.12.0"
+  version                 = "0.12.3"
   logging_bucket          = aws_s3_bucket.logging.id
   file_bucket             = "akerl-blog"
   redirect_bucket         = "akerl-blog-redirect"
